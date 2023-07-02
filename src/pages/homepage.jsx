@@ -1,6 +1,7 @@
 import Navbar from "../components/navbar";
 import "../css/main.css";
 import homebg from "../assets/image/homebg.png";
+import Letsponsive from "../components/letsponsive";
 
 const Homepage = () => {
   return (
