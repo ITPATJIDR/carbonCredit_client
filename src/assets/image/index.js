@@ -1,0 +1,6 @@
+export { default as Close } from "./Close.svg"
+export { default as Logo } from "./logo.png"
+export { default as Email } from "./Email.svg"
+export { default as Password } from "./Password.svg"
+export { default as Eye } from "./Eye.svg"
+export { default as Care } from "./Care.svg"
