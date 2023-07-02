@@ -1,19 +1,22 @@
 import Navbar from "../components/navbar";
 import "../css/main.css";
+import "../css/homepage.css";
 import homebg from "../assets/image/homebg.png";
-import Letsponsive from "../components/letsponsive";
+import cloud from "../assets/image/cloud.png";
+import pineTree from "../assets/image/pine-tree.png";
 
 const Homepage = () => {
   return (
     <div className="bg-container">
       <Navbar />
-      <div className="flex w-[99vw] h-screen">
+      <div className="flex w-[98vw] h-screen">
+        {/* Part 1 */}
         <div className="bg-img">
           <img src={homebg} alt="Home Page" />
         </div>
-        <div className="greenie mx-auto items-center flex flex-wrap">
-          <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div class="pt-32 sm:pt-0">
+        <section className="greenie mx-auto items-center flex flex-wrap">
+          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+            <div className="pt-32 sm:pt-0">
               <p className="text-1lg sm:text-3xl py-3 text-black font-bold">
                 Welcome to
               </p>
@@ -33,7 +36,20 @@ const Homepage = () => {
               <button className="btn btn-w">Read more</button>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Part 2 */}
+        <section
+          className="stat container mx-auto px-4 pb-32 pt-48 absolute bottom-0"
+          style={{ marginBottom: "6rem" }}
+        >
+          <div className="w-1/2 flex justify-start">
+            <img src={cloud} alt="cloud" className="w-8 h-8 ml-2" />
+          </div>
+          <div className="w-1/2 flex justify-end">
+            <img src={pineTree} alt="pine tree" className="w-8 h-8 mr-2" />
+          </div>
+        </section>
       </div>
     </div>
   );
