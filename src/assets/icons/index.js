@@ -1,0 +1,1 @@
+export { default as Profile } from "./gg_profile.svg"

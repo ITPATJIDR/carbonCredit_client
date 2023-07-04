@@ -1,29 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const initialState = {
+  isAuth: false,
+  isError: false
+};
 
 export const authSlice = createSlice({
-  name: 'counter',
-  initialState: {
-    value: 0,
-  },
+  name: 'auth',
+  initialState: initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes.
-      // Also, no return statement is required from these functions.
-      state.value += 1
+    loginSuccess: (state) => {
+      state.isAuth = true;
     },
-    decrement: (state) => {
-      state.value -= 1
+    logoutSuccess: (state) => {
+      state.isAuth = false;
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
-    },
+    loginFailure: (state) => {
+      state.isError = true;
+    }
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = authSlice.actions
+export const { loginSuccess, logoutSuccess, loginFailure } = authSlice.actions;
 
-export default authSlice.reducer
+export const getRefreshToken = () => async (dispatch) => {
+  try {
+    const response = await axios.get("http://localhost:5001/user/getRefreshToken",{withCredentials:true});
+    if(response.data.status === 200) {
+      dispatch(loginSuccess());
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default authSlice.reducer;
