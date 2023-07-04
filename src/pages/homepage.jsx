@@ -1,22 +1,49 @@
 import Navbar from "../components/navbar";
 import "../css/main.css";
 import "../css/homepage.css";
+import logo from "../assets/icons/logo.png";
 import homebg from "../assets/image/homebg.png";
 import cloud from "../assets/image/cloud.png";
 import pineTree from "../assets/image/pine-tree.png";
 import mission from "../assets/image/mission.svg";
 import vision from "../assets/image/vision.svg";
 import stragy from "../assets/image/strategy.svg";
+import arr1 from "../assets/image/arrow1.svg";
+import arr2 from "../assets/image/arrow2.svg";
+import carbonJour from "../assets/image/carbonJour.svg";
+import cert from "../assets/image/cert.svg";
+import point from "../assets/image/point.svg";
+import growTree from "../assets/image/growTree.svg";
+import bigTreecut from "../assets/image/bigTreecut.svg";
+import plantCam from "../assets/image/plantCampaign.png";
+import taxCam from "../assets/image/taxCampaign.png";
+import eduCam from "../assets/image/educateCampaign.png";
+import calculate from "../assets/image/calculator.svg";
+import money from "../assets/image/money.svg";
+import manyTree from "../assets/image/manyTree.svg";
+import Dropdown from "../components/dropdownFood.jsx";
+import food from "../assets/icons/food.svg";
+import travel from "../assets/icons/travel.svg";
+import co2 from "../assets/icons/co2-1.svg";
+import line from "../assets/icons/line-horizon.svg";
+
+import React, { useState } from "react";
 
 const Homepage = () => {
+  const [amount, setAmount] = useState("");
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  };
+
   return (
     <div className="bg-container">
       <Navbar />
-      <div className="flex flex-col w-[98vw] h-[6748px]">
+      <div className="flex flex-col w-[98vw] h-[5000px]">
         {/* part 1 */}
         <section className="w-[98vw] h-[90vh] flex justify-between">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 flex items-center justify-center">
-            <div className="mb-[19vh]">
+            <div className="mb-[10vh]">
               <div>
                 <p className="text-1lg sm:text-3xl text-black font-bold">
                   Welcome to
@@ -45,7 +72,7 @@ const Homepage = () => {
                 </p>
               </div>
 
-              <div className="flex items-center mt-5 ">
+              <div className="flex items-center mt-8 ">
                 <button className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none">
                   Start now
                 </button>
@@ -59,7 +86,7 @@ const Homepage = () => {
             </div>
           </div>
 
-          <div className="bg-img">
+          <div className="bg-img1">
             <img src={homebg} alt="Home Page" />
           </div>
         </section>
@@ -110,9 +137,9 @@ const Homepage = () => {
               For the better world
             </p>
           </div>
-          {/* mission */}
           <div className="flex flex-row">
-            <div className="card w-[50vh] h-[70vh] bg-white shadow-xl mt-[3rem]">
+            {/* mission */}
+            <div className="card w-[50vh] h-[65vh] bg-white shadow-xl mt-[3rem]">
               <figure>
                 <img
                   src={mission}
@@ -135,7 +162,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* vision */}
-            <div className="card w-[50vh] h-[70vh] bg-white shadow-xl mt-[3rem] mx-[3rem]">
+            <div className="card w-[50vh] h-[65vh] bg-white shadow-xl mt-[3rem] mx-[3rem]">
               <figure>
                 <img
                   src={vision}
@@ -158,7 +185,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* strategy */}
-            <div className="card w-[50vh] h-[70vh] bg-white shadow-xl mt-[3rem]">
+            <div className="card w-[50vh] h-[65vh] bg-white shadow-xl mt-[3rem]">
               <figure>
                 <img
                   src={stragy}
@@ -183,20 +210,366 @@ const Homepage = () => {
           </div>
         </section>
         {/* part 4 */}
-        <section className="w-[98vw] h-[80vh] flex flex-col justify-center items-center mb-[3rem] bg-[#FFD9D9]">
+        <section className="w-[98vw] h-[80vh] flex flex-col justify-center items-center mb-[3rem]">
           <div>
             <p className="text-black text-[30px] font-bold">
               Your Carbon Journey
             </p>
           </div>
           <div className="flex flex-row">
-            <div className="card w-[110vh] h-[50vh] bg-white shadow-xl my-[2rem]">
-              <div className="card-body"></div>
+            <div className="card w-[55vw] h-[50vh] bg-white shadow-xl my-[3rem]">
+              <div className="card-body justify-center">
+                <div className="flex flex-row justify-center">
+                  {/* 1 */}
+                  <div className="flex flex-col mx-[1rem] items-center">
+                    <figure>
+                      <img
+                        src={carbonJour}
+                        alt="Carbon offset"
+                        className="w-[120px] h-[140px]"
+                      />
+                    </figure>
+                    <figcaption className="text-black">
+                      Carbon offset
+                    </figcaption>
+                  </div>
+                  {/* 2 */}
+                  <div className="flex flex-col items-center">
+                    <figure>
+                      <img
+                        src={arr1}
+                        alt="arrow"
+                        className="w-[100px] h-[100px] mt-[4rem]"
+                      />
+                    </figure>
+                    <figure>
+                      <img
+                        src={cert}
+                        alt="certification"
+                        className="w-[120px] h-[140px]"
+                      />
+                    </figure>
+                    <figcaption className="text-black">
+                      Get Certificate
+                    </figcaption>
+                  </div>
+                  {/* 3 */}
+                  <div className="flex flex-col items-center ml-[2rem] mr-[1rem]">
+                    <figure>
+                      <img
+                        src={point}
+                        alt="point"
+                        className="w-[120px] h-[140px]"
+                      />
+                    </figure>
+                    <figcaption className="text-black">Get Points</figcaption>
+                    <figure>
+                      <img
+                        src={arr2}
+                        alt="arrow"
+                        className="w-[100px] h-[100px] mb-[4rem]"
+                      />
+                    </figure>
+                  </div>
+                  {/* 4 */}
+                  <div className="flex flex-col items-center">
+                    <figure>
+                      <img
+                        src={arr1}
+                        alt="arrow"
+                        className="w-[100px] h-[100px] mt-[4rem]"
+                      />
+                    </figure>
+                    <figure>
+                      <img
+                        src={growTree}
+                        alt="Growing Tree"
+                        className="w-[120px] h-[140px]"
+                      />
+                    </figure>
+                    <figcaption className="text-black">
+                      Tree in your profile grow
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
         {/* part 5 */}
-        <section></section>
+        <section className="md:w-[98.9vw] h-[90vh] flex justify-between mb-[3rem]">
+          <div className="flex-col">
+            <p className="ml-[10rem] my-[3rem] font-bold text-black text-[30px]">
+              Our Campaign
+            </p>
+            <div className="carousel w-[60vw] h-[70vh] rounded-[2rem] ml-[8rem]">
+              {/* img 1 */}
+              <div id="slide1" className="carousel-item relative w-full">
+                <img src={taxCam} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide3" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide2" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+              {/* img 2 */}
+              <div id="slide2" className="carousel-item relative w-full">
+                <img src={plantCam} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide1" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide3" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+              {/* img 3 */}
+              <div id="slide3" className="carousel-item relative w-full">
+                <img src={eduCam} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide2" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide1" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* img background */}
+          <div>
+            <img
+              src={bigTreecut}
+              alt="big tree"
+              className="w-[38vw] mt-[5.5rem]"
+            />
+          </div>
+        </section>
+        {/* part 6 */}
+        <section className="w-[98vw] h-[95vh] flex flex-col justify-center items-center">
+          <div>
+            <p className="text-black text-[30px] font-bold">
+              How do carbon offsets work?
+            </p>
+          </div>
+          <div className="flex flex-row mb-[4rem]">
+            {/* calculator */}
+            <div className="card w-[50vh] h-[55vh] bg-white mt-[3rem] bg-[#F2F4F8]">
+              <figure>
+                <img
+                  src={calculate}
+                  alt="calculator"
+                  className="mt-7 w-[125px] h-[150px]"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title justify-center text-black">
+                  Calculate Your Carbon Footprint
+                </h2>
+                <p className="text-center text-black">
+                  Use our user-friendly carbon footprint calculator, assess
+                  emissions from different activities, be it travel or energy
+                  use. This is a good way to gain valuable insights into your
+                  personal or organizational impact, setting the foundation for
+                  effective carbon offsetting.
+                </p>
+              </div>
+            </div>
+            {/* money */}
+            <div className="card w-[50vh] h-[55vh] bg-white mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
+              <figure>
+                <img
+                  src={money}
+                  alt="money"
+                  className="mt-7 w-[125px] h-[150px]"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title justify-center text-black">
+                  Purchase Verified Carbon Offsets
+                </h2>
+                <p className="text-center text-black">
+                  Explore our curated selection of verified carbon
+                  offsets,supporting certified projects that actively reduce
+                  greenhouse gas emissions.Choose initiatives aligned with your
+                  values and sustainability goals, making a meaningful
+                  investment in a cleaner, greener future.
+                </p>
+              </div>
+            </div>
+            {/* tree */}
+            <div className="card w-[50vh] h-[55vh] bg-white mt-[3rem] bg-[#F2F4F8]">
+              <figure>
+                <img
+                  src={manyTree}
+                  alt="Tree"
+                  className="mt-7 w-[130px] h-[150px]"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title justify-center text-black">
+                  Offset and Track Your Impact
+                </h2>
+                <p className="text-center text-black">
+                  Stay engaged with the progress of your chosen offset projects,
+                  accessing real-time data and updates on their environmental
+                  impact.Witness firsthand the positive change your
+                  contributions are making, reinforcing your commitment to
+                  sustainable practices and climate action.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* part 7 */}
+        <section className="w-[98vw] h-[80vh] flex flex-col justify-center items-center mb-[3rem] ">
+          <div>
+            <p className="text-black text-[30px] font-bold">
+              Calculate your Emissions
+            </p>
+          </div>
+          <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem]">
+            <div className="card-body">
+              <div className="flex flex-row divide-x">
+                {/* calculate zone*/}
+                <div className="flex flex-col mt-3 ml-4">
+                  <div>
+                    <p className="text-black text-[15px] font-bold font-medium">
+                      Select your offset method
+                    </p>
+                  </div>
+                  {/* Offset method */}
+                  <div className="flex items-center my-5">
+                    <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-[#DEEFED] border-2 border-[#068758] text-[#068758] hover:bg-[#B5D4D0] hover:border-[#068758] mr-4">
+                      <img src={food} className="w-[23px]" />
+                      Food
+                    </button>
+                    <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-white border-2 border-[#767494] text-[#767494] hover:bg-[#D7D7D7] hover:border-[#767494]">
+                      <img src={travel} className="w-[26px]" />
+                      Travel
+                    </button>
+                  </div>
+                  <div className="my-2">
+                    <p className="text-black text-[15px] font-bold font-medium">
+                      Menu
+                    </p>
+                  </div>
+                  {/* Drop down file is in component folder*/}
+                  <div>
+                    <Dropdown />
+                  </div>
+                  {/* Amount Input */}
+                  <div className="mt-4 mb-2">
+                    <p className="text-black text-[15px] font-bold font-medium">
+                      Enter the amount of your food
+                    </p>
+                  </div>
+                  <div className="relative mr-10">
+                    <input
+                      value={amount}
+                      onChange={handleAmountChange}
+                      className="w-[23vw] h-[5vh] rounded-sm bg-white border-2 border-[#068758] pl-5 outline-none font-medium text-sm text-[#068758]"
+                      placeholder="Ex. 1, 2, 3,..."
+                    />
+                  </div>
+                  <div className="mt-[4rem]">
+                    <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none">
+                      Calculate
+                    </button>
+                  </div>
+                </div>
+                {/* offset zone*/}
+                <div className="flex flex-col mt-3">
+                  <div>
+                    <p className="text-black text-[15px] font-bold font-medium ml-8">
+                      Your Carbon Footprint
+                    </p>
+                  </div>
+                  <div className="mt-3">
+                    <img src={co2} className="w-[23vw] ml-[2rem]" />
+                  </div>
+                  <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
+                    <p>Food Footprint</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[16rem] text-[#8D8BA7]">
+                        Pizza
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                        5.00
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-2 ml-7">
+                    <img src={line} className="w-[22vw]" />
+                  </div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[12.6rem] text-[#8D8BA7]">
+                        Food (gram)
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                        4320
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[8.5rem] text-[#8D8BA7]">
+                        Total Kilogram Carbon
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                        126.9
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[10.8rem] text-[#5D5C71]">
+                        Cost of Offset
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
+                        191.85 ฿
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-[1.4rem] ml-5">
+                    <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                      Offset now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* footer */}
+        <section className="w-[98.9vw] h-[15vh] bg-white mt-10">
+          <div className="flex flex-row">
+            <div className="mt-[2.6rem] ml-[3rem]">
+              <img src={logo} className="w-[15vw]" />
+            </div>
+            <div className="mt-[3rem] ml-[52rem]">
+              <p className="text-[15px] font-bold font-medium">
+                Copyright © 2023 Greenie | All for the better world{" "}
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
