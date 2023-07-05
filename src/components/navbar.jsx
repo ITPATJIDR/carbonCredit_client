@@ -118,7 +118,7 @@ const Navbar = () => {
         )}
 
         <dialog id="my_modal_1" className="modal text-[#767494]">
-          <div className="min-w-[20vw] h-[60vh] p-14 bg-white rounded-xl">
+          <div className="min-w-[20vw] h-[60vh] md:h-[65vh] p-14 bg-white rounded-xl">
             <div className="flex justify-end">
               <button onClick={() => window.my_modal_1.close()}>
                 <img src={Close} alt="Close" />
@@ -214,7 +214,7 @@ const Navbar = () => {
         </dialog>
 
         <dialog id="my_modal_2" className="modal text-[#767494]">
-          <div className="min-w-[20vw] h-[85vh] p-14 bg-white rounded-xl">
+          <div className="min-w-[20vw] md:min-w-[30vw] h-[85vh] p-14 bg-white rounded-xl">
             <div className="flex justify-end">
               <button onClick={() => window.my_modal_2.close()}>
                 <img src={Close} alt="Close" />
