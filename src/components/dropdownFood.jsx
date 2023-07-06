@@ -42,7 +42,7 @@ const Dropdown = () => {
       {isOpen && (
         <div
           id="dropdown"
-          className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-[23vw] h-[150px] overflow-y-auto dark:bg-white"
+          className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-[23vw] h-[150px] overflow-y-auto dark:bg-white absolute"
         >
           <ul
             className="py-2 text-sm text-black dark:text-black"
