@@ -5,6 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Homepage  from './pages/homepage';
+import Offset from './pages/offset';
+import AboutUs from './pages/aboutUs';
 import store from './store/store'
 import { Provider } from 'react-redux'
 import {LetSponZive} from "letsponzive"
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/letsponzive",
     element: <LetSponZive component1={<Web/>} component2={<Moblie/>} onWidth={1200}/>,
+  },
+  {
+    path: "/offset",
+    element: <Offset/>
+  },
+  {
+    path: "/aboutUs",
+    element: <AboutUs/>
   },
 ]);
 

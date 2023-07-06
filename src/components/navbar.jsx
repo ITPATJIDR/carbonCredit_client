@@ -8,6 +8,7 @@ import validator from "validator";
 import { loginSuccess, getRefreshToken, loginFailure } from "../store/features/auth-slice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
+import { Link  } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -24,10 +25,10 @@ const Navbar = () => {
   const [emailExist, setEmailExist] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
 
-
   const isValidEmail = validator.isEmail(emailSignIn);
   const dispatch = useDispatch();
   const { isAuth, isError } = useSelector((state) => state.auth);
+  const {chooseMenu} = useSelector((state) => state.menu)
 
   const handleSignIn = async () => {
     if(isValidEmail){
@@ -76,6 +77,7 @@ const Navbar = () => {
 
   };
 
+
   useEffect(() => {
     dispatch(getRefreshToken())
   },[])
@@ -88,14 +90,22 @@ const Navbar = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 text-black font-bold">
           <li className="relative">
-            <a>Home</a>
-            <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] bottom-[-15px]"></div>
+            <Link to="/">Home</Link>
+            {chooseMenu === "Home" ? (
+              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] bottom-[-15px]"></div>
+            ) : null}
           </li>
-          <li>
-            <a>About Us</a>
+          <li className="relative" >
+            <Link to="/aboutUs">About Us</Link>
+            {chooseMenu === "AboutUs" ? (
+              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
+            ) : null}
           </li>
-          <li>
-            <a>Offset</a>
+          <li className="relative">
+            <Link to="/offset">Offset</Link>
+            {chooseMenu === "Offset" ? (
+              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] left-1 bottom-[-15px]"></div>
+            ) : null}
           </li>
         </ul>
       </div>
@@ -227,15 +237,19 @@ const Navbar = () => {
               {checkPassword ? (
                 <div className="text-[#FF002F] flex items-center">
                   <img src={Care} alt="Care" />
-                  <p className="ml-2 mt-1">Password and Confirm password is incorrect</p>
+                  <p className="ml-2 mt-1">
+                    Password and Confirm password is incorrect
+                  </p>
                 </div>
-              ) : null }
-              { emailExist !== "" ? (
+              ) : null}
+              {emailExist !== "" ? (
                 <div className="text-[#FF002F] flex items-center">
                   <img src={Care} alt="Care" />
-                  <p className="ml-2 mt-1">Password and Confirm password is incorrect</p>
+                  <p className="ml-2 mt-1">
+                    Password and Confirm password is incorrect
+                  </p>
                 </div>
-              ) : null }
+              ) : null}
             </div>
             <div className="mt-3">
               <div className="w-full">

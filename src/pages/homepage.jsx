@@ -26,8 +26,10 @@ import food from "../assets/icons/food.svg";
 import travel from "../assets/icons/travel.svg";
 import co2 from "../assets/icons/co2-1.svg";
 import line from "../assets/icons/line-horizon.svg";
+import { changeMenu } from "../store/features/menu-slice";
+import { useDispatch, useSelector } from "react-redux";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image24,
   Image25,
@@ -38,11 +40,27 @@ import {
 } from "../assets/image";
 
 const Homepage = () => {
+
+
   const [amount, setAmount] = useState("");
+  const {chooseMenu} = useSelector((state) => state.menu)
+
+  const dispatch = useDispatch()
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
   };
+
+
+  const checkChooseMenu = () => {
+    if(chooseMenu || chooseMenu !== "Home") {
+      dispatch(changeMenu("Home"))
+    }
+  }
+
+  useEffect(() => {
+    checkChooseMenu()
+  })
 
   return (
     <div className="bg-container">
