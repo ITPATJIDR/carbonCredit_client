@@ -5,7 +5,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Homepage  from './pages/homepage';
-import Offset from './pages/offset';
+import ChooseOffset from './pages/chooseOffset';
+import CalculateOffset from './pages/calculateYourEmissions'
+import OffsetByRetailCC from './pages/offsetByRetailCC'
 import AboutUs from './pages/aboutUs';
 import store from './store/store'
 import { Provider } from 'react-redux'
@@ -24,8 +26,16 @@ const router = createBrowserRouter([
     element: <LetSponZive component1={<Web/>} component2={<Moblie/>} onWidth={1200}/>,
   },
   {
-    path: "/offset",
-    element: <Offset/>
+    path: "/chooseOffset",
+    element: <ChooseOffset/>
+  },
+  {
+    path: "/calculateOffset",
+    element: <CalculateOffset/>
+  },
+  {
+    path: "/offsetByRetailCC",
+    element: <OffsetByRetailCC/>
   },
   {
     path: "/aboutUs",
