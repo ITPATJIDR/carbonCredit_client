@@ -1,35 +1,32 @@
 import Navbar from "../components/navbar";
 import "../css/main.css";
 import "../css/homepage.css";
-import logo from "../assets/icons/logo.png";
-import homebg from "../assets/image/homebg.png";
-import cloud from "../assets/image/cloud.png";
-import pineTree from "../assets/image/pine-tree.png";
-import mission from "../assets/image/mission.svg";
-import vision from "../assets/image/vision.svg";
-import stragy from "../assets/image/strategy.svg";
-import arr1 from "../assets/image/arrow1.svg";
-import arr2 from "../assets/image/arrow2.svg";
-import carbonJour from "../assets/image/carbonJour.svg";
-import cert from "../assets/image/cert.svg";
-import point from "../assets/image/point.svg";
-import growTree from "../assets/image/growTree.svg";
-import bigTreecut from "../assets/image/bigTreecut.svg";
-import plantCam from "../assets/image/plantCampaign.png";
-import taxCam from "../assets/image/taxCampaign.png";
-import eduCam from "../assets/image/educateCampaign.png";
-import calculate from "../assets/image/calculator.svg";
-import money from "../assets/image/money.svg";
-import manyTree from "../assets/image/manyTree.svg";
-import Dropdown from "../components/dropdownFood.jsx";
-import food from "../assets/icons/food.svg";
-import travel from "../assets/icons/travel.svg";
-import co2 from "../assets/icons/co2-1.svg";
-import line from "../assets/icons/line-horizon.svg";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import Calculate from "../components/calculate";
+import {
+  homebg,
+  cloud,
+  plantCam,
+  eduCam,
+  calculate,
+  money,
+  manyTree,
+  taxCam,
+  bigTreecut,
+  pineTree,
+  mission,
+  vision,
+  stragy,
+  arr1,
+  arr2,
+  carbonJour,
+  cert,
+  point,
+  growTree,
+} from "../assets/image";
+import { logo } from "../assets/icons";
 import {
   Image24,
   Image25,
@@ -40,27 +37,19 @@ import {
 } from "../assets/image";
 
 const Homepage = () => {
+  const { chooseMenu } = useSelector((state) => state.menu);
 
-
-  const [amount, setAmount] = useState("");
-  const {chooseMenu} = useSelector((state) => state.menu)
-
-  const dispatch = useDispatch()
-
-  const handleAmountChange = (e) => {
-    setAmount(e.target.value);
-  };
-
+  const dispatch = useDispatch();
 
   const checkChooseMenu = () => {
-    if(chooseMenu || chooseMenu !== "Home") {
-      dispatch(changeMenu("Home"))
+    if (chooseMenu || chooseMenu !== "Home") {
+      dispatch(changeMenu("Home"));
     }
-  }
+  };
 
   useEffect(() => {
-    checkChooseMenu()
-  })
+    checkChooseMenu();
+  });
 
   return (
     <div className="bg-container">
@@ -460,155 +449,33 @@ const Homepage = () => {
             </p>
           </div>
           <div className="relative">
-            <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
-              <div className="card-body">
-                <div className="flex flex-row divide-x">
-                  {/* calculate zone*/}
-                  <div className="flex flex-col mt-3 ml-4">
-                    <div>
-                      <p className="text-black text-[15px] font-bold font-medium">
-                        Select your offset method
-                      </p>
-                    </div>
-                    {/* Offset method */}
-                    <div className="flex items-center my-5">
-                      <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-[#DEEFED] border-2 border-[#068758] text-[#068758] hover:bg-[#B5D4D0] hover:border-[#068758] mr-4">
-                        <img src={food} className="w-[23px]" />
-                        Food
-                      </button>
-                      <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-white border-2 border-[#767494] text-[#767494] hover:bg-[#D7D7D7] hover:border-[#767494]">
-                        <img src={travel} className="w-[26px]" />
-                        Travel
-                      </button>
-                    </div>
-                    <div className="my-2">
-                      <p className="text-black text-[15px] font-bold font-medium">
-                        Menu
-                      </p>
-                    </div>
-                    {/* Drop down file is in component folder*/}
-                    <div className="relative">
-                      <Dropdown />
-                    </div>
-                    {/* Amount Input */}
-                    <div className="mt-4 mb-2">
-                      <p className="text-black text-[15px] font-bold font-medium">
-                        Enter the amount of your food
-                      </p>
-                    </div>
-                    <div className="relative mr-10">
-                      <input
-                        value={amount}
-                        onChange={handleAmountChange}
-                        className="w-[23vw] h-[5vh] rounded-sm bg-white border-2 border-[#068758] pl-5 outline-none font-medium text-sm text-[#068758]"
-                        placeholder="Ex. 1, 2, 3,..."
-                      />
-                    </div>
-                    <div className="mt-[4rem]">
-                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none">
-                        Calculate
-                      </button>
-                    </div>
-                  </div>
-                  {/* offset zone*/}
-                  <div className="flex flex-col mt-3">
-                    <div>
-                      <p className="text-black text-[15px] font-bold font-medium ml-8">
-                        Your Carbon Footprint
-                      </p>
-                    </div>
-                    <div className="mt-3">
-                      <img src={co2} className="w-[23vw] ml-[2rem]" />
-                    </div>
-                    <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
-                      <p>Food Footprint</p>
-                    </div>
-                    <div className="flex flex-row">
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[16rem] text-[#8D8BA7]">
-                          Pizza
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                          5.00
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-2 ml-7">
-                      <img src={line} className="w-[22vw]" />
-                    </div>
-                    <div className="flex flex-row mt-3">
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[12.6rem] text-[#8D8BA7]">
-                          Food (gram)
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                          4320
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex flex-row mt-3">
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[8.5rem] text-[#8D8BA7]">
-                          Total Kilogram Carbon
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                          126.9
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex flex-row mt-3">
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[10.8rem] text-[#5D5C71]">
-                          Cost of Offset
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                          191.85 ฿
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-[1.4rem] ml-5">
-                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
-                        Offset now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-                <img
-                  className="absolute w-[20vw] top-[17rem] right-[-215px]"
-                  src={Image24}
-                  alt="image24"
-                />
-                <img
-                  className="absolute top-[-25px] right-[-80px] "
-                  src={Image25}
-                  alt="image25"
-                />
-                {/* <img className="absolute top-0 right-[250px] " src={Image26} alt="image26" /> */}
-                <img
-                  className="absolute top-[-85px] right-[-300px] "
-                  src={Image27}
-                  alt="image27"
-                />
-                <img
-                  className="absolute w-[15vw] top-[-85px] left-[-145px]"
-                  src={Image28}
-                  alt="image28"
-                />
-                <img
-                  className="absolute w-[15vw] bottom-[10px] left-[-155px]"
-                  src={Image29}
-                  alt="image29"
-                />
+            <Calculate />
+            <img
+              className="absolute w-[20vw] top-[17rem] right-[-215px]"
+              src={Image24}
+              alt="image24"
+            />
+            <img
+              className="absolute top-[-25px] right-[-80px] "
+              src={Image25}
+              alt="image25"
+            />
+            {/* <img className="absolute top-0 right-[250px] " src={Image26} alt="image26" /> */}
+            <img
+              className="absolute top-[-85px] right-[-300px] "
+              src={Image27}
+              alt="image27"
+            />
+            <img
+              className="absolute w-[15vw] top-[-85px] left-[-145px]"
+              src={Image28}
+              alt="image28"
+            />
+            <img
+              className="absolute w-[15vw] bottom-[10px] left-[-155px]"
+              src={Image29}
+              alt="image29"
+            />
           </div>
         </section>
         {/* footer */}

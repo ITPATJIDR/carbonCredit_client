@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Dropdown = () => {
+const Dropdown = ({ onMenuItemClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
 
@@ -11,6 +11,7 @@ const Dropdown = () => {
   const handleMenuItemClick = (event, menuItem) => {
     event.preventDefault();
     setSelectedMenuItem(menuItem);
+    onMenuItemClick(menuItem);
     setIsOpen(false);
   };
 
