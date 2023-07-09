@@ -460,7 +460,11 @@ const Homepage = () => {
               src={Image25}
               alt="image25"
             />
-            {/* <img className="absolute top-0 right-[250px] " src={Image26} alt="image26" /> */}
+            <img
+              className="absolute top-0 right-[250px] "
+              src={Image26}
+              alt="image26"
+            />
             <img
               className="absolute top-[-85px] right-[-300px] "
               src={Image27}

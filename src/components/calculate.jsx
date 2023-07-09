@@ -68,7 +68,7 @@ const Calculate = () => {
             {/* Amount Input */}
             <div className="mt-4 mb-2">
               <p className="text-black text-[15px] font-bold font-medium">
-                Enter the amount of food (Maximum 5000)
+                Enter amount of your food (Maximum 5000)
               </p>
             </div>
             <div className="relative mr-10">
@@ -91,6 +91,7 @@ const Calculate = () => {
           {/* offset zone*/}
           {showOffsetZone && (
             <div className="flex flex-col mt-3">
+              {/* z1 */}
               <div>
                 <p className="text-black text-[15px] font-bold font-medium ml-8">
                   Your Carbon Footprint
@@ -102,6 +103,7 @@ const Calculate = () => {
               <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
                 <p>Food Footprint</p>
               </div>
+              {/* z2 */}
               <div className="flex flex-row">
                 {/* food name */}
                 <div>
