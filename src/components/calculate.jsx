@@ -88,9 +88,9 @@ const Calculate = () => {
               </button>
             </div>
           </div>
-          {/* offset zone*/}
-          {showOffsetZone && (
-            <div className="flex flex-col mt-3">
+
+          <div className="flex flex-col mt-3">
+            <div>
               <div>
                 <p className="text-black text-[15px] font-bold font-medium ml-8">
                   Your Carbon Footprint
@@ -99,69 +99,79 @@ const Calculate = () => {
               <div className="mt-3">
                 <img src={co2} className="w-[23vw] ml-[2rem]" />
               </div>
-              <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
-                <p>Food Footprint</p>
-              </div>
-              <div className="flex flex-row">
-                {/* food name */}
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[16rem] text-[#8D8BA7]">
-                    {selectedMenuItem}
-                  </p>
-                </div>
-                {/* food amount */}
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                    {formattedAmount}
-                  </p>
-                </div>
-              </div>
-              <div className="mt-2 ml-7">
-                <img src={line} className="w-[22vw]" />
-              </div>
-              <div className="flex flex-row mt-3">
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[12.6rem] text-[#8D8BA7]">
-                    Food (gram)
-                  </p>
-                </div>
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                    4320
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row mt-3">
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[8.5rem] text-[#8D8BA7]">
-                    Total Kilogram Carbon
-                  </p>
-                </div>
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                    126.9
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row mt-3">
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[10.8rem] text-[#5D5C71]">
-                    Cost of Offset
-                  </p>
-                </div>
-                <div>
-                  <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                    191.85 ฿
-                  </p>
-                </div>
-              </div>
-              <div className="mt-[1.4rem] ml-5">
-                <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
-                  Offset now
-                </button>
-              </div>
             </div>
-          )}
+
+            <div>
+              <div>
+                <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
+                  <p>Food Footprint</p>
+                </div>
+                <div className="flex flex-row">
+                  {/* food name */}
+                  <div>
+                    <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[16rem] text-[#8D8BA7]">
+                      {selectedMenuItem}
+                    </p>
+                  </div>
+                  {/* food amount */}
+                  <div>
+                    <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                      {formattedAmount}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-2 ml-7">
+                  <img src={line} className="w-[22vw]" />
+                </div>
+              </div>
+
+              {showOffsetZone ? (
+                <div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[12.6rem] text-[#8D8BA7]">
+                        Food (gram)
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                        4320
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[8.5rem] text-[#8D8BA7]">
+                        Total Kilogram Carbon
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                        126.9
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-3">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[10.8rem] text-[#5D5C71]">
+                        Cost of Offset
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
+                        191.85 ฿
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-[1.4rem] ml-5">
+                    <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                      Offset now
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
     </div>
