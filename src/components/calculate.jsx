@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { food, travel, co2, line } from "../assets/icons";
-import Dropdown from "./dropdownFood";
+import DropdownFood from "./dropdownFood";
+import DropdownVehicle from "./dropdownVehicle";
 
 const Calculate = () => {
   const [amount, setAmount] = useState("");
   const [formattedAmount, setFormattedAmount] = useState("");
   const [showOffsetZone, setShowOffsetZone] = useState(false);
-  const [selectedMenuItem, setSelectedMenuItem] = useState("");
+  const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("food");
+  const [selectedFoodMenuItem, setSelectedFoodMenuItem] = useState("");
+  const [selectedVehicleMenuItem, setSelectedVehicleMenuItem] = useState("");
 
   const handleAmountChange = (e) => {
     const input = e.target.value;
@@ -17,7 +20,7 @@ const Calculate = () => {
       setFormattedAmount("");
     } else if (isValidInput) {
       const parsedAmount = parseFloat(input);
-      if (parsedAmount <= 5000) {
+      if (parsedAmount <= 10000) {
         setAmount(parsedAmount);
         // Format the amount with two decimal places
         const formatted = parsedAmount.toFixed(2);
@@ -30,8 +33,21 @@ const Calculate = () => {
     setShowOffsetZone(true);
   };
 
-  const handleMenuItemClick = (menuItem) => {
-    setSelectedMenuItem(menuItem);
+  const handleFoodMenuItemClick = (menuItem) => {
+    setSelectedFoodMenuItem(menuItem);
+  };
+
+  const handleVehicleMenuItemClick = (menuItem) => {
+    setSelectedVehicleMenuItem(menuItem);
+  };
+
+  const handleOffsetMethodChange = (method) => {
+    setSelectedOffsetMethod(method);
+    setSelectedFoodMenuItem("");
+    setSelectedVehicleMenuItem("");
+    setAmount("");
+    setFormattedAmount("");
+    setShowOffsetZone(false);
   };
 
   return (
@@ -47,28 +63,50 @@ const Calculate = () => {
             </div>
             {/* Offset method */}
             <div className="flex items-center my-5">
-              <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-[#DEEFED] border-2 border-[#068758] text-[#068758] hover:bg-[#B5D4D0] hover:border-[#068758] mr-4">
+              <button
+                className={`w-[9vw] btn h-[4vh] capitalize rounded-sm ${
+                  selectedOffsetMethod === "food"
+                    ? "bg-[#DEEFED] border-2 border-[#068758] text-[#068758]"
+                    : "bg-white border-2 border-[#767494] text-[#767494]"
+                } hover:bg-[#B5D4D0] hover:border-[#068758] mr-4`}
+                onClick={() => handleOffsetMethodChange("food")}
+              >
                 <img src={food} className="w-[23px]" />
                 Food
               </button>
-              <button className="w-[9vw] btn h-[4vh] capitalize rounded-sm bg-white border-2 border-[#767494] text-[#767494] hover:bg-[#D7D7D7] hover:border-[#767494]">
+              <button
+                className={`w-[9vw] btn h-[4vh] capitalize rounded-sm ${
+                  selectedOffsetMethod === "travel"
+                    ? "bg-[#DEEFED] border-2 border-[#068758] text-[#068758]"
+                    : "bg-white border-2 border-[#767494] text-[#767494]"
+                } hover:bg-[#D7D7D7] hover:border-[#767494]`}
+                onClick={() => handleOffsetMethodChange("travel")}
+              >
                 <img src={travel} className="w-[26px]" />
                 Travel
               </button>
             </div>
             <div className="my-2">
               <p className="text-black text-[15px] font-bold font-medium">
-                Menu
+                {selectedOffsetMethod === "food" ? "Menu" : "Vehicle"}
               </p>
             </div>
             {/* Drop down file is in component folder*/}
             <div className="relative">
-              <Dropdown onMenuItemClick={handleMenuItemClick} />
+              {selectedOffsetMethod === "food" ? (
+                <DropdownFood onMenuItemClick={handleFoodMenuItemClick} />
+              ) : selectedOffsetMethod === "travel" ? (
+                <DropdownVehicle onMenuItemClick={handleVehicleMenuItemClick} />
+              ) : null}
             </div>
             {/* Amount Input */}
             <div className="mt-4 mb-2">
               <p className="text-black text-[15px] font-bold font-medium">
-                Enter amount of your food (Maximum 5000)
+                {selectedOffsetMethod === "food"
+                  ? "Enter amount of your food (Maximum 10k)"
+                  : selectedOffsetMethod === "travel"
+                  ? "Enter distance of your travel"
+                  : ""}
               </p>
             </div>
             <div className="relative mr-10">
@@ -107,15 +145,19 @@ const Calculate = () => {
                   <p>Food Footprint</p>
                 </div>
                 <div className="flex flex-row">
-                  {/* food name */}
+                  {/* Selected name */}
                   <div>
-                    <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[16rem] text-[#8D8BA7]">
-                      {selectedMenuItem}
+                    <p className="text-black text-[15px] font-bold font-medium ml-8 text-[#8D8BA7]">
+                      {selectedOffsetMethod === "food"
+                        ? selectedFoodMenuItem
+                        : selectedOffsetMethod === "travel"
+                        ? selectedVehicleMenuItem
+                        : ""}
                     </p>
                   </div>
-                  {/* food amount */}
+                  {/* Enter amount */}
                   <div>
-                    <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
+                    <p className="text-black text-[15px] font-bold font-medium ml-[255px] text-[#8D8BA7]">
                       {formattedAmount}
                     </p>
                   </div>
@@ -125,6 +167,7 @@ const Calculate = () => {
                 </div>
               </div>
 
+              {/* Offset zone */}
               {showOffsetZone ? (
                 <div>
                   <div className="flex flex-row mt-3">
