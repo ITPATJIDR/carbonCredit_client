@@ -23,7 +23,7 @@ const Dropdown = ({ onMenuItemClick }) => {
         className="w-[23vw] text-[#068758] bg-white hover:bg-[#068758] focus:ring-1 font-medium rounded-sm text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-white dark:hover:bg-[#E6E6E6] dark:focus:ring-[#00B573] border-2 border-[#068758]"
         type="button"
       >
-        {selectedMenuItem ? selectedMenuItem : "Menu"}{" "}
+        {selectedMenuItem ? selectedMenuItem : "Select Menu"}{" "}
         <svg
           className="w-2.5 h-2.5 ml-auto"
           aria-hidden="true"
