@@ -1,12 +1,25 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Frame16 ,Frame17} from "../assets/image";
+import { ArrowRight, Frame16, Frame17 } from "../assets/image";
 import Offset from "../components/offset";
+import { changeMenu } from "../store/features/menu-slice";
+import { useDispatch, useSelector } from "react-redux";
 
+const ChooseOffset = ({ setOffsetState }) => {
+  const { chooseMenu } = useSelector((state) => state.menu);
 
-const ChooseOffset = ({setOffsetState}) => {
-  const changeOffsetState = (offsetState) => {
-    setOffsetState(offsetState)
-  }
+  const dispatch = useDispatch();
+
+  const checkChooseMenu = () => {
+    if (chooseMenu || chooseMenu !== "Offset") {
+      dispatch(changeMenu("Offset"));
+    }
+  };
+
+  useEffect(() => {
+    checkChooseMenu();
+  });
+
   return (
     <Offset>
       <div className="flex items-center justify-evenly h-[867px] text-black">
@@ -27,9 +40,7 @@ const ChooseOffset = ({setOffsetState}) => {
           </div>
           <div className="h-[10vh] w-full flex items-center justify-center">
             <Link to="/calculateOffset">
-              <button
-                className="w-[15vw] h-[5vh] rounded-3xl text-white bg-[#068758] hover:bg-[#057049] transition flex items-center justify-center"
-              >
+              <button className="w-[15vw] h-[5vh] rounded-3xl text-white bg-[#068758] hover:bg-[#057049] transition flex items-center justify-center">
                 Calculate Footprint
                 <img className="ml-2" src={ArrowRight} alt="arrow" />
               </button>
@@ -52,9 +63,7 @@ const ChooseOffset = ({setOffsetState}) => {
           </div>
           <div className="h-[10vh] w-full flex items-center justify-center">
             <Link to="/offsetByRetailCC">
-              <button
-                className="w-[15vw] h-[5vh] rounded-3xl text-white bg-[#068758] hover:bg-[#057049] transition flex items-center justify-center"
-              >
+              <button className="w-[15vw] h-[5vh] rounded-3xl text-white bg-[#068758] hover:bg-[#057049] transition flex items-center justify-center">
                 Offset Now
                 <img className="ml-2" src={ArrowRight} alt="arrow" />
               </button>

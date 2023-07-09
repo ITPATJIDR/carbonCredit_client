@@ -82,6 +82,7 @@ const Navbar = () => {
     dispatch(getRefreshToken())
   },[])
 
+
   return (
     <div className="flex bg-white w-full h-16 items-center">
       <a className="btn btn-ghost normal-case text-xl ml-4 hover:bg-white">
@@ -102,7 +103,7 @@ const Navbar = () => {
             ) : null}
           </li>
           <li className="relative">
-            <Link to="/offset">Offset</Link>
+            <Link to="/chooseOffset">Offset</Link>
             {chooseMenu === "Offset" ? (
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] left-1 bottom-[-15px]"></div>
             ) : null}
