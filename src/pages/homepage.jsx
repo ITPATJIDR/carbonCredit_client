@@ -3,7 +3,7 @@ import "../css/main.css";
 import "../css/homepage.css";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Calculate from "../components/calculate";
 import {
   homebg,
@@ -38,6 +38,7 @@ import {
 
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
+  const homeRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -51,9 +52,19 @@ const Homepage = () => {
     checkChooseMenu();
   });
 
+  const scrollToHome = () => {
+    const homeElement = homeRef.current;
+    if (homeElement) {
+      homeElement.scrollIntoView({
+        behavior: 'smooth',
+      });
+      dispatch(changeMenu("AboutUs"));
+    }
+  };
+
   return (
     <div className="bg-container">
-      <Navbar />
+      <Navbar scrollToHome={scrollToHome} />
       <div className="flex flex-col w-[98vw] h-[5000px]">
         {/* part 1 */}
         <section className="w-[98vw] h-[90vh] flex justify-between">
@@ -146,7 +157,7 @@ const Homepage = () => {
           </div>
         </section>
         {/* part 3 */}
-        <section className="w-[98vw] h-[100vh] flex flex-col justify-center items-center mb-[3rem]">
+        <section ref={homeRef} className="w-[98vw] h-[100vh] flex flex-col justify-center items-center mb-[3rem]">
           <div>
             <p className="text-black text-[30px] font-bold">
               For the better world

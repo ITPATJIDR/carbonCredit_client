@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import user from "../assets/icons/User.svg";
 import logo from "../assets/icons/logo.png";
 import "../css/main.css";
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
 import { Link  } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({scrollToHome}) => {
 
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const [hiddenPassword_signUp_1, setHiddenPassword_signUp_1] = useState(true);
@@ -27,6 +27,7 @@ const Navbar = () => {
 
   const isValidEmail = validator.isEmail(emailSignIn);
   const dispatch = useDispatch();
+  const homeRef = useRef(null);
   const { isAuth, isError } = useSelector((state) => state.auth);
   const {chooseMenu} = useSelector((state) => state.menu)
 
@@ -97,7 +98,7 @@ const Navbar = () => {
             ) : null}
           </li>
           <li className="relative" >
-            <Link to="/aboutUs">About Us</Link>
+            <Link onClick={() => scrollToHome()} >About Us</Link>
             {chooseMenu === "AboutUs" ? (
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}

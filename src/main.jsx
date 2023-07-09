@@ -8,7 +8,6 @@ import Homepage  from './pages/homepage';
 import ChooseOffset from './pages/chooseOffset';
 import CalculateOffset from './pages/calculateYourEmissions'
 import OffsetByRetailCC from './pages/offsetByRetailCC'
-import AboutUs from './pages/aboutUs';
 import store from './store/store'
 import { Provider } from 'react-redux'
 import {LetSponZive} from "letsponzive"
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
   {
     path: "/offsetByRetailCC",
     element: <OffsetByRetailCC/>
-  },
-  {
-    path: "/aboutUs",
-    element: <AboutUs/>
   },
 ]);
 
