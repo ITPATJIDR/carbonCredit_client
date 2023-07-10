@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { food, travel, co2, line } from "../assets/icons";
 import DropdownFood from "./dropdownFood";
 import DropdownVehicle from "./dropdownVehicle";
+import { MdOutlineFastfood } from "react-icons/md";
+import { BiSolidPlaneTakeOff } from "react-icons/bi";
 
 const Calculate = () => {
   const [amount, setAmount] = useState("");
@@ -71,7 +73,9 @@ const Calculate = () => {
                 } hover:bg-[#B5D4D0] hover:border-[#068758] mr-4`}
                 onClick={() => handleOffsetMethodChange("food")}
               >
-                <img src={food} className="w-[23px]" />
+                <div className="">
+                  <MdOutlineFastfood size={20} />
+                </div>
                 Food
               </button>
               <button
@@ -82,7 +86,9 @@ const Calculate = () => {
                 } hover:bg-[#D7D7D7] hover:border-[#767494]`}
                 onClick={() => handleOffsetMethodChange("travel")}
               >
-                <img src={travel} className="w-[26px]" />
+                <div className="">
+                  <BiSolidPlaneTakeOff size={22} />
+                </div>
                 Travel
               </button>
             </div>

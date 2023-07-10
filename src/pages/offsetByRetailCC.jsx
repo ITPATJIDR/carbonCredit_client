@@ -1,10 +1,50 @@
+import React, { useState } from "react";
 import Offset from "../components/offset";
-import { ChevronRigth, Co2, Coin, Mdi_weight } from "../assets/image";
-
+import { ChevronRigth, Co2 } from "../assets/image";
+import { AiOutlineCopyrightCircle } from "react-icons/ai";
+import { TbWeight } from "react-icons/tb";
 
 const OffsetByRetailCC = () => {
+  const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
+  const [retailCC, setRetailCC] = useState("");
+
+  const handleOffsetMethodChange = (method) => {
+    setSelectedOffsetMethod(method);
+    setRetailCC("");
+  };
+
+  const handleRetailCCChange = (e) => {
+    let input = e.target.value;
+    input = input.replace(/[^0-9.]/g, ""); // Remove non-numeric characters
+
+    // Ensure the input value is not greater than the maximum
+    let maxValue = 100000;
+    if (selectedOffsetMethod === "metricTons") {
+      maxValue = 100;
+    }
+    const parsedValue = parseFloat(input);
+    const sanitizedInput = isNaN(parsedValue)
+      ? ""
+      : Math.min(parsedValue, maxValue).toString();
+
+    setRetailCC(sanitizedInput);
+  };
+
   return (
     <Offset>
+      <style>
+        {`
+          /* Override default browser styles for number input */
+          input[type="number"]::-webkit-inner-spin-button,
+          input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          input[type="number"] {
+            -moz-appearance: textfield;
+          }
+        `}
+      </style>
       <div className="flex flex-col h-[867px] text-black w-full p-20">
         <div className="flex h-14 w-[55vw] md:w-[70vw] 2xl:w-[55vw] justify-between items-center">
           <div className="pl-[10vw] flex text-[20px] md:text-[15px] 2xl:text-[20px] items-center justify-evenly text-[#767494]">
@@ -22,26 +62,55 @@ const OffsetByRetailCC = () => {
               <div className="font-bold text-[20px]">
                 Select your offset method
               </div>
-              <div className="flex mt-3 ">
-                <div className="w-[13vw] h-[5vh] btn  capitalize rounded-sm bg-[#DEEFED] border-2 border-[#068758] text-[#068758] hover:bg-[#B5D4D0] hover:border-[#068758] mr-4">
-                  <img className="mr-3" src={Coin} alt="picture" />
+              {/* Offset method */}
+              <div className="flex mt-3">
+                <div
+                  className={`w-[13vw] h-[5vh] btn capitalize rounded-sm ${
+                    selectedOffsetMethod === "retailCC"
+                      ? "bg-[#DEEFED] border-2 border-[#068758] text-[#068758]"
+                      : "bg-white border-2 border-[#767494] text-[#767494]"
+                  } hover:bg-[#B5D4D0] hover:border-[#068758] mr-4`}
+                  onClick={() => handleOffsetMethodChange("retailCC")}
+                >
+                  <div>
+                    <AiOutlineCopyrightCircle size={22} />
+                  </div>
                   Retail CC
                 </div>
-                <div className="w-[13vw] h-[5vh] btn  capitalize rounded-sm bg-white border-2 border-[#068758] text-[#068758] hover:bg-[#B5D4D0] hover:border-[#068758] mr-4">
-                  <img className="mr-3" src={Mdi_weight} alt="picture" />
+                <div
+                  className={`w-[13vw] h-[5vh] btn capitalize rounded-sm ${
+                    selectedOffsetMethod === "metricTons"
+                      ? "bg-[#DEEFED] border-2 border-[#068758] text-[#068758]"
+                      : "bg-white border-2 border-[#767494] text-[#767494]"
+                  } hover:bg-[#B5D4D0] hover:border-[#068758] mr-4`}
+                  onClick={() => handleOffsetMethodChange("metricTons")}
+                >
+                  <div>
+                    <TbWeight size={22} />
+                  </div>
                   Metric Tons
                 </div>
               </div>
 
+              {/* Input zone */}
               <div className="mt-5 h-[25vh]">
                 <div className="font-bold text-[20px]">
-                  Enter the amount of carbon that you want to offset
+                  {selectedOffsetMethod === "retailCC"
+                    ? "Enter the amount of Retail CC (max: 100,000)"
+                    : "Enter the amount of carbon that you want to offset (max: 100)"}
                 </div>
                 <div className="mt-4">
                   <input
-                    className="w-[35vw] h-[50px] border-2 border-[#767494] bg-white pl-2 outline-none "
-                    placeholder="Enter Retail CC"
-                    type="text"
+                    className="w-[35vw] h-[50px] border-2 border-[#767494] bg-white pl-2 outline-none"
+                    placeholder={
+                      selectedOffsetMethod === "retailCC"
+                        ? "Enter Retail CC"
+                        : "Enter carbon offset amount"
+                    }
+                    type="number"
+                    max={selectedOffsetMethod === "retailCC" ? 100000 : 100}
+                    value={retailCC} // Bind the input value to the retailCC state variable
+                    onChange={handleRetailCCChange} // Handle the value change
                   />
                 </div>
               </div>
@@ -68,8 +137,14 @@ const OffsetByRetailCC = () => {
                     <div className="mt-8">Total retail cc</div>
                     <div className="mt-3 font-bold">Cost of Offset</div>
                   </div>
+
+                  {/* amount */}
                   <div>
-                    <div>0.0</div>
+                    {retailCC && (
+                      <div className="text-sm text-[#767494] mt-2">
+                        {retailCC}
+                      </div>
+                    )}
                     <div className="mt-8">0.0</div>
                     <div className="mt-3 font-bold">0.0</div>
                   </div>
@@ -87,4 +162,5 @@ const OffsetByRetailCC = () => {
     </Offset>
   );
 };
+
 export default OffsetByRetailCC;
