@@ -45,8 +45,8 @@ const OffsetByRetailCC = () => {
           }
         `}
       </style>
-      <div className="flex flex-col h-[867px] text-black w-full p-20">
-        <div className="flex h-14 w-[55vw] md:w-[70vw] 2xl:w-[55vw] justify-between items-center">
+      <div className="flex flex-col h-[867px] md:h-[760px] 2xl:h-[867px] text-black w-full p-20">
+        <div className="flex h-14 w-[55vw] md:w-[59vw] 2xl:w-[55vw] justify-between items-center">
           <div className="pl-[10vw] flex text-[20px] md:text-[15px] 2xl:text-[20px] items-center justify-evenly text-[#767494]">
             <div className="mr-4">Offset</div>
             <div className="mr-4">
