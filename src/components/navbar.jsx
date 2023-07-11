@@ -5,7 +5,7 @@ import "../css/main.css";
 import { Care, Close, Email, Eye, Logo, Password } from "../assets/image";
 import { Profile } from "../assets/icons";
 import validator from "validator";
-import { loginSuccess, getRefreshToken, loginFailure } from "../store/features/auth-slice";
+import { loginSuccess, getRefreshToken, loginFailure, setUserData } from "../store/features/auth-slice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
 import { Link  } from "react-router-dom";
@@ -28,7 +28,7 @@ const Navbar = ({scrollToHome}) => {
   const isValidEmail = validator.isEmail(emailSignIn);
   const dispatch = useDispatch();
   const homeRef = useRef(null);
-  const { isAuth, isError } = useSelector((state) => state.auth);
+  const { isAuth, isError, data } = useSelector((state) => state.auth);
   const {chooseMenu} = useSelector((state) => state.menu)
 
   const handleSignIn = async () => {
@@ -38,6 +38,7 @@ const Navbar = ({scrollToHome}) => {
         { withCredentials: true }
       );
       if (response.data.status === 200) {
+        dispatch(setUserData(response.data.data))
         dispatch(loginSuccess());
         window.my_modal_1.close();
       } else {
@@ -82,6 +83,8 @@ const Navbar = ({scrollToHome}) => {
   useEffect(() => {
     dispatch(getRefreshToken())
   },[])
+
+  console.log(data)
 
 
   return (

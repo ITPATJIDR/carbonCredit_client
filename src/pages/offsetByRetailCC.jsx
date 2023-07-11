@@ -145,7 +145,7 @@ const OffsetByRetailCC = () => {
                         {retailCC}
                       </div>
                     )}
-                    <div className="mt-8">0.0</div>
+                    <div style={{marginTop: retailCC ? null : "55px" }} className="mt-8">0.0</div>
                     <div className="mt-3 font-bold">0.0</div>
                   </div>
                 </div>
