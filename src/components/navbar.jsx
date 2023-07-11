@@ -5,15 +5,7 @@ import "../css/main.css";
 import { Care, Close, Email, Eye, Logo, Password } from "../assets/image";
 import { BiUserCircle } from "react-icons/bi";
 import validator from "validator";
-<<<<<<< HEAD
 import { loginSuccess, getRefreshToken, loginFailure, setUserData } from "../store/features/auth-slice";
-=======
-import {
-  loginSuccess,
-  getRefreshToken,
-  loginFailure,
-} from "../store/features/auth-slice";
->>>>>>> 2501e142548df1c6158c42c7666cc782f150debc
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -35,26 +27,24 @@ const Navbar = ({ scrollToHome }) => {
   const isValidEmail = validator.isEmail(emailSignIn);
   const dispatch = useDispatch();
   const homeRef = useRef(null);
-  const { isAuth, isError } = useSelector((state) => state.auth);
-  const { chooseMenu } = useSelector((state) => state.menu);
+  const { isAuth, isError, data } = useSelector((state) => state.auth);
+  const {chooseMenu} = useSelector((state) => state.menu)
 
   const handleSignIn = async () => {
-    if (isValidEmail) {
-      try {
-        const response = await axios.post(
-          "http://localhost:5001/user/login",
-          { email: emailSignIn, password: passwordSignIn },
-          { withCredentials: true }
-        );
-        if (response.data.status === 200) {
-          dispatch(loginSuccess());
-          window.my_modal_1.close();
-        } else {
-          dispatch(loginFailure());
-        }
-      } catch (error) {
-        console.log(error);
+    if(isValidEmail){
+    try {
+      const response = await axios.post( "http://localhost:5001/user/login", {email: emailSignIn, password: passwordSignIn},
+        { withCredentials: true }
+      );
+      if (response.data.status === 200) {
+        dispatch(setUserData(response.data.data))
+        dispatch(loginSuccess());
+        window.my_modal_1.close();
+      } else {
+        dispatch(loginFailure());
       }
+    }catch (e) {
+      console.log(e)
     }
   };
 
@@ -87,16 +77,8 @@ const Navbar = ({ scrollToHome }) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     dispatch(getRefreshToken())
   },[])
-
-  console.log(data)
-
-=======
-    dispatch(getRefreshToken());
-  }, []);
->>>>>>> 2501e142548df1c6158c42c7666cc782f150debc
 
   return (
     <div className="flex bg-white w-full h-16 items-center">
@@ -413,5 +395,6 @@ const Navbar = ({ scrollToHome }) => {
     </div>
   );
 };
+}
 
 export default Navbar;
