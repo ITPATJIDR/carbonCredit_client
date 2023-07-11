@@ -4,7 +4,7 @@ import Calculate from "../components/calculate";
 const CalculateYourEmissions = () => {
   return (
     <Offset>
-      <div className="flex items-center justify-evenly h-[867px] text-black w-full">
+      <div className="flex items-center justify-evenly h-[867px] md:h-[760px] 2xl:h-[867px] text-black w-full">
         <Calculate/>
       </div>
     </Offset>

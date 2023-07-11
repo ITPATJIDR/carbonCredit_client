@@ -22,7 +22,7 @@ const ChooseOffset = ({ setOffsetState }) => {
 
   return (
     <Offset>
-      <div className="flex items-center justify-evenly h-[867px] text-black">
+      <div className="flex items-center justify-evenly h-[867px] md:h-[760px] 2xl:h-[867px] text-black">
         <div className="w-[35vw] h-[50vh] bg-white rounded-3xl flex items-center flex-col">
           <div className=" w-full h-[28vh]">
             <div className="flex items-center h-full justify-center">

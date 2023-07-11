@@ -3,15 +3,22 @@ import user from "../assets/icons/User.svg";
 import logo from "../assets/icons/logo.png";
 import "../css/main.css";
 import { Care, Close, Email, Eye, Logo, Password } from "../assets/image";
-import { Profile } from "../assets/icons";
+import { BiUserCircle } from "react-icons/bi";
 import validator from "validator";
+<<<<<<< HEAD
 import { loginSuccess, getRefreshToken, loginFailure, setUserData } from "../store/features/auth-slice";
+=======
+import {
+  loginSuccess,
+  getRefreshToken,
+  loginFailure,
+} from "../store/features/auth-slice";
+>>>>>>> 2501e142548df1c6158c42c7666cc782f150debc
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios"
-import { Link  } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Navbar = ({scrollToHome}) => {
-
+const Navbar = ({ scrollToHome }) => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const [hiddenPassword_signUp_1, setHiddenPassword_signUp_1] = useState(true);
   const [hiddenPassword_signUp_2, setHiddenPassword_signUp_2] = useState(true);
@@ -28,32 +35,33 @@ const Navbar = ({scrollToHome}) => {
   const isValidEmail = validator.isEmail(emailSignIn);
   const dispatch = useDispatch();
   const homeRef = useRef(null);
-  const { isAuth, isError, data } = useSelector((state) => state.auth);
-  const {chooseMenu} = useSelector((state) => state.menu)
+  const { isAuth, isError } = useSelector((state) => state.auth);
+  const { chooseMenu } = useSelector((state) => state.menu);
 
   const handleSignIn = async () => {
-    if(isValidEmail){
-    try {
-      const response = await axios.post( "http://localhost:5001/user/login", {email: emailSignIn, password: passwordSignIn},
-        { withCredentials: true }
-      );
-      if (response.data.status === 200) {
-        dispatch(setUserData(response.data.data))
-        dispatch(loginSuccess());
-        window.my_modal_1.close();
-      } else {
-        dispatch(loginFailure());
+    if (isValidEmail) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5001/user/login",
+          { email: emailSignIn, password: passwordSignIn },
+          { withCredentials: true }
+        );
+        if (response.data.status === 200) {
+          dispatch(loginSuccess());
+          window.my_modal_1.close();
+        } else {
+          dispatch(loginFailure());
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
     }
   };
 
   const handleSignUp = async () => {
-    if(passwordSignUp !== confirmPasswordSignUp) {
-      setCheckPassword(true) 
-    }else{
+    if (passwordSignUp !== confirmPasswordSignUp) {
+      setCheckPassword(true);
+    } else {
       if (nameSignUp && surNameSignUp && emailSignUp && passwordSignUp) {
         try {
           const response = await axios.post(
@@ -76,16 +84,19 @@ const Navbar = ({scrollToHome}) => {
         }
       }
     }
-
   };
 
-
   useEffect(() => {
+<<<<<<< HEAD
     dispatch(getRefreshToken())
   },[])
 
   console.log(data)
 
+=======
+    dispatch(getRefreshToken());
+  }, []);
+>>>>>>> 2501e142548df1c6158c42c7666cc782f150debc
 
   return (
     <div className="flex bg-white w-full h-16 items-center">
@@ -100,8 +111,8 @@ const Navbar = ({scrollToHome}) => {
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] bottom-[-15px]"></div>
             ) : null}
           </li>
-          <li className="relative" >
-            <Link onClick={() => scrollToHome()} >About Us</Link>
+          <li className="relative">
+            <Link onClick={() => scrollToHome()}>About Us</Link>
             {chooseMenu === "AboutUs" ? (
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}
@@ -114,9 +125,26 @@ const Navbar = ({scrollToHome}) => {
           </li>
         </ul>
       </div>
+
+      {/* sign in */}
       <div className="signIn flex items-center">
         {isAuth ? (
-          <img src={Profile} alt="profile" />
+          <Link to="/profile">
+            <BiUserCircle
+              size={35}
+              color={location.pathname === "/profile" ? "#535263" : "#767494"}
+              onMouseEnter={(e) => {
+                if (location.pathname !== "/profile") {
+                  e.target.style.color = "#535263";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (location.pathname !== "/profile") {
+                  e.target.style.color = "#767494";
+                }
+              }}
+            />
+          </Link>
         ) : (
           <button
             onClick={() => window.my_modal_1.showModal()}

@@ -56,7 +56,7 @@ const Homepage = () => {
     const homeElement = homeRef.current;
     if (homeElement) {
       homeElement.scrollIntoView({
-        behavior: 'smooth',
+        behavior: "smooth",
       });
       dispatch(changeMenu("AboutUs"));
     }
@@ -157,7 +157,10 @@ const Homepage = () => {
           </div>
         </section>
         {/* part 3 */}
-        <section ref={homeRef} className="w-[98vw] h-[100vh] flex flex-col justify-center items-center mb-[3rem]">
+        <section
+          ref={homeRef}
+          className="w-[98vw] h-[100vh] flex flex-col justify-center items-center mb-[3rem]"
+        >
           <div>
             <p className="text-black text-[30px] font-bold">
               For the better world
