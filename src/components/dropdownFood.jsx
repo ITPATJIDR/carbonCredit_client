@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Dropdown = ({ onMenuItemClick }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [carbonFoodList, setCarbonFoodList] = useState([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
 
   const toggleDropdown = () => {
@@ -14,6 +16,16 @@ const Dropdown = ({ onMenuItemClick }) => {
     onMenuItemClick(menuItem);
     setIsOpen(false);
   };
+
+  const getCarbonFoodList = async () =>{
+    const res =  await axios.get("http://localhost:5001/carbon/getAllCarbonFoodList")
+    setCarbonFoodList(res.data.result)
+  }
+
+  useEffect(() =>{
+    getCarbonFoodList()
+  },[])
+
 
   return (
     <>
@@ -49,62 +61,23 @@ const Dropdown = ({ onMenuItemClick }) => {
             className="py-2 text-sm text-black dark:text-black"
             aria-labelledby="dropdownDefaultButton"
           >
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Beef Burgers")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Beef Burgers
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Pizza")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Pizza
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Taco")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Taco
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) =>
-                  handleMenuItemClick(event, "Spaghetti seafood")
-                }
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Spaghetti seafood
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Pad Thai")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Pad Thai
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Som Tum")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Som Tum
-              </a>
-            </li>
+          {carbonFoodList ?
+            carbonFoodList.map((item, index) =>{
+              return (
+                <li key={index}>
+                  <a
+                    href="#"
+                    onClick={(event) =>
+                      handleMenuItemClick(event, item.cc_name)
+                    }
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
+                  >
+                    {item.cc_name}
+                  </a>
+                </li>
+              );
+            })
+          :null}
           </ul>
         </div>
       )}

@@ -20,8 +20,18 @@ import {
   tree9,
   tree10,
 } from "../assets/tree";
+import axios from "axios";
+
 
 const Profile = () => {
+
+  const handleLogout = async () =>{
+    const res = await axios.post("http://localhost:5001/user/logout",null, {
+      withCredentials: true,
+    });
+    console.log(res.data)
+  }
+
   return (
     <div className="bg-[#F2F4F8]">
       <Navbar />
@@ -77,7 +87,7 @@ const Profile = () => {
                 </div>
                 <div className="divider"></div>
                 {/* logout */}
-                <div className="flex flex-row items-center justify-end absolute bottom-0 right-0 mb-5 mr-5">
+                <div onClick={() => handleLogout()} className="flex flex-row items-center justify-end absolute bottom-0 right-0 mb-5 mr-5">
                   <div className="mr-2">
                     <MdOutlineLogout size={24} />
                   </div>
