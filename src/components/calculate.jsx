@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { food, travel, co2, line } from "../assets/icons";
+import { co2, line } from "../assets/icons";
 import DropdownFood from "./dropdownFood";
 import DropdownVehicle from "./dropdownVehicle";
 import { MdOutlineFastfood } from "react-icons/md";
