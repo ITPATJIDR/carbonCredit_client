@@ -31,20 +31,23 @@ const Navbar = ({ scrollToHome }) => {
   const {chooseMenu} = useSelector((state) => state.menu)
 
   const handleSignIn = async () => {
-    if(isValidEmail){
-    try {
-      const response = await axios.post( "http://localhost:5001/user/login", {email: emailSignIn, password: passwordSignIn},
-        { withCredentials: true }
-      );
-      if (response.data.status === 200) {
-        dispatch(setUserData(response.data.data))
-        dispatch(loginSuccess());
-        window.my_modal_1.close();
-      } else {
-        dispatch(loginFailure());
+    if (isValidEmail) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5001/user/login",
+          { email: emailSignIn, password: passwordSignIn },
+          { withCredentials: true }
+        );
+        if (response.data.status === 200) {
+          dispatch(setUserData(response.data.data));
+          dispatch(loginSuccess());
+          window.my_modal_1.close();
+        } else {
+          dispatch(loginFailure());
+        }
+      } catch (e) {
+        console.log(e);
       }
-    }catch (e) {
-      console.log(e)
     }
   };
 
@@ -395,6 +398,5 @@ const Navbar = ({ scrollToHome }) => {
     </div>
   );
 };
-}
 
 export default Navbar;
