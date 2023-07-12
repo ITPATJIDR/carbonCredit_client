@@ -4,6 +4,7 @@ import "../css/homepage.css";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import Calculate from "../components/calculate";
 import StatCarbon from "../components/statCarbon";
 import StatTree from "../components/statTree";
@@ -43,6 +44,7 @@ import {
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
   const homeRef = useRef(null);
+  const location = useLocation()
 
   const dispatch = useDispatch();
 

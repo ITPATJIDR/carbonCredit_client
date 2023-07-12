@@ -85,9 +85,9 @@ const Navbar = ({ scrollToHome }) => {
 
   return (
     <div className="flex bg-white w-full h-16 items-center">
-      <a className="btn btn-ghost normal-case text-xl ml-4 hover:bg-white">
+      <Link to="/" className="btn btn-ghost normal-case text-xl ml-4 hover:bg-white">
         <img src={logo} alt="Logo" style={{ width: "150px", height: "auto" }} />
-      </a>
+      </Link>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 text-black font-bold">
           <li className="relative">
@@ -97,7 +97,7 @@ const Navbar = ({ scrollToHome }) => {
             ) : null}
           </li>
           <li className="relative">
-            <Link onClick={() => scrollToHome()}>About Us</Link>
+            <Link to="/" onClick={() => scrollToHome()}>About Us</Link>
             {chooseMenu === "AboutUs" ? (
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}

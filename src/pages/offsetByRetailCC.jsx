@@ -3,6 +3,7 @@ import Offset from "../components/offset";
 import { ChevronRigth, Co2 } from "../assets/image";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { TbWeight } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const OffsetByRetailCC = () => {
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
@@ -48,7 +49,7 @@ const OffsetByRetailCC = () => {
       <div className="flex flex-col h-[867px] md:h-[760px] 2xl:h-[867px] text-black w-full p-20">
         <div className="flex h-14 w-[55vw] md:w-[59vw] 2xl:w-[55vw] justify-between items-center">
           <div className="pl-[10vw] flex text-[20px] md:text-[15px] 2xl:text-[20px] items-center justify-evenly text-[#767494]">
-            <div className="mr-4">Offset</div>
+            <Link to="/chooseOffset" className="mr-4">Offset</Link>
             <div className="mr-4">
               <img src={ChevronRigth} alt="picture" />
             </div>

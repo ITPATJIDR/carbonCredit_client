@@ -19,6 +19,7 @@ const Dropdown = ({ onMenuItemClick }) => {
 
   const getCarbonFoodList = async () =>{
     const res =  await axios.get("http://localhost:5001/carbon/getAllCarbonFoodList")
+    console.log(res.data)
     setCarbonFoodList(res.data.result)
   }
 

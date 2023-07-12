@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Dropdown = ({ onMenuItemClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
+  const [vehicleList, setVehicleList] = useState([]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -14,6 +16,16 @@ const Dropdown = ({ onMenuItemClick }) => {
     onMenuItemClick(menuItem);
     setIsOpen(false);
   };
+
+  const getVehicleList = async () => {
+    const res = await axios.get("http://localhost:5001/carbon/getVehicle")
+    setVehicleList(res.data.vehicleData)
+  }
+
+  useEffect(() => {
+    getVehicleList()
+  },[])
+
 
   return (
     <>
@@ -49,60 +61,22 @@ const Dropdown = ({ onMenuItemClick }) => {
             className="py-2 text-sm text-black dark:text-black"
             aria-labelledby="dropdownDefaultButton"
           >
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Car")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Car
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Taxi")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Taxi
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Airplane")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Airplane
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Boat")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Boat
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Train")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Train
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={(event) => handleMenuItemClick(event, "Motorcycle")}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-              >
-                Motorcycle
-              </a>
-            </li>
+            {vehicleList ?
+              vehicleList.map((item) => {
+                console.log(item.data)
+                return (
+                  <li key={item.data.id}>
+                    <a
+                      href="#"
+                      onClick={(event) => handleMenuItemClick(event, item.data.attributes.name)}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
+                    >
+                      {item.data.attributes.name}
+                    </a>
+                  </li>
+                );
+              })
+            :null}
           </ul>
         </div>
       )}
