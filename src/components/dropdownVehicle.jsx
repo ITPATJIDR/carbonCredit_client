@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Dropdown = ({ onMenuItemClick }) => {
+const Dropdown = ({ onMenuItemClick, setVehicleData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
   const [vehicleList, setVehicleList] = useState([]);
@@ -10,17 +10,19 @@ const Dropdown = ({ onMenuItemClick }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleMenuItemClick = (event, menuItem) => {
+  const handleMenuItemClick = (event, menuItem, vehicleData) => {
     event.preventDefault();
     setSelectedMenuItem(menuItem);
     onMenuItemClick(menuItem);
     setIsOpen(false);
+    setVehicleData(vehicleData);
   };
 
   const getVehicleList = async () => {
     const res = await axios.get("http://localhost:5001/carbon/getVehicle")
     setVehicleList(res.data.vehicleData)
   }
+
 
   useEffect(() => {
     getVehicleList()
@@ -63,12 +65,11 @@ const Dropdown = ({ onMenuItemClick }) => {
           >
             {vehicleList ?
               vehicleList.map((item) => {
-                console.log(item.data)
                 return (
                   <li key={item.data.id}>
                     <a
                       href="#"
-                      onClick={(event) => handleMenuItemClick(event, item.data.attributes.name)}
+                      onClick={(event) => handleMenuItemClick(event, item.data.attributes?.name, item)}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
                     >
                       {item.data.attributes.name}

@@ -16,6 +16,7 @@ export const authSlice = createSlice({
     },
     logoutSuccess: (state) => {
       state.isAuth = false;
+      state.data = {}
     },
     loginFailure: (state) => {
       state.isError = true;

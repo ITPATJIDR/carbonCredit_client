@@ -152,9 +152,11 @@ const OffsetByRetailCC = () => {
                 </div>
               </div>
               <div className=" flex items-center justify-center mt-1">
-                <button className="w-full h-[5vh] rounded-3xl bg-[#FFC93C] hover:bg-[#cfa230] transition text-black">
-                  Offset Now
-                </button>
+                <Link to="/purchase">
+                  <button className="w-full h-[5vh] rounded-3xl bg-[#FFC93C] hover:bg-[#cfa230] transition text-black">
+                    Offset Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import Homepage from "./pages/homepage";
 import ChooseOffset from "./pages/chooseOffset";
 import CalculateOffset from "./pages/calculateYourEmissions";
 import OffsetByRetailCC from "./pages/offsetByRetailCC";
+import Purchase from "./pages/purchase"
 import Profile from "./pages/profile";
 import store from "./store/store";
 import { Provider } from "react-redux";
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/purchase",
+    element: <Purchase/>
   },
 ]);
 

@@ -21,16 +21,33 @@ import {
   tree10,
 } from "../assets/tree";
 import axios from "axios";
+import { logoutSuccess } from "../store/features/auth-slice";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Profile = () => {
+
+  const {isAuth} = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleLogout = async () =>{
     const res = await axios.post("http://localhost:5001/user/logout",null, {
       withCredentials: true,
     });
-    console.log(res.data)
+    if(res.data.status === 200){
+      dispatch(logoutSuccess())
+      navigate("/")
+    }
   }
+
+  useEffect(() => {
+    if(!isAuth){
+      navigate('/')
+    }
+  },[])
 
   return (
     <div className="bg-[#F2F4F8]">
