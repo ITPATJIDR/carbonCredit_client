@@ -71,8 +71,8 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
-  const calCarbon = Math.round(
-    Math.round(calResult.data?.attributes.carbon_kg) * 1.5
+  const calCarbon = Math.ceil(
+    Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
   );
 
   return (
