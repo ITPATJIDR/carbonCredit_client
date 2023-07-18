@@ -72,7 +72,7 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
-  const calCarbon = (Math.round(calResult.data?.attributes.carbon_kg) * 15)
+  const calCarbon = (Math.round(calResult.data?.attributes.carbon_kg) * 1.5)
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
