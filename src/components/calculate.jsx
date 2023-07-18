@@ -15,7 +15,7 @@ const Calculate = () => {
   const [selectedFoodMenuItem, setSelectedFoodMenuItem] = useState("");
   const [selectedVehicleMenuItem, setSelectedVehicleMenuItem] = useState("");
   const [vehicleData, setVehicleData] = useState({});
-  const [calResult, setCalResult] = useState({})
+  const [calResult, setCalResult] = useState({});
 
   const handleAmountChange = (e) => {
     const input = e.target.value;
@@ -36,8 +36,8 @@ const Calculate = () => {
   };
 
   const handleCalculate = () => {
-    if(selectedVehicleMenuItem || selectedFoodMenuItem){
-      if(amount) {
+    if (selectedVehicleMenuItem || selectedFoodMenuItem) {
+      if (amount) {
         setShowOffsetZone(true);
         if (selectedOffsetMethod === "travel") {
           handleCalculateVehicle();
@@ -54,14 +54,13 @@ const Calculate = () => {
     setSelectedVehicleMenuItem(menuItem);
   };
 
-
   const handleCalculateVehicle = async () => {
     const res = await axios.post("http://localhost:5001/carbon/calVehicle", {
       distance_value: amount,
-      vehicle_model_id: vehicleData.data.id
+      vehicle_model_id: vehicleData.data.id,
     });
-    setCalResult(res.data.data)
-  }
+    setCalResult(res.data.data);
+  };
 
   const handleOffsetMethodChange = (method) => {
     setSelectedOffsetMethod(method);
@@ -72,7 +71,11 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
+<<<<<<< HEAD
   const calCarbon = (Math.round(calResult.data?.attributes.carbon_kg) * 1.5)
+=======
+  const calCarbon = Math.round(calResult.data?.attributes.carbon_kg) * 15;
+>>>>>>> e69382bdcf391a9dd3a29fe692e10da3dfb69a95
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -124,7 +127,10 @@ const Calculate = () => {
               {selectedOffsetMethod === "food" ? (
                 <DropdownFood onMenuItemClick={handleFoodMenuItemClick} />
               ) : selectedOffsetMethod === "travel" ? (
-                <DropdownVehicle onMenuItemClick={handleVehicleMenuItemClick} setVehicleData={setVehicleData} />
+                <DropdownVehicle
+                  onMenuItemClick={handleVehicleMenuItemClick}
+                  setVehicleData={setVehicleData}
+                />
               ) : null}
             </div>
             {/* Amount Input */}
@@ -185,9 +191,7 @@ const Calculate = () => {
                   </div>
                   {/* Enter amount */}
                   <div>
-                    <p className="text-black font-medium">
-                      {formattedAmount}
-                    </p>
+                    <p className="text-black font-medium">{formattedAmount}</p>
                   </div>
                 </div>
                 <div className="mt-2 ml-7">
@@ -206,9 +210,9 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult?.data ?
-                          calResult.data?.attributes.distance_value
-                        : null}
+                        {calResult?.data
+                          ? calResult.data?.attributes.distance_value
+                          : null}
                       </p>
                     </div>
                   </div>
@@ -220,9 +224,9 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult?.data ?
-                          calResult.data?.attributes.carbon_kg
-                        :null}
+                        {calResult?.data
+                          ? calResult.data?.attributes.carbon_kg
+                          : null}
                       </p>
                     </div>
                   </div>
@@ -234,11 +238,11 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult?.data ?
-                          calCarbon 
-                          ? calCarbon 
-                          : null
-                         : null}
+                        {calResult?.data
+                          ? calCarbon
+                            ? calCarbon
+                            : null
+                          : null}
                       </p>
                     </div>
                   </div>
