@@ -22,9 +22,9 @@ const Purchase = () => {
       <Navbar />
       <div className="bg-[#F2F4F8] h-[93vh] text-black">
         <div className="p-20">
-          <div className="pl-[15vw]">
-            <div className="flex w-[35vw] items-center justify-between font-bold">
-              <div className="flex w-[15vw] justify-around">
+          <div className="pl-[15vw] md:pl-[5vw] 2xl:w-[15vw]">
+            <div className="flex w-[35vw] items-center justify-between md:w-[45vw] font-bold">
+              <div className="flex w-[15vw] md:w-[25vw] 2xl:w-[15vw]  justify-around">
                 <div>Offset</div>
                 <div>
                   <img src={ChevronRigth} alt="img" />
@@ -111,39 +111,36 @@ const Purchase = () => {
               </div>
               <span className="h-[43vh] w-[1px] bg-[#BCBACD] mr-10 ml-10"></span>
               <div className="w-full">
-                <div className="font-bold text-[20px]">Offset order summary</div>
+                <div className="font-bold text-[20px]">
+                  Offset order summary
+                </div>
                 <div className="h-[5vh] mt-3 border-b-2 border-[#BCBACD] pt-2 flex justify-between">
-			<div>
-				Cost of Offset
-			</div>
-			<div>
-				test
-			</div>
-		</div>
+                  <div>Cost of Offset</div>
+                  <div>test</div>
+                </div>
                 <div className="font-bold text-[20px] mt-5">Coupon code</div>
                 <div className=" h-[10vh] border-b-2 border-[#BCBACD] flex justify-between items-center">
-			<input className="w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2" placeholder="Enter your coupon"/>
-			<button className=" w-[6vw] h-[5vh] bg-[#FFC93C] text-black rounded-3xl font-bold">Apply</button>
-		</div>
+                  <input
+                    className="w-[10vw] md:w-[11vw] 2xl:w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2"
+                    placeholder="Enter your coupon"
+                  />
+                  <button className=" w-[6vw] h-[5vh] bg-[#FFC93C] text-black rounded-3xl font-bold">
+                    Apply
+                  </button>
+                </div>
                 <div className="h-[5vh] mt-3 pt-2 flex justify-between">
-			<div>
-				Total retail cc
-			</div>
-			<div>
-				test
-			</div>
-		</div>
+                  <div>Total retail cc</div>
+                  <div>test</div>
+                </div>
                 <div className="h-[5vh]  pt-2 flex justify-between">
-			<div>
-				Total cost to offset
-			</div>
-			<div>
-				test
-			</div>
-		</div>
-		<div>
-			<button className="bg-[#068758] hover:bg-[#066b46] transition text-white h-[5vh] w-full rounded-3xl">Place Order</button>
-		</div>
+                  <div>Total cost to offset</div>
+                  <div>test</div>
+                </div>
+                <div>
+                  <button className="bg-[#068758] hover:bg-[#066b46] transition text-white h-[5vh] w-full rounded-3xl">
+                    Place Order
+                  </button>
+                </div>
               </div>
             </div>
           </div>
