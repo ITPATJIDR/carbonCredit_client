@@ -71,9 +71,7 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
-  const calCarbon = Math.ceil(
-    Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
-  );
+  const calCarbon = Math.ceil(calResult.data?.attributes.carbon_kg * 1.5)
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -248,11 +246,17 @@ const Calculate = () => {
                     </div>
                   </div>
                   <div className="mt-[1.4rem] ml-5">
-                    <Link to="/purchase">
+                    {calCarbon ? (
+                      <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                          Offset now
+                        </button>
+                      </Link>
+                    ) : (
                       <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                         Offset now
                       </button>
-                    </Link>
+                    )}
                   </div>
                 </div>
               ) : null}

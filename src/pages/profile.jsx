@@ -24,7 +24,8 @@ import {
 import axios from "axios";
 import { logoutSuccess } from "../store/features/auth-slice";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -106,14 +107,16 @@ const Profile = () => {
               </div>
               {/* card 3 */}
               <div className="card bg-white text-black font-medium shadow-xl w-[350px] h-[310px] flex-col">
-                <div className="mt-[30px] mx-[30px] flex flex-row items-center">
-                  <div className="mr-[8px]">
-                    <PiCertificateLight size={25} />
+                <Link to="/certificateLists">
+                  <div className="mt-[30px] mx-[30px] flex flex-row items-center">
+                    <div className="mr-[8px]">
+                      <PiCertificateLight size={25} />
+                    </div>
+                    <div>
+                      <p>My Certificate</p>
+                    </div>
                   </div>
-                  <div>
-                    <p>My Certificate</p>
-                  </div>
-                </div>
+                </Link>
                 <div className="divider"></div>
                 <div className="mx-[31px] mt-[3px] flex flex-row items-center">
                   <div className="mr-[11px]">

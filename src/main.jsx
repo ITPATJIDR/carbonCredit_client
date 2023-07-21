@@ -13,6 +13,7 @@ import { LetSponZive } from "letsponzive";
 import Web from "./pages/web";
 import Moblie from "./pages/moblie";
 import "../src/css/main.css";
+import CertificateLists from "./pages/certificateLists";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/purchase",
     element: <Purchase/>
+  },
+  {
+    path: "/certificateLists",
+    element: <CertificateLists/>
   },
 ]);
 
