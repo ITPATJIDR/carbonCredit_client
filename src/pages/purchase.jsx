@@ -127,20 +127,12 @@ const Purchase = () => {
                 </div>
                 <div className="h-[5vh] mt-3 border-b-2 border-[#BCBACD] pt-2 flex justify-between">
                   <div>Cost of Offset</div>
-<<<<<<< HEAD
                   <div>{state.calCarbon}</div>
-=======
-                  <div>test</div>
->>>>>>> c6fb93d938576e5e53411be6c8b3dd5d2650090d
                 </div>
                 <div className="font-bold text-[20px] mt-5">Coupon code</div>
                 <div className=" h-[10vh] border-b-2 border-[#BCBACD] flex justify-between items-center">
                   <input
-<<<<<<< HEAD
-                    className="w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2"
-=======
                     className="w-[10vw] md:w-[11vw] 2xl:w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2"
->>>>>>> c6fb93d938576e5e53411be6c8b3dd5d2650090d
                     placeholder="Enter your coupon"
                   />
                   <button className=" w-[6vw] h-[5vh] bg-[#FFC93C] text-black rounded-3xl font-bold">
@@ -149,7 +141,6 @@ const Purchase = () => {
                 </div>
                 <div className="h-[5vh] mt-3 pt-2 flex justify-between">
                   <div>Total retail cc</div>
-<<<<<<< HEAD
                   <div>{state.calCarbon}</div>
                 </div>
                 <div className="h-[5vh]  pt-2 flex justify-between">
@@ -189,19 +180,6 @@ const Purchase = () => {
                     </div>
                   </div>
                 </dialog>
-=======
-                  <div>test</div>
-                </div>
-                <div className="h-[5vh]  pt-2 flex justify-between">
-                  <div>Total cost to offset</div>
-                  <div>test</div>
-                </div>
-                <div>
-                  <button className="bg-[#068758] hover:bg-[#066b46] transition text-white h-[5vh] w-full rounded-3xl">
-                    Place Order
-                  </button>
-                </div>
->>>>>>> c6fb93d938576e5e53411be6c8b3dd5d2650090d
               </div>
             </div>
           </div>
