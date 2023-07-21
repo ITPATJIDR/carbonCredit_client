@@ -71,7 +71,13 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
+<<<<<<< HEAD
   const calCarbon = Math.ceil(calResult.data?.attributes.carbon_kg * 1.5)
+=======
+  const calCarbon = Math.ceil(
+    Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
+  );
+>>>>>>> c6fb93d938576e5e53411be6c8b3dd5d2650090d
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -200,20 +206,6 @@ const Calculate = () => {
                 <div>
                   <div className="flex flex-row mt-3 justify-between">
                     <div>
-                      <p className="text-black text-[15px] font-bold font-medium ml-8 text-[#8D8BA7]">
-                        {selectedOffsetMethod}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult?.data
-                          ? calResult.data?.attributes.distance_value
-                          : null}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-row mt-3 justify-between">
-                    <div>
                       <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[8.5rem] text-[#8D8BA7]">
                         Total Kilogram Carbon
                       </p>
@@ -222,6 +214,22 @@ const Calculate = () => {
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
                         {calResult?.data
                           ? calResult.data?.attributes.carbon_kg
+                          : null}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-3 justify-between">
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium ml-8 mr-[10.8rem] text-[#5D5C71]">
+                        Coin
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
+                        {calResult?.data
+                          ? calCarbon
+                            ? Math.ceil(calResult.data?.attributes.carbon_kg)
+                            : null
                           : null}
                       </p>
                     </div>
@@ -239,6 +247,7 @@ const Calculate = () => {
                             ? calCarbon
                             : null
                           : null}
+                        {"\u00A0"} ฿
                       </p>
                     </div>
                   </div>
