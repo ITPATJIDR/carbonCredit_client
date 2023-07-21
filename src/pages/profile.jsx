@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import StatCarbon from "../components/statCarbon";
 import StatTree from "../components/statTree";
@@ -23,31 +24,50 @@ import {
 import axios from "axios";
 import { logoutSuccess } from "../store/features/auth-slice";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Profile = () => {
+  const { isAuth } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const {isAuth} = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [userData, setUserData] = useState(null);
 
-  const handleLogout = async () =>{
-    const res = await axios.post("http://localhost:5001/user/logout",null, {
+  const handleLogout = async () => {
+    const res = await axios.post("http://localhost:5001/user/logout", null, {
       withCredentials: true,
     });
-    if(res.data.status === 200){
-      dispatch(logoutSuccess())
-      navigate("/")
+    if (res.data.status === 200) {
+      dispatch(logoutSuccess());
+      navigate("/");
     }
-  }
+  };
 
   useEffect(() => {
-    if(!isAuth){
-      navigate('/')
+    if (!isAuth) {
+      navigate("/");
+    } else {
+      // Fetch user data here
+      const fetchUserData = async () => {
+        try {
+          const res = await axios.get(
+            "http://localhost:5001/user/getUserData",
+            {
+              withCredentials: true,
+            }
+          );
+          if (res.data.status === 200) {
+            setUserData(res.data.data);
+          } else {
+            console.log(res.data.message);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchUserData();
     }
-  },[])
+  }, [isAuth]);
 
   return (
     <div className="bg-[#F2F4F8]">
@@ -63,8 +83,9 @@ const Profile = () => {
                   <BiUserCircle size={100} color="#767494" />
                 </div>
                 <div className="mt-[10px]">
+                  {/* user name */}
                   <p className="text-[20px] text-black font-medium">
-                    Papatsiri Apipaiboon
+                    papatsiri apipaiboon
                   </p>
                 </div>
                 <div className="mt-[6px]">
@@ -104,7 +125,10 @@ const Profile = () => {
                 </div>
                 <div className="divider"></div>
                 {/* logout */}
-                <div onClick={() => handleLogout()} className="flex flex-row items-center justify-end absolute bottom-0 right-0 mb-5 mr-5">
+                <div
+                  onClick={() => handleLogout()}
+                  className="flex flex-row items-center justify-end absolute bottom-0 right-0 mb-5 mr-5"
+                >
                   <div className="mr-2">
                     <MdOutlineLogout size={24} />
                   </div>

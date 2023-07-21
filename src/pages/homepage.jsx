@@ -44,7 +44,7 @@ import {
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
   const homeRef = useRef(null);
-  const location = useLocation()
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -375,7 +375,7 @@ const Homepage = () => {
                         <img
                           src={arr2}
                           alt="arrow"
-                          className="w-[100px] h-[100px] mb-[4rem]"
+                          className="w-[100px] h-[100px] mt-[1rem]"
                         />
                       </figure>
                     </div>
