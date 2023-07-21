@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronRigth } from "../assets/image";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { TbWeight } from "react-icons/tb";
+import { Vector } from "../assets/icons";
+import axios from "axios";
 
 const Purchase = () => {
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, data } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
+  const { state } = useLocation();
 
   // useEffect(() => {
   // 	if(!isAuth){
   // 		navigate("/")
   // 	}
   // })
+
+  const handleConfirm = async () =>{
+    window.my_modal_3.close();
+    const res = await axios.post("http://localhost:5001/carbon/purchase",{
+      offset:state.calCarbon,
+      id:data.id
+    })
+  }
 
   return (
     <>
@@ -111,39 +122,64 @@ const Purchase = () => {
               </div>
               <span className="h-[43vh] w-[1px] bg-[#BCBACD] mr-10 ml-10"></span>
               <div className="w-full">
-                <div className="font-bold text-[20px]">Offset order summary</div>
+                <div className="font-bold text-[20px]">
+                  Offset order summary
+                </div>
                 <div className="h-[5vh] mt-3 border-b-2 border-[#BCBACD] pt-2 flex justify-between">
-			<div>
-				Cost of Offset
-			</div>
-			<div>
-				test
-			</div>
-		</div>
+                  <div>Cost of Offset</div>
+                  <div>{state.calCarbon}</div>
+                </div>
                 <div className="font-bold text-[20px] mt-5">Coupon code</div>
                 <div className=" h-[10vh] border-b-2 border-[#BCBACD] flex justify-between items-center">
-			<input className="w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2" placeholder="Enter your coupon"/>
-			<button className=" w-[6vw] h-[5vh] bg-[#FFC93C] text-black rounded-3xl font-bold">Apply</button>
-		</div>
+                  <input
+                    className="w-[14vw] h-[5vh] border-[#767494] bg-white border-2 outline-none pl-2"
+                    placeholder="Enter your coupon"
+                  />
+                  <button className=" w-[6vw] h-[5vh] bg-[#FFC93C] text-black rounded-3xl font-bold">
+                    Apply
+                  </button>
+                </div>
                 <div className="h-[5vh] mt-3 pt-2 flex justify-between">
-			<div>
-				Total retail cc
-			</div>
-			<div>
-				test
-			</div>
-		</div>
+                  <div>Total retail cc</div>
+                  <div>{state.calCarbon}</div>
+                </div>
                 <div className="h-[5vh]  pt-2 flex justify-between">
-			<div>
-				Total cost to offset
-			</div>
-			<div>
-				test
-			</div>
-		</div>
-		<div>
-			<button className="bg-[#068758] hover:bg-[#066b46] transition text-white h-[5vh] w-full rounded-3xl">Place Order</button>
-		</div>
+                  <div>Total cost to offset</div>
+                  <div>{state.calCarbon}</div>
+                </div>
+                <div>
+                  <button
+                    onClick={() => window.my_modal_3.showModal()}
+                    className="bg-[#068758] hover:bg-[#066b46] transition text-white h-[5vh] w-full rounded-3xl"
+                  >
+                    Place Order
+                  </button>
+                </div>
+
+                <dialog id="my_modal_3" className="modal text-[#767494]">
+                  <div className="w-[35vw] h-[20vh] md:h-[55vh] 2xl:h-[50vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
+                    <div className="text-[30px] font-bold text-black">
+                      Purchased Success
+                    </div>
+                    <div>
+                      <img src={Vector} alt="success" />
+                    </div>
+                    <div className="w-full flex items-center flex-col">
+                      <div className="font-bold">Name on Certificate</div>
+                      <input
+                        value={data.name + " " + data.surname}
+                        className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
+                        type="text"
+                      />
+                    </div>
+                    <div
+                      onClick={() => handleConfirm()}
+                      className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-2xl flex items-center justify-center text-white"
+                    >
+                      Confirm
+                    </div>
+                  </div>
+                </dialog>
               </div>
             </div>
           </div>
