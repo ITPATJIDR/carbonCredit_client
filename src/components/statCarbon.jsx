@@ -1,6 +1,7 @@
 import { cloud } from "../assets/image";
 
-const StatCarbon = () => {
+const StatCarbon = ({ data }) => {
+  console.log(data);
   return (
     <div className="flex flex-col items-center justify-center">
       <div>
@@ -13,7 +14,7 @@ const StatCarbon = () => {
       </div>
       <div>
         <p className="text-1lg sm:text-2xl text-[#E1A303] font-bold">
-          2,435,321 tonCO2eq
+          {data?.compensate_CC} tonCO2eq
         </p>
       </div>
     </div>

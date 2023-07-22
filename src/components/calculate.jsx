@@ -71,13 +71,9 @@ const Calculate = () => {
     setShowOffsetZone(false);
   };
 
-<<<<<<< HEAD
-  const calCarbon = Math.ceil(calResult.data?.attributes.carbon_kg * 1.5)
-=======
   const calCarbon = Math.ceil(
     Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
   );
->>>>>>> c6fb93d938576e5e53411be6c8b3dd5d2650090d
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">

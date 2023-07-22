@@ -1,6 +1,7 @@
 import { pineTree } from "../assets/image";
 
-const StatTree = () => {
+const StatTree = ({ data }) => {
+  console.log(data);
   return (
     <div className="flex flex-col items-center justify-center">
       <div>
@@ -13,7 +14,7 @@ const StatTree = () => {
       </div>
       <div>
         <p className="text-1lg sm:text-2xl text-[#E1A303] font-bold">
-          1,000,143 Big trees
+          {data?.growth_a_tree} Big trees
         </p>
       </div>
     </div>

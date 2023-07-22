@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import StatCarbon from "../components/statCarbon";
 import StatTree from "../components/statTree";
@@ -28,11 +27,25 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, data } = useSelector((state) => state.auth);
+  const fullname = data.name + " " + data.surname;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(data);
 
-  const [userData, setUserData] = useState(null);
+  const test = () => {
+    // change to coin later
+    if (data?.compensate_CC >= 15) return tree1;
+    else if (data?.compensate_CC >= 30) return tree2;
+    else if (data?.compensate_CC >= 45) return tree3;
+    else if (data?.compensate_CC >= 65) return tree4;
+    else if (data?.compensate_CC >= 85) return tree5;
+    else if (data?.compensate_CC >= 110) return tree6;
+    else if (data?.compensate_CC >= 130) return tree7;
+    else if (data?.compensate_CC >= 160) return tree8;
+    else if (data?.compensate_CC >= 180) return tree9;
+    else if (data?.compensate_CC >= 200) return tree10;
+  };
 
   const handleLogout = async () => {
     const res = await axios.post("http://localhost:5001/user/logout", null, {
@@ -47,28 +60,8 @@ const Profile = () => {
   useEffect(() => {
     if (!isAuth) {
       navigate("/");
-    } else {
-      // Fetch user data here
-      const fetchUserData = async () => {
-        try {
-          const res = await axios.get(
-            "http://localhost:5001/user/getUserData",
-            {
-              withCredentials: true,
-            }
-          );
-          if (res.data.status === 200) {
-            setUserData(res.data.data);
-          } else {
-            console.log(res.data.message);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchUserData();
     }
-  }, [isAuth]);
+  }, []);
 
   return (
     <div className="bg-[#F2F4F8]">
@@ -84,9 +77,8 @@ const Profile = () => {
                   <BiUserCircle size={100} color="#767494" />
                 </div>
                 <div className="mt-[10px]">
-                  {/* user name */}
                   <p className="text-[20px] text-black font-medium">
-                    papatsiri apipaiboon
+                    {fullname}
                   </p>
                 </div>
                 <div className="mt-[6px]">
@@ -152,16 +144,16 @@ const Profile = () => {
                 </h1>
               </div>
               <div className="my-[80px] ml-[16px]">
-                <img src={tree1} style={{ width: "400px", height: "auto" }} />
+                <img src={test()} style={{ width: "400px", height: "auto" }} />
               </div>
             </div>
             {/* Right */}
             <div className="card bg-white shadow-xl w-[350px] h-[680px] flex items-center flex-col justify-center">
               <div className="mb-[30px]">
-                <StatCarbon />
+                <StatCarbon data={data} />
               </div>
               <div>
-                <StatTree />
+                <StatTree data={data} />
               </div>
             </div>
           </div>
