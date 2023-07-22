@@ -3,11 +3,12 @@ import StatCarbon from "../components/statCarbon";
 import StatTree from "../components/statTree";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { coin } from "../assets/image";
+import { Close, coin } from "../assets/image";
 import { PiCertificateLight } from "react-icons/pi";
 import { SlSettings } from "react-icons/sl";
 import { MdOutlineLogout } from "react-icons/md";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useState } from "react";
 import {
   tree1,
   tree2,
@@ -25,13 +26,16 @@ import { logoutSuccess } from "../store/features/auth-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Group } from "../assets/icons";
 
 const Profile = () => {
   const { isAuth, data } = useSelector((state) => state.auth);
   const fullname = data.name + " " + data.surname;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(data);
+  const [newName, setNewName] = useState(data.name)
+  const [newSurName, setSurName] = useState(data.surname)
+  const [newEmail, setEmail] = useState(data.email)
 
   const test = () => {
     // change to coin later
@@ -56,6 +60,17 @@ const Profile = () => {
       navigate("/");
     }
   };
+
+  const handleUpdate = async () => {
+    const res = await axios.post("http://localhost:5001/user/updateProfile", {
+      name:newName,
+      surname: newSurName,
+      email: newEmail,
+      id: data.id
+    }, {
+      withCredentials: true,
+    });
+  }
 
   useEffect(() => {
     if (!isAuth) {
@@ -91,7 +106,7 @@ const Profile = () => {
                   <img src={coin} style={{ width: "45px", height: "auto" }} />
                 </div>
                 <div>
-                  <p className="text-[20px] text-[#767494]">3000 Coin</p>
+                  <p className="text-[20px] text-[#767494]">{data.coin} Coin</p>
                 </div>
                 <div className="mr-[17px]">
                   <AiOutlinePlus size={30} />
@@ -110,7 +125,10 @@ const Profile = () => {
                   </div>
                 </Link>
                 <div className="divider"></div>
-                <div className="mx-[31px] mt-[3px] flex flex-row items-center">
+                <div
+                  onClick={() => window.my_modal_4.showModal()}
+                  className="mx-[31px] mt-[3px] flex flex-row items-center"
+                >
                   <div className="mr-[11px]">
                     <SlSettings size={22} />
                   </div>
@@ -118,6 +136,51 @@ const Profile = () => {
                     <p>Edit Profile</p>
                   </div>
                 </div>
+                <dialog id="my_modal_4" className="modal text-[#767494]">
+                  <div className="w-[35vw] h-[70vh] md:h-[70vh] 2xl:h-[80vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
+                    <div onClick={() => window.my_modal_4.close()} className="w-full flex justify-end">
+                      <img src={Close} alt="success" />
+                    </div>
+                    <div className="text-[30px] font-bold text-black ">
+                      Edit Profile
+                    </div>
+                    <div className="mt-5">
+                      <img src={Group} alt="success" />
+                    </div>
+                    <div className="w-full flex flex-col mt-5">
+                      <div className="font-bold">Name</div>
+                      <input
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                        className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
+                        type="text"
+                      />
+                      <div className="font-bold mt-5">Surname</div>
+                      <input
+                        value={newSurName}
+                        onChange={(e) => setSurName(e.target.value)}
+                        className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
+                        type="text"
+                      />
+                      <div className="font-bold mt-5">Email</div>
+                      <input
+                        value={newEmail}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
+                        type="text"
+                      />
+                    </div>
+                    <div className="mt-10 w-full">
+                    <div
+                      onClick={() => handleUpdate()}
+                      className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-3xl flex items-center justify-center text-white"
+                    >
+                      Confirm
+                    </div>
+
+                    </div>
+                  </div>
+                </dialog>
                 <div className="divider"></div>
                 {/* logout */}
                 <div
