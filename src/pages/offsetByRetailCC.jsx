@@ -60,7 +60,7 @@ const OffsetByRetailCC = () => {
           <div className="text-[40px] font-bold">Offset by Retail CC</div>
         </div>
         <div className="flex items-center justify-center h-full">
-          <div className="w-[70vw] h-[60vh] bg-[#FFFFFF] rounded-2xl p-20 flex justify-between">
+          <div className="w-[70vw] h-[60vh] bg-[#FFFFFF] rounded-2xl p-20 flex justify-between ">
             <div className="w-[35vw] h-full">
               <div className="font-bold text-[20px]">
                 Select your offset method
@@ -132,11 +132,11 @@ const OffsetByRetailCC = () => {
                 <img className="ml-4" src={Co2} alt="Co2" />
               </div>
               <div className=" mt-5 h-[19vh]">
-                <div className="text-[20px]">Offset by Retail CC</div>
+                <div className="text-[20px] ">Offset by Retail CC</div>
                 <div className="flex justify-between mt-2 text-[#767494]">
                   <div className="relative">
                     <div>Offset retail cc</div>
-                    <hr className="w-[19vw] absolute top-9 bg-[#BCBACD]" />
+                    <hr className="w-[24vw] absolute top-9 bg-[#BCBACD]" />
                     <div className="mt-8">Total retail cc</div>
                     <div className="mt-3 font-bold">Cost of Offset</div>
                   </div>
@@ -159,7 +159,7 @@ const OffsetByRetailCC = () => {
                 </div>
               </div>
               <div className=" flex items-center justify-center mt-1">
-                <Link to="/purchase">
+                <Link to="/purchase" className="w-full">
                   <button className="w-full h-[5vh] rounded-3xl bg-[#FFC93C] hover:bg-[#cfa230] transition text-black">
                     Offset Now
                   </button>
