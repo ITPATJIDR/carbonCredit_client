@@ -1,7 +1,6 @@
 import { pineTree } from "../assets/image";
 
 const StatTree = ({ data }) => {
-  console.log(data);
   return (
     <div className="flex flex-col items-center justify-center">
       <div>

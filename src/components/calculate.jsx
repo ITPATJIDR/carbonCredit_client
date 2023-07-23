@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { co2, line } from "../assets/icons";
 import DropdownFood from "./dropdownFood";
 import DropdownVehicle from "./dropdownVehicle";
@@ -16,6 +17,7 @@ const Calculate = () => {
   const [selectedVehicleMenuItem, setSelectedVehicleMenuItem] = useState("");
   const [vehicleData, setVehicleData] = useState({});
   const [calResult, setCalResult] = useState({});
+  const { isAuth, data } = useSelector((state) => state.auth);
 
   const handleAmountChange = (e) => {
     const input = e.target.value;
@@ -249,11 +251,11 @@ const Calculate = () => {
                   </div>
                   <div className="mt-[1.4rem] ml-5">
                     {calCarbon ? (
-                      <Link to="/purchase" state={{ calCarbon: calCarbon }}>
-                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
-                          Offset now
-                        </button>
-                      </Link>
+                        <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                          <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                            Offset now
+                          </button>
+                        </Link>
                     ) : (
                       <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                         Offset now

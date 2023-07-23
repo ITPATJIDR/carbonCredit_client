@@ -13,13 +13,18 @@ const Purchase = () => {
   const navigate = useNavigate();
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const { state } = useLocation();
-  console.log(data)
 
-  // useEffect(() => {
-  // 	if(!isAuth){
-  // 		navigate("/")
-  // 	}
-  // })
+  useEffect(() => {
+    if(state === null) {
+  		navigate("/")
+    }
+  })
+
+  useEffect(() => {
+  	if(!isAuth){
+  		navigate("/")
+  	}
+  })
 
   const handleConfirm = async () =>{
     window.my_modal_3.close();
@@ -128,7 +133,7 @@ const Purchase = () => {
                 </div>
                 <div className="h-[5vh] mt-3 border-b-2 border-[#BCBACD] pt-2 flex justify-between">
                   <div>Cost of Offset</div>
-                  <div>{state.calCarbon}</div>
+                  {state ? <div>{state.calCarbon}</div> : null}
                 </div>
                 <div className="font-bold text-[20px] mt-5">Coupon code</div>
                 <div className=" h-[10vh] border-b-2 border-[#BCBACD] flex justify-between items-center">
@@ -142,11 +147,11 @@ const Purchase = () => {
                 </div>
                 <div className="h-[5vh] mt-3 pt-2 flex justify-between">
                   <div>Total retail cc</div>
-                  <div>{state.calCarbon}</div>
+                  {state ? <div>{state.calCarbon}</div> : null}
                 </div>
                 <div className="h-[5vh]  pt-2 flex justify-between">
                   <div>Total cost to offset</div>
-                  <div>{state.calCarbon}</div>
+                  {state ? <div>{state.calCarbon}</div> : null}
                 </div>
                 <div>
                   <button

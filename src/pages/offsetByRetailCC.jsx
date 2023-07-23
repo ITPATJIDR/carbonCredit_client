@@ -4,10 +4,12 @@ import { ChevronRigth, Co2 } from "../assets/image";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { TbWeight } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const OffsetByRetailCC = () => {
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const [retailCC, setRetailCC] = useState("");
+  const { isAuth, data } = useSelector((state) => state.auth);
 
   const handleOffsetMethodChange = (method) => {
     setSelectedOffsetMethod(method);
@@ -30,6 +32,8 @@ const OffsetByRetailCC = () => {
 
     setRetailCC(sanitizedInput);
   };
+
+  const costOfOffset = Math.ceil(retailCC * 1.5)
 
   return (
     <Offset>
@@ -137,8 +141,7 @@ const OffsetByRetailCC = () => {
                   <div className="relative">
                     <div>Offset retail cc</div>
                     <hr className="w-[24vw] absolute top-9 bg-[#BCBACD]" />
-                    <div className="mt-8">Total retail cc</div>
-                    <div className="mt-3 font-bold">Cost of Offset</div>
+                    <div className="mt-8 font-bold">Cost of Offset</div>
                   </div>
 
                   {/* amount */}
@@ -150,20 +153,25 @@ const OffsetByRetailCC = () => {
                     )}
                     <div
                       style={{ marginTop: retailCC ? null : "55px" }}
-                      className="mt-8"
+                      className="mt-8 font-bold"
                     >
-                      0.0
+                      {costOfOffset}
                     </div>
-                    <div className="mt-3 font-bold">0.0</div>
                   </div>
                 </div>
               </div>
               <div className=" flex items-center justify-center mt-1">
-                <Link to="/purchase" className="w-full">
+                {costOfOffset ? (
+                    <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                        Offset now
+                      </button>
+                    </Link>
+                ) : (
                   <button className="w-full h-[5vh] rounded-3xl bg-[#FFC93C] hover:bg-[#cfa230] transition text-black">
                     Offset Now
                   </button>
-                </Link>
+                )}
               </div>
             </div>
           </div>

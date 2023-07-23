@@ -4,11 +4,14 @@ import { ArrowRight, Frame16, Frame17 } from "../assets/image";
 import Offset from "../components/offset";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ChooseOffset = ({ setOffsetState }) => {
   const { chooseMenu } = useSelector((state) => state.menu);
+  const { isAuth } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const checkChooseMenu = () => {
     if (chooseMenu || chooseMenu !== "Offset") {
@@ -17,8 +20,15 @@ const ChooseOffset = ({ setOffsetState }) => {
   };
 
   useEffect(() => {
+    if(!isAuth) {
+      navigate("/")
+    }
+  })
+
+  useEffect(() => {
     checkChooseMenu();
   });
+
 
   return (
     <Offset>

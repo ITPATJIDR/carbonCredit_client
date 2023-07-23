@@ -70,6 +70,7 @@ const Profile = () => {
     }, {
       withCredentials: true,
     });
+    window.my_modal_4.close()
   }
 
   useEffect(() => {

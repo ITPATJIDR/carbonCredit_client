@@ -1,7 +1,6 @@
 import { cloud } from "../assets/image";
 
 const StatCarbon = ({ data }) => {
-  console.log(data);
   return (
     <div className="flex flex-col items-center justify-center">
       <div>
