@@ -103,7 +103,6 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
-<<<<<<< HEAD
     const res = await axios.post("http://localhost:5001/user/updateProfile", {
       name:newName,
       surname: newSurName,
@@ -114,22 +113,6 @@ const Profile = () => {
     });
     window.my_modal_4.close()
   }
-=======
-    const res = await axios.post(
-      "http://localhost:5001/user/updateProfile",
-      {
-        name: newName,
-        surname: newSurName,
-        email: newEmail,
-        id: data.id,
-      },
-      {
-        withCredentials: true,
-      }
-    );
-    window.my_modal_4.close();
-  };
->>>>>>> 497f340a1ff211842cd8b15174db877dbebc680d
 
   useEffect(() => {
     if (!isAuth) {
