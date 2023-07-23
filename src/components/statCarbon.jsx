@@ -14,7 +14,7 @@ const StatCarbon = ({ data }) => {
       </div>
       <div>
         <p className="text-1lg sm:text-2xl text-[#E1A303] font-bold">
-          {data?.compensate_CC} tonCO2eq
+          {data?.coin} tonCO2eq
         </p>
       </div>
     </div>

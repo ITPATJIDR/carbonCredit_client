@@ -106,7 +106,7 @@ const Profile = () => {
                   <img src={coin} style={{ width: "45px", height: "auto" }} />
                 </div>
                 <div>
-                  <p className="text-[20px] text-[#767494]">{data.coin} Coin</p>
+                  <p className="text-[20px] text-[#767494]">{data.coin ? data.coin : "0"} Coin</p>
                 </div>
                 <div className="mr-[17px]">
                   <AiOutlinePlus size={30} />
