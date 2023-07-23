@@ -5,7 +5,6 @@ const Dropdown = ({ onMenuItemClick, setFoodData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [carbonFoodList, setCarbonFoodList] = useState([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
-  console.log(carbonFoodList);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -24,7 +23,6 @@ const Dropdown = ({ onMenuItemClick, setFoodData }) => {
     const res = await axios.get(
       "http://localhost:5001/carbon/getAllCarbonFoodList"
     );
-    console.log(res.data);
     setCarbonFoodList(res.data.result);
   };
 

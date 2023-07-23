@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { co2, line } from "../assets/icons";
 import DropdownFood from "./dropdownFood";
 import DropdownVehicle from "./dropdownVehicle";
@@ -17,7 +18,8 @@ const Calculate = () => {
   const [vehicleData, setVehicleData] = useState({});
   const [foodData, setFoodData] = useState({});
   const [calResult, setCalResult] = useState({});
-  console.log(calResult);
+  const { isAuth, data } = useSelector((state) => state.auth);
+
   const handleAmountChange = (e) => {
     const input = e.target.value;
     const isValidInput = /^\d*\.?\d*$/.test(input);
