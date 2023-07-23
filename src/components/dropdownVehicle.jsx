@@ -19,15 +19,13 @@ const Dropdown = ({ onMenuItemClick, setVehicleData }) => {
   };
 
   const getVehicleList = async () => {
-    const res = await axios.get("http://localhost:5001/carbon/getVehicle")
-    setVehicleList(res.data.vehicleData)
-  }
-
+    const res = await axios.get("http://localhost:5001/carbon/getVehicle");
+    setVehicleList(res.data.vehicleData);
+  };
 
   useEffect(() => {
-    getVehicleList()
-  },[])
-
+    getVehicleList();
+  }, []);
 
   return (
     <>
@@ -63,21 +61,27 @@ const Dropdown = ({ onMenuItemClick, setVehicleData }) => {
             className="py-2 text-sm text-black dark:text-black"
             aria-labelledby="dropdownDefaultButton"
           >
-            {vehicleList ?
-              vehicleList.map((item) => {
-                return (
-                  <li key={item.data.id}>
-                    <a
-                      href="#"
-                      onClick={(event) => handleMenuItemClick(event, item.data.attributes?.name, item)}
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-                    >
-                      {item.data.attributes.name}
-                    </a>
-                  </li>
-                );
-              })
-            :null}
+            {vehicleList
+              ? vehicleList.map((item) => {
+                  return (
+                    <li key={item.data.id}>
+                      <a
+                        href="#"
+                        onClick={(event) =>
+                          handleMenuItemClick(
+                            event,
+                            item.data.attributes?.name,
+                            item
+                          )
+                        }
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
+                      >
+                        {item.data.attributes.name}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       )}

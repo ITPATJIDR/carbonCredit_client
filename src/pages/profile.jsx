@@ -38,17 +38,58 @@ const Profile = () => {
   const [newEmail, setEmail] = useState(data.email);
 
   const test = () => {
-    // change to coin later
-    if (data?.compensate_CC >= 15) return tree1;
-    else if (data?.compensate_CC >= 30) return tree2;
-    else if (data?.compensate_CC >= 45) return tree3;
-    else if (data?.compensate_CC >= 65) return tree4;
-    else if (data?.compensate_CC >= 85) return tree5;
-    else if (data?.compensate_CC >= 110) return tree6;
-    else if (data?.compensate_CC >= 130) return tree7;
-    else if (data?.compensate_CC >= 160) return tree8;
-    else if (data?.compensate_CC >= 180) return tree9;
-    else if (data?.compensate_CC >= 200) return tree10;
+    console.log(data.coin);
+    if (data?.coin >= 1 && data?.coin < 49) {
+      return {
+        image: tree1,
+        width: "340px",
+      };
+    } else if (data?.coin >= 50 && data?.coin < 65) {
+      return {
+        image: tree2,
+        width: "310px",
+      };
+    } else if (data?.coin >= 66 && data?.coin < 91) {
+      return {
+        image: tree3,
+        width: "280px",
+      };
+    } else if (data?.coin >= 92 && data?.coin < 120) {
+      return {
+        image: tree4,
+        width: "260px",
+      };
+    } else if (data?.coin >= 121 && data?.coin < 151) {
+      return {
+        image: tree5,
+        width: "260px",
+      };
+    } else if (data?.coin >= 152 && data?.coin < 182) {
+      return {
+        image: tree6,
+        width: "260px",
+      };
+    } else if (data?.coin >= 183 && data?.coin < 200) {
+      return {
+        image: tree7,
+        width: "260px",
+      };
+    } else if (data?.coin >= 201 && data?.coin < 250) {
+      return {
+        image: tree8,
+        width: "260px",
+      };
+    } else if (data?.coin >= 251 && data?.coin < 329) {
+      return {
+        image: tree9,
+        width: "260px",
+      };
+    } else if (data?.coin > 330) {
+      return {
+        image: tree10,
+        width: "250px",
+      };
+    }
   };
 
   const handleLogout = async () => {
@@ -62,6 +103,7 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
+<<<<<<< HEAD
     const res = await axios.post("http://localhost:5001/user/updateProfile", {
       name:newName,
       surname: newSurName,
@@ -72,6 +114,22 @@ const Profile = () => {
     });
     window.my_modal_4.close()
   }
+=======
+    const res = await axios.post(
+      "http://localhost:5001/user/updateProfile",
+      {
+        name: newName,
+        surname: newSurName,
+        email: newEmail,
+        id: data.id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    window.my_modal_4.close();
+  };
+>>>>>>> 497f340a1ff211842cd8b15174db877dbebc680d
 
   useEffect(() => {
     if (!isAuth) {
@@ -107,7 +165,9 @@ const Profile = () => {
                   <img src={coin} style={{ width: "45px", height: "auto" }} />
                 </div>
                 <div>
-                  <p className="text-[20px] text-[#767494]">{data.coin ? data.coin : "0"} Coin</p>
+                  <p className="text-[20px] text-[#767494]">
+                    {data.coin ? data.coin : "0"} Coin
+                  </p>
                 </div>
                 <div className="mr-[17px]">
                   <AiOutlinePlus size={30} />
@@ -222,8 +282,15 @@ const Profile = () => {
                   Your Offset Tree
                 </h1>
               </div>
+              {/* tree img */}
               <div className="my-[80px] ml-[16px]">
-                <img src={test()} style={{ width: "400px", height: "auto" }} />
+                {test() && (
+                  <img
+                    src={test().image}
+                    style={{ width: test().width }}
+                    alt="Tree Image"
+                  />
+                )}
               </div>
             </div>
             {/* Right */}

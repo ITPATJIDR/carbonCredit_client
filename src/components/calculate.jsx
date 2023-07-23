@@ -16,6 +16,7 @@ const Calculate = () => {
   const [selectedFoodMenuItem, setSelectedFoodMenuItem] = useState("");
   const [selectedVehicleMenuItem, setSelectedVehicleMenuItem] = useState("");
   const [vehicleData, setVehicleData] = useState({});
+  const [foodData, setFoodData] = useState({});
   const [calResult, setCalResult] = useState({});
   const { isAuth, data } = useSelector((state) => state.auth);
 
@@ -43,6 +44,8 @@ const Calculate = () => {
         setShowOffsetZone(true);
         if (selectedOffsetMethod === "travel") {
           handleCalculateVehicle();
+        } else if (selectedOffsetMethod === "food") {
+          handleCalculateFood();
         }
       }
     }
@@ -64,6 +67,15 @@ const Calculate = () => {
     setCalResult(res.data.data);
   };
 
+  const handleCalculateFood = async () => {
+    const res = await axios.post("http://localhost:5001/carbon/calFood", {
+      food_amt: amount,
+      food_carbon: foodData,
+    });
+    setCalResult(res.data.data);
+    console.log(res.data);
+  };
+
   const handleOffsetMethodChange = (method) => {
     setSelectedOffsetMethod(method);
     setSelectedFoodMenuItem("");
@@ -76,9 +88,12 @@ const Calculate = () => {
   const calCarbon = Math.ceil(
     Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
   );
+<<<<<<< HEAD
 
   const coin = Math.ceil(calResult.data?.attributes.carbon_kg)
 
+=======
+>>>>>>> 497f340a1ff211842cd8b15174db877dbebc680d
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
       <div className="card-body">
@@ -127,7 +142,10 @@ const Calculate = () => {
             {/* Drop down file is in component folder*/}
             <div className="relative">
               {selectedOffsetMethod === "food" ? (
-                <DropdownFood onMenuItemClick={handleFoodMenuItemClick} />
+                <DropdownFood
+                  onMenuItemClick={handleFoodMenuItemClick}
+                  setFoodData={setFoodData}
+                />
               ) : selectedOffsetMethod === "travel" ? (
                 <DropdownVehicle
                   onMenuItemClick={handleVehicleMenuItemClick}
@@ -253,11 +271,19 @@ const Calculate = () => {
                   </div>
                   <div className="mt-[1.4rem] ml-5">
                     {calCarbon ? (
+<<<<<<< HEAD
                         <Link to="/purchase" state={{ calCarbon: calCarbon, coin: coin }}>
                           <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                             Offset now
                           </button>
                         </Link>
+=======
+                      <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                          Offset now
+                        </button>
+                      </Link>
+>>>>>>> 497f340a1ff211842cd8b15174db877dbebc680d
                     ) : (
                       <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                         Offset now
