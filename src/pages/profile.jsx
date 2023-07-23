@@ -40,15 +40,15 @@ const Profile = () => {
   const test = () => {
     // change to coin later
     if (data?.compensate_CC >= 15) return tree1;
-    else if (data?.coin >= 30) return tree2;
-    else if (data?.coin >= 45) return tree3;
-    else if (data?.coin >= 65) return tree4;
-    else if (data?.coin >= 85) return tree5;
-    else if (data?.coin >= 110) return tree6;
-    else if (data?.coin >= 130) return tree7;
-    else if (data?.coin >= 160) return tree8;
-    else if (data?.coin >= 180) return tree9;
-    else if (data?.coin >= 200) return tree10;
+    else if (data?.compensate_CC >= 30) return tree2;
+    else if (data?.compensate_CC >= 45) return tree3;
+    else if (data?.compensate_CC >= 65) return tree4;
+    else if (data?.compensate_CC >= 85) return tree5;
+    else if (data?.compensate_CC >= 110) return tree6;
+    else if (data?.compensate_CC >= 130) return tree7;
+    else if (data?.compensate_CC >= 160) return tree8;
+    else if (data?.compensate_CC >= 180) return tree9;
+    else if (data?.compensate_CC >= 200) return tree10;
   };
 
   const handleLogout = async () => {
