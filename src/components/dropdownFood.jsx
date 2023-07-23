@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-const Dropdown = ({ onMenuItemClick }) => {
+const Dropdown = ({ onMenuItemClick, setFoodData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [carbonFoodList, setCarbonFoodList] = useState([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
@@ -11,11 +11,13 @@ const Dropdown = ({ onMenuItemClick }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleMenuItemClick = (event, menuItem) => {
+  const handleMenuItemClick = (event, menuItem, foodData) => {
     event.preventDefault();
     setSelectedMenuItem(menuItem);
     onMenuItemClick(menuItem);
     setIsOpen(false);
+    // add this line
+    setFoodData(foodData);
   };
 
   const getCarbonFoodList = async () => {
@@ -66,12 +68,17 @@ const Dropdown = ({ onMenuItemClick }) => {
           >
             {carbonFoodList
               ? carbonFoodList.map((item, index) => {
+                  console.log(index);
                   return (
                     <li key={index}>
                       <a
                         href="#"
                         onClick={(event) =>
-                          handleMenuItemClick(event, item.cc_name)
+                          handleMenuItemClick(
+                            event,
+                            item.cc_name,
+                            item.cc_amount
+                          )
                         }
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
                       >

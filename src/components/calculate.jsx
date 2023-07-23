@@ -15,8 +15,9 @@ const Calculate = () => {
   const [selectedFoodMenuItem, setSelectedFoodMenuItem] = useState("");
   const [selectedVehicleMenuItem, setSelectedVehicleMenuItem] = useState("");
   const [vehicleData, setVehicleData] = useState({});
+  const [foodData, setFoodData] = useState({});
   const [calResult, setCalResult] = useState({});
-
+  console.log(calResult);
   const handleAmountChange = (e) => {
     const input = e.target.value;
     const isValidInput = /^\d*\.?\d*$/.test(input);
@@ -41,6 +42,8 @@ const Calculate = () => {
         setShowOffsetZone(true);
         if (selectedOffsetMethod === "travel") {
           handleCalculateVehicle();
+        } else if (selectedOffsetMethod === "food") {
+          handleCalculateFood();
         }
       }
     }
@@ -62,6 +65,15 @@ const Calculate = () => {
     setCalResult(res.data.data);
   };
 
+  const handleCalculateFood = async () => {
+    const res = await axios.post("http://localhost:5001/carbon/calFood", {
+      food_amt: amount,
+      food_carbon: foodData,
+    });
+    setCalResult(res.data.data);
+    console.log(res.data);
+  };
+
   const handleOffsetMethodChange = (method) => {
     setSelectedOffsetMethod(method);
     setSelectedFoodMenuItem("");
@@ -74,7 +86,6 @@ const Calculate = () => {
   const calCarbon = Math.ceil(
     Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
   );
-
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
       <div className="card-body">
@@ -123,7 +134,10 @@ const Calculate = () => {
             {/* Drop down file is in component folder*/}
             <div className="relative">
               {selectedOffsetMethod === "food" ? (
-                <DropdownFood onMenuItemClick={handleFoodMenuItemClick} />
+                <DropdownFood
+                  onMenuItemClick={handleFoodMenuItemClick}
+                  setFoodData={setFoodData}
+                />
               ) : selectedOffsetMethod === "travel" ? (
                 <DropdownVehicle
                   onMenuItemClick={handleVehicleMenuItemClick}
