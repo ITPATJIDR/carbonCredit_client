@@ -5,6 +5,7 @@ const Dropdown = ({ onMenuItemClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [carbonFoodList, setCarbonFoodList] = useState([]);
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
+  console.log(carbonFoodList);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -17,16 +18,17 @@ const Dropdown = ({ onMenuItemClick }) => {
     setIsOpen(false);
   };
 
-  const getCarbonFoodList = async () =>{
-    const res =  await axios.get("http://localhost:5001/carbon/getAllCarbonFoodList")
-    console.log(res.data)
-    setCarbonFoodList(res.data.result)
-  }
+  const getCarbonFoodList = async () => {
+    const res = await axios.get(
+      "http://localhost:5001/carbon/getAllCarbonFoodList"
+    );
+    console.log(res.data);
+    setCarbonFoodList(res.data.result);
+  };
 
-  useEffect(() =>{
-    getCarbonFoodList()
-  },[])
-
+  useEffect(() => {
+    getCarbonFoodList();
+  }, []);
 
   return (
     <>
@@ -62,23 +64,23 @@ const Dropdown = ({ onMenuItemClick }) => {
             className="py-2 text-sm text-black dark:text-black"
             aria-labelledby="dropdownDefaultButton"
           >
-          {carbonFoodList ?
-            carbonFoodList.map((item, index) =>{
-              return (
-                <li key={index}>
-                  <a
-                    href="#"
-                    onClick={(event) =>
-                      handleMenuItemClick(event, item.cc_name)
-                    }
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
-                  >
-                    {item.cc_name}
-                  </a>
-                </li>
-              );
-            })
-          :null}
+            {carbonFoodList
+              ? carbonFoodList.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <a
+                        href="#"
+                        onClick={(event) =>
+                          handleMenuItemClick(event, item.cc_name)
+                        }
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#068758] dark:hover:text-white"
+                      >
+                        {item.cc_name}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       )}
