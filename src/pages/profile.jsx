@@ -33,22 +33,22 @@ const Profile = () => {
   const fullname = data.name + " " + data.surname;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [newName, setNewName] = useState(data.name)
-  const [newSurName, setSurName] = useState(data.surname)
-  const [newEmail, setEmail] = useState(data.email)
+  const [newName, setNewName] = useState(data.name);
+  const [newSurName, setSurName] = useState(data.surname);
+  const [newEmail, setEmail] = useState(data.email);
 
   const test = () => {
     // change to coin later
     if (data?.compensate_CC >= 15) return tree1;
-    else if (data?.compensate_CC >= 30) return tree2;
-    else if (data?.compensate_CC >= 45) return tree3;
-    else if (data?.compensate_CC >= 65) return tree4;
-    else if (data?.compensate_CC >= 85) return tree5;
-    else if (data?.compensate_CC >= 110) return tree6;
-    else if (data?.compensate_CC >= 130) return tree7;
-    else if (data?.compensate_CC >= 160) return tree8;
-    else if (data?.compensate_CC >= 180) return tree9;
-    else if (data?.compensate_CC >= 200) return tree10;
+    else if (data?.coin >= 30) return tree2;
+    else if (data?.coin >= 45) return tree3;
+    else if (data?.coin >= 65) return tree4;
+    else if (data?.coin >= 85) return tree5;
+    else if (data?.coin >= 110) return tree6;
+    else if (data?.coin >= 130) return tree7;
+    else if (data?.coin >= 160) return tree8;
+    else if (data?.coin >= 180) return tree9;
+    else if (data?.coin >= 200) return tree10;
   };
 
   const handleLogout = async () => {
@@ -62,15 +62,19 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
-    const res = await axios.post("http://localhost:5001/user/updateProfile", {
-      name:newName,
-      surname: newSurName,
-      email: newEmail,
-      id: data.id
-    }, {
-      withCredentials: true,
-    });
-  }
+    const res = await axios.post(
+      "http://localhost:5001/user/updateProfile",
+      {
+        name: newName,
+        surname: newSurName,
+        email: newEmail,
+        id: data.id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+  };
 
   useEffect(() => {
     if (!isAuth) {
@@ -138,7 +142,10 @@ const Profile = () => {
                 </div>
                 <dialog id="my_modal_4" className="modal text-[#767494]">
                   <div className="w-[35vw] h-[70vh] md:h-[70vh] 2xl:h-[80vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
-                    <div onClick={() => window.my_modal_4.close()} className="w-full flex justify-end">
+                    <div
+                      onClick={() => window.my_modal_4.close()}
+                      className="w-full flex justify-end"
+                    >
                       <img src={Close} alt="success" />
                     </div>
                     <div className="text-[30px] font-bold text-black ">
@@ -171,13 +178,12 @@ const Profile = () => {
                       />
                     </div>
                     <div className="mt-10 w-full">
-                    <div
-                      onClick={() => handleUpdate()}
-                      className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-3xl flex items-center justify-center text-white"
-                    >
-                      Confirm
-                    </div>
-
+                      <div
+                        onClick={() => handleUpdate()}
+                        className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-3xl flex items-center justify-center text-white"
+                      >
+                        Confirm
+                      </div>
                     </div>
                   </div>
                 </dialog>
