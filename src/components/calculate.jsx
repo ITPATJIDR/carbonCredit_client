@@ -77,6 +77,8 @@ const Calculate = () => {
     Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
   );
 
+  const coin = Math.ceil(calResult.data?.attributes.carbon_kg)
+
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
       <div className="card-body">
@@ -226,7 +228,7 @@ const Calculate = () => {
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
                         {calResult?.data
                           ? calCarbon
-                            ? Math.ceil(calResult.data?.attributes.carbon_kg)
+                            ? coin
                             : null
                           : null}
                       </p>
@@ -251,7 +253,7 @@ const Calculate = () => {
                   </div>
                   <div className="mt-[1.4rem] ml-5">
                     {calCarbon ? (
-                        <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                        <Link to="/purchase" state={{ calCarbon: calCarbon, coin: coin }}>
                           <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                             Offset now
                           </button>

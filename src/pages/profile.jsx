@@ -62,7 +62,6 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
-<<<<<<< HEAD
     const res = await axios.post("http://localhost:5001/user/updateProfile", {
       name:newName,
       surname: newSurName,
@@ -73,21 +72,6 @@ const Profile = () => {
     });
     window.my_modal_4.close()
   }
-=======
-    const res = await axios.post(
-      "http://localhost:5001/user/updateProfile",
-      {
-        name: newName,
-        surname: newSurName,
-        email: newEmail,
-        id: data.id,
-      },
-      {
-        withCredentials: true,
-      }
-    );
-  };
->>>>>>> f079472680edce5f6af93514ea471bca01df3741
 
   useEffect(() => {
     if (!isAuth) {
@@ -153,6 +137,19 @@ const Profile = () => {
                     <p>Edit Profile</p>
                   </div>
                 </div>
+                <div className="divider"></div>
+                <Link to="/Api">
+                  <div
+                    className="mx-[31px] mt-[3px] flex flex-row items-center"
+                  >
+                    <div className="mr-[11px]">
+                      <SlSettings size={22} />
+                    </div>
+                    <div>
+                      <p>API</p>
+                    </div>
+                  </div>
+                </Link>
                 <dialog id="my_modal_4" className="modal text-[#767494]">
                   <div className="w-[35vw] h-[70vh] md:h-[70vh] 2xl:h-[80vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
                     <div

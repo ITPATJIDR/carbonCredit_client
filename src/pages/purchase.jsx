@@ -13,6 +13,7 @@ const Purchase = () => {
   const navigate = useNavigate();
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const { state } = useLocation();
+  console.log(state)
 
   useEffect(() => {
     if(state === null) {
@@ -147,7 +148,7 @@ const Purchase = () => {
                 </div>
                 <div className="h-[5vh] mt-3 pt-2 flex justify-between">
                   <div>Total retail cc</div>
-                  {state ? <div>{state.calCarbon}</div> : null}
+                  {state ? <div>{state.coin}</div> : null}
                 </div>
                 <div className="h-[5vh]  pt-2 flex justify-between">
                   <div>Total cost to offset</div>
