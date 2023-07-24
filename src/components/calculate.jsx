@@ -83,17 +83,20 @@ const Calculate = () => {
     setAmount("");
     setFormattedAmount("");
     setShowOffsetZone(false);
-    setCalResult({})
+    setCalResult({});
   };
 
-  const calCarbon = Math.ceil(
-    Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5
-  );
+  // Travel
+  const calCarbon = Math.ceil(calResult.data?.attributes.carbon_kg) * 1.5;
+  const coin = Math.ceil(calResult.data?.attributes.carbon_kg);
 
-  const coin = Math.ceil(calResult.data?.attributes.carbon_kg)
+  // Food
+  const calCarbonf = Math.ceil(calResult) * 1.5;
+  const coinf = Math.ceil(calResult);
 
-
-  console.log(calResult >= 0)
+  console.log(calResult);
+  console.log("cost of offset", calCarbonf);
+  console.log("coin", coinf);
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -231,7 +234,11 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult?.data === undefined ?  calResult >= 0 ? calResult : null :calResult.data?.attributes.carbon_kg }
+                        {calResult?.data === undefined
+                          ? calResult >= 0
+                            ? calResult
+                            : null
+                          : calResult.data?.attributes.carbon_kg}
                       </p>
                     </div>
                   </div>
@@ -243,7 +250,11 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult?.data === undefined ? calResult >= 0 ? calResult : calCarbon : coin }
+                        {calResult?.data === undefined
+                          ? calResult >= 0
+                            ? coinf
+                            : calCarbon
+                          : coin}
                       </p>
                     </div>
                   </div>
@@ -255,17 +266,25 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult?.data === undefined ? calResult >= 0 ? calResult : calCarbon : calCarbon } {"\u00A0"} ฿
+                        {calResult?.data === undefined
+                          ? calResult >= 0
+                            ? calCarbonf
+                            : calCarbon
+                          : calCarbon}{" "}
+                        {"\u00A0"} ฿
                       </p>
                     </div>
                   </div>
                   <div className="mt-[1.4rem] ml-5">
                     {calCarbon ? (
-                        <Link to="/purchase" state={{ calCarbon: calCarbon, coin: coin }}>
-                          <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
-                            Offset now
-                          </button>
-                        </Link>
+                      <Link
+                        to="/purchase"
+                        state={{ calCarbon: calCarbon, coin: coin }}
+                      >
+                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                          Offset now
+                        </button>
+                      </Link>
                     ) : (
                       <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                         Offset now
