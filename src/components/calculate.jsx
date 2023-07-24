@@ -83,6 +83,7 @@ const Calculate = () => {
     setAmount("");
     setFormattedAmount("");
     setShowOffsetZone(false);
+    setCalResult({})
   };
 
   const calCarbon = Math.ceil(
