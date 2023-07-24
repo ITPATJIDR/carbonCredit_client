@@ -3,8 +3,6 @@ import Navbar from "../components/navbar";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronRigth } from "../assets/image";
-import { AiOutlineCopyrightCircle } from "react-icons/ai";
-import { TbWeight } from "react-icons/tb";
 import { Vector } from "../assets/icons";
 import axios from "axios";
 
@@ -32,9 +30,9 @@ const Purchase = () => {
       offset:state.calCarbon,
       id:data.id
     })
+    navigate("/")
   }
 
-  console.log(state)
 
   return (
     <>
