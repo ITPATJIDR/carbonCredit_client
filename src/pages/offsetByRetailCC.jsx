@@ -162,7 +162,7 @@ const OffsetByRetailCC = () => {
               </div>
               <div className=" flex items-center justify-center mt-1">
                 {costOfOffset ? (
-                    <Link to="/purchase" state={{ calCarbon: calCarbon }}>
+                    <Link to="/purchase" state={{ calCarbon: costOfOffset }}>
                       <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                         Offset now
                       </button>

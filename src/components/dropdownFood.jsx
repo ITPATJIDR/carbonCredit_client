@@ -66,7 +66,6 @@ const Dropdown = ({ onMenuItemClick, setFoodData }) => {
           >
             {carbonFoodList
               ? carbonFoodList.map((item, index) => {
-                  console.log(index);
                   return (
                     <li key={index}>
                       <a

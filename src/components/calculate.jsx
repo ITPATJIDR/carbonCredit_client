@@ -73,7 +73,6 @@ const Calculate = () => {
       food_carbon: foodData,
     });
     setCalResult(res.data.data);
-    console.log(res.data);
   };
 
   const handleOffsetMethodChange = (method) => {
@@ -90,6 +89,7 @@ const Calculate = () => {
   );
 
   const coin = Math.ceil(calResult.data?.attributes.carbon_kg)
+
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -227,9 +227,9 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult?.data
-                          ? calResult.data?.attributes.carbon_kg
-                          : null}
+                        {calResult.data === undefined ?
+                         calResult 
+                        :calResult.data?.attributes.carbon_kg }
                       </p>
                     </div>
                   </div>
@@ -241,11 +241,7 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult?.data
-                          ? calCarbon
-                            ? coin
-                            : null
-                          : null}
+                        {calResult.data === undefined ? calResult : calCarbon ? coin : null }
                       </p>
                     </div>
                   </div>
@@ -257,11 +253,7 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult?.data
-                          ? calCarbon
-                            ? calCarbon
-                            : null
-                          : null}
+                        {calResult.data === undefined ? calResult : calCarbon ? calCarbon : null }
                         {"\u00A0"} ฿
                       </p>
                     </div>

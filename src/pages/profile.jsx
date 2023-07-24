@@ -38,7 +38,6 @@ const Profile = () => {
   const [newEmail, setEmail] = useState(data.email);
 
   const test = () => {
-    console.log(data.coin);
     if (data?.coin >= 1 && data?.coin < 49) {
       return {
         image: tree1,

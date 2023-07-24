@@ -13,7 +13,6 @@ const Purchase = () => {
   const navigate = useNavigate();
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const { state } = useLocation();
-  console.log(state)
 
   useEffect(() => {
     if(state === null) {
