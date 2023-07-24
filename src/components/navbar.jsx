@@ -5,7 +5,12 @@ import "../css/main.css";
 import { Care, Close, Email, Eye, Logo, Password } from "../assets/image";
 import { BiUserCircle } from "react-icons/bi";
 import validator from "validator";
-import { loginSuccess, getRefreshToken, loginFailure, setUserData } from "../store/features/auth-slice";
+import {
+  loginSuccess,
+  getRefreshToken,
+  loginFailure,
+  setUserData,
+} from "../store/features/auth-slice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -28,7 +33,7 @@ const Navbar = ({ scrollToHome }) => {
   const dispatch = useDispatch();
   const homeRef = useRef(null);
   const { isAuth, isError, data } = useSelector((state) => state.auth);
-  const {chooseMenu} = useSelector((state) => state.menu)
+  const { chooseMenu } = useSelector((state) => state.menu);
 
   const handleSignIn = async () => {
     if (isValidEmail) {
@@ -80,8 +85,8 @@ const Navbar = ({ scrollToHome }) => {
   };
 
   useEffect(() => {
-    dispatch(getRefreshToken())
-  },[])
+    dispatch(getRefreshToken());
+  }, []);
 
   return (
     <div className="flex bg-white w-full h-16 items-center">
@@ -108,7 +113,12 @@ const Navbar = ({ scrollToHome }) => {
             ) : null}
           </li>
           <li className="relative">
-            <Link onClick={() => isAuth ? null : window.my_modal_1.showModal()} to={isAuth ? "/chooseOffset" : null}>Offset</Link>
+            <Link
+              onClick={() => (isAuth ? null : window.my_modal_1.showModal())}
+              to={isAuth ? "/chooseOffset" : null}
+            >
+              Offset
+            </Link>
             {chooseMenu === "Offset" ? (
               <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] left-1 bottom-[-15px]"></div>
             ) : null}

@@ -13,50 +13,38 @@ const Purchase = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    if(state === null) {
-  		navigate("/")
+    if (state === null) {
+      navigate("/");
     }
-  })
+  });
 
   useEffect(() => {
-  	if(!isAuth){
-  		navigate("/")
-  	}
-  })
+    if (!isAuth) {
+      navigate("/");
+    }
+  });
 
-  const handleConfirm = async () =>{
+  const handleConfirm = async () => {
     window.my_modal_3.close();
-    const res = await axios.post("http://localhost:5001/carbon/purchase",{
-      offset:state.calCarbon,
-      id:data.id
-    })
-    navigate("/")
-  }
-
+    const res = await axios.post("http://localhost:5001/carbon/purchase", {
+      offset: state.calCarbon,
+      id: data.id,
+    });
+    navigate("/profile");
+  };
 
   return (
     <>
       <Navbar />
-      <div className="bg-[#F2F4F8] h-[93vh] text-black">
+      <div className="bg-[#F2F4F8] h-[867px] md:h-[760px] 2xl:h-[867px] text-black">
         <div className="p-20">
-          <div className="pl-[15vw] md:pl-[5vw] 2xl:w-[15vw]">
-            <div className="flex w-[35vw] items-center justify-between md:w-[45vw] font-bold">
-              <div className="flex w-[15vw] md:w-[25vw] 2xl:w-[15vw]  justify-around">
-                <div>Offset</div>
-                <div>
-                  <img src={ChevronRigth} alt="img" />
-                </div>
-                <div>Offset by retail cc</div>
-                <div>
-                  <img src={ChevronRigth} alt="img" />
-                </div>
-                <div>Purchase</div>
-              </div>
+          <div className="w-full">
+            <div className="flex items-center justify-center font-bold">
               <div className="font-bold text-[40px]">Purchase</div>
             </div>
           </div>
-          <div className="flex items-center justify-center h-[60vh] mt-10">
-            <div className="w-[70vw] h-[60vh] bg-white rounded-2xl flex p-20">
+          <div className="flex items-center justify-center h-[83vh]">
+            <div className="w-[70vw] h-[70vh] bg-white rounded-2xl flex p-20">
               <div className="w-[35vw]">
                 <div className="font-bold text-[20px]">Payment</div>
                 <div className="flex mt-3">
@@ -196,4 +184,3 @@ const Purchase = () => {
 };
 
 export default Purchase;
-

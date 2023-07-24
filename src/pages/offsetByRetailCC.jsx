@@ -10,6 +10,26 @@ const OffsetByRetailCC = () => {
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const [retailCC, setRetailCC] = useState("");
   const { isAuth, data } = useSelector((state) => state.auth);
+  const [showResultZone, setShowResultZone] = useState(false);
+
+  const handleCalculateClick = () => {
+    setShowResultZone(true);
+  };
+
+  let costOfOffset = 0;
+
+  if (selectedOffsetMethod === "retailCC") {
+    costOfOffset = retailCC * 1.5;
+  } else if (selectedOffsetMethod === "metricTons") {
+    costOfOffset = Math.ceil(retailCC * 1000 * 1.5);
+  }
+
+  let offsetValue;
+  if (selectedOffsetMethod === "retailCC") {
+    offsetValue = retailCC;
+  } else if (selectedOffsetMethod === "metricTons") {
+    offsetValue = retailCC ? retailCC * 1000 : "";
+  }
 
   const handleOffsetMethodChange = (method) => {
     setSelectedOffsetMethod(method);
@@ -18,22 +38,24 @@ const OffsetByRetailCC = () => {
 
   const handleRetailCCChange = (e) => {
     let input = e.target.value;
-    input = input.replace(/[^0-9.]/g, ""); // Remove non-numeric characters
+    const isMetricTons = selectedOffsetMethod === "metricTons";
 
-    // Ensure the input value is not greater than the maximum
-    let maxValue = 100000;
-    if (selectedOffsetMethod === "metricTons") {
-      maxValue = 100;
+    if (!isMetricTons) {
+      input = input.replace(/[^0-9]/g, "");
+    } else {
+      const parts = input.split(".");
+      input = parts[0] + (parts[1] ? "." + parts[1].replace(/\./g, "") : "");
     }
+
+    const maxValue = isMetricTons ? 100 : 100000;
     const parsedValue = parseFloat(input);
     const sanitizedInput = isNaN(parsedValue)
       ? ""
       : Math.min(parsedValue, maxValue).toString();
 
     setRetailCC(sanitizedInput);
+    setShowResultZone(false);
   };
-
-  const costOfOffset = Math.ceil(retailCC * 1.5)
 
   return (
     <Offset>
@@ -51,21 +73,12 @@ const OffsetByRetailCC = () => {
         `}
       </style>
       <div className="flex flex-col h-[867px] md:h-[760px] 2xl:h-[867px] text-black w-full p-20">
-        <div className="flex h-14 w-[55vw] md:w-[59vw] 2xl:w-[55vw] justify-between items-center">
-          <div className="pl-[10vw] flex text-[20px] md:text-[15px] 2xl:text-[20px] items-center justify-evenly text-[#767494]">
-            <Link to="/chooseOffset" className="mr-4">
-              Offset
-            </Link>
-            <div className="mr-4">
-              <img src={ChevronRigth} alt="picture" />
-            </div>
-            <div>Offset by retail cc</div>
-          </div>
+        <div className="flex h-14 w-[55vw] w-full justify-center items-center">
           <div className="text-[40px] font-bold">Offset by Retail CC</div>
         </div>
-        <div className="flex items-center justify-center h-full">
-          <div className="w-[70vw] h-[60vh] bg-[#FFFFFF] rounded-2xl p-20 flex justify-between ">
-            <div className="w-[35vw] h-full">
+        <div className="flex items-center justify-center h-full mb-[100px]">
+          <div className="w-[80vw] h-[60vh] bg-[#FFFFFF] rounded-2xl p-20 flex justify-between divide-x">
+            <div className="w-[35vw] h-full mr-[30px]">
               <div className="font-bold text-[20px]">
                 Select your offset method
               </div>
@@ -104,7 +117,7 @@ const OffsetByRetailCC = () => {
                 <div className="font-bold text-[20px]">
                   {selectedOffsetMethod === "retailCC"
                     ? "Enter the amount of Retail CC (max: 100,000)"
-                    : "Enter the amount of carbon that you want to offset (max: 100)"}
+                    : "Enter the amount of carbon that you want to offset (Max: 1000 tons)"}
                 </div>
                 <div className="mt-4">
                   <input
@@ -116,25 +129,28 @@ const OffsetByRetailCC = () => {
                     }
                     type="number"
                     max={selectedOffsetMethod === "retailCC" ? 100000 : 100}
-                    value={retailCC} // Bind the input value to the retailCC state variable
-                    onChange={handleRetailCCChange} // Handle the value change
+                    value={retailCC}
+                    onChange={handleRetailCCChange}
                   />
                 </div>
               </div>
 
               <div className=" flex items-center justify-center">
-                <button className="w-[35vw] h-[5vh] rounded-3xl bg-[#068758] hover:bg-[#046441] transition text-white">
+                <button
+                  className="w-[35vw] h-[5vh] rounded-3xl bg-[#068758] hover:bg-[#046441] transition text-white"
+                  onClick={handleCalculateClick}
+                >
                   Calculate
                 </button>
               </div>
             </div>
 
-            <hr className="w-[1px] h-[45vh] bg-[#BCBACD] mr-16 ml-16" />
-            <div className="w-[35vw] h-full">
+            <div className="w-[35vw] h-full pl-[30px]">
               <div className="font-bold text-[20px]">Your Carbon Footprint</div>
               <div className="mt-3">
                 <img className="ml-4" src={Co2} alt="Co2" />
               </div>
+
               <div className=" mt-5 h-[19vh]">
                 <div className="text-[20px] ">Offset by Retail CC</div>
                 <div className="flex justify-between mt-2 text-[#767494]">
@@ -144,29 +160,39 @@ const OffsetByRetailCC = () => {
                     <div className="mt-8 font-bold">Cost of Offset</div>
                   </div>
 
-                  {/* amount */}
-                  <div>
-                    {retailCC && (
-                      <div className="text-sm text-[#767494] mt-2">
-                        {retailCC}
+                  {showResultZone && (
+                    <div>
+                      {/* amount */}
+                      <div>
+                        {offsetValue && (
+                          <div className="text-sm text-[#767494] mt-2">
+                            {offsetValue} coin
+                          </div>
+                        )}
                       </div>
-                    )}
-                    <div
-                      style={{ marginTop: retailCC ? null : "55px" }}
-                      className="mt-8 font-bold"
-                    >
-                      {costOfOffset}
+
+                      {/* result zone */}
+                      <div
+                        style={{ marginTop: retailCC ? null : "55px" }}
+                        className="mt-8 font-bold"
+                      >
+                        <hr className="w-[24vw] absolute top-9 bg-[#BCBACD]" />
+                        <div>{costOfOffset} ฿</div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
               <div className=" flex items-center justify-center mt-1">
                 {costOfOffset ? (
-                    <Link to="/purchase" state={{ calCarbon: costOfOffset }}>
-                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
-                        Offset now
-                      </button>
-                    </Link>
+                  <Link
+                    to="/purchase"
+                    state={{ calCarbon: costOfOffset, coin: offsetValue }}
+                  >
+                    <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                      Offset now
+                    </button>
+                  </Link>
                 ) : (
                   <button className="w-full h-[5vh] rounded-3xl bg-[#FFC93C] hover:bg-[#cfa230] transition text-black">
                     Offset Now

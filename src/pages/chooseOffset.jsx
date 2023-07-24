@@ -11,7 +11,7 @@ const ChooseOffset = ({ setOffsetState }) => {
   const { isAuth } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const checkChooseMenu = () => {
     if (chooseMenu || chooseMenu !== "Offset") {
@@ -20,15 +20,14 @@ const ChooseOffset = ({ setOffsetState }) => {
   };
 
   useEffect(() => {
-    if(!isAuth) {
-      navigate("/")
+    if (!isAuth) {
+      navigate("/");
     }
-  })
+  });
 
   useEffect(() => {
     checkChooseMenu();
   });
-
 
   return (
     <Offset>
