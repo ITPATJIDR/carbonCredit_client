@@ -15,21 +15,12 @@ import Moblie from "./pages/moblie";
 import "../src/css/main.css";
 import CertificateLists from "./pages/certificateLists";
 import ApiPage from "./pages/apiPage";
+import PublicProfile from "./pages/publicProfile";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
-  },
-  {
-    path: "/letsponzive",
-    element: (
-      <LetSponZive
-        component1={<Web />}
-        component2={<Moblie />}
-        onWidth={1200}
-      />
-    ),
   },
   {
     path: "/chooseOffset",
@@ -46,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/publicprofile",
+    element: <PublicProfile />,
   },
   {
     path: "/purchase",

@@ -34,6 +34,8 @@ const Purchase = () => {
     })
   }
 
+  console.log(state)
+
   return (
     <>
       <Navbar />
