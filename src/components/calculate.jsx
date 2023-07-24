@@ -7,6 +7,7 @@ import { MdOutlineFastfood } from "react-icons/md";
 import { BiSolidPlaneTakeOff } from "react-icons/bi";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
 const Calculate = () => {
   const [amount, setAmount] = useState("");
@@ -90,6 +91,8 @@ const Calculate = () => {
 
   const coin = Math.ceil(calResult.data?.attributes.carbon_kg)
 
+
+  console.log(calResult >= 0)
 
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
@@ -227,9 +230,7 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#8D8BA7]">
-                        {calResult.data === undefined ?
-                         calResult 
-                        :calResult.data?.attributes.carbon_kg }
+                        {calResult?.data === undefined ?  calResult >= 0 ? calResult : null :calResult.data?.attributes.carbon_kg }
                       </p>
                     </div>
                   </div>
@@ -241,7 +242,7 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult.data === undefined ? calResult : calCarbon ? coin : null }
+                        {calResult?.data === undefined ? calResult >= 0 ? calResult : calCarbon : coin }
                       </p>
                     </div>
                   </div>
@@ -253,8 +254,7 @@ const Calculate = () => {
                     </div>
                     <div>
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
-                        {calResult.data === undefined ? calResult : calCarbon ? calCarbon : null }
-                        {"\u00A0"} ฿
+                        {calResult?.data === undefined ? calResult >= 0 ? calResult : calCarbon : calCarbon } {"\u00A0"} ฿
                       </p>
                     </div>
                   </div>
