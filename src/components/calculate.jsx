@@ -279,7 +279,10 @@ const Calculate = () => {
                     {calCarbon || calCarbonf ? (
                       <Link
                         to="/purchase"
-                        state={{ calCarbon: calCarbon ? calCarbon : calCarbonf , coin: coin ? coin : coinf }}
+                        state={{
+                          calCarbon: calCarbon ? calCarbon : calCarbonf,
+                          coin: coin ? coin : coinf,
+                        }}
                       >
                         <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
                           Offset now

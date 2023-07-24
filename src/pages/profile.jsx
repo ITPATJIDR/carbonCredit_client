@@ -102,16 +102,20 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
-    const res = await axios.post("http://localhost:5001/user/updateProfile", {
-      name:newName,
-      surname: newSurName,
-      email: newEmail,
-      id: data.id
-    }, {
-      withCredentials: true,
-    });
-    window.my_modal_4.close()
-  }
+    const res = await axios.post(
+      "http://localhost:5001/user/updateProfile",
+      {
+        name: newName,
+        surname: newSurName,
+        email: newEmail,
+        id: data.id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    window.my_modal_4.close();
+  };
 
   useEffect(() => {
     if (!isAuth) {
@@ -151,8 +155,11 @@ const Profile = () => {
                     {data.coin ? data.coin : "0"} Coin
                   </p>
                 </div>
+                {/* plus sign */}
                 <div className="mr-[17px]">
-                  <AiOutlinePlus size={30} />
+                  <Link to="/chooseOffset">
+                    <AiOutlinePlus size={30} />
+                  </Link>
                 </div>
               </div>
               {/* card 3 */}
@@ -181,9 +188,7 @@ const Profile = () => {
                 </div>
                 <div className="divider"></div>
                 <Link to="/Api">
-                  <div
-                    className="mx-[31px] mt-[3px] flex flex-row items-center"
-                  >
+                  <div className="mx-[31px] mt-[3px] flex flex-row items-center">
                     <div className="mr-[11px]">
                       <SlSettings size={22} />
                     </div>

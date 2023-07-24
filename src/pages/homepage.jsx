@@ -4,7 +4,7 @@ import "../css/homepage.css";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Calculate from "../components/calculate";
 import StatCarbon from "../components/statCarbon";
 import StatTree from "../components/statTree";
@@ -68,6 +68,30 @@ const Homepage = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleStartNow = () => {
+    navigate("/chooseOffset");
+  };
+
+  const part3Ref = useRef(null);
+  useEffect(() => {
+    checkChooseMenu();
+
+    if (location.hash === "#part3") {
+      scrollToPart3();
+    }
+  }, []);
+
+  const scrollToPart3 = () => {
+    const part3Element = part3Ref.current;
+    if (part3Element) {
+      part3Element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="bg-container">
       <Navbar scrollToHome={scrollToHome} />
@@ -105,13 +129,19 @@ const Homepage = () => {
               </div>
 
               <div className="flex items-center mt-8 ">
-                <button className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none">
+                <button
+                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none"
+                  onClick={handleStartNow}
+                >
                   Start now
                 </button>
                 <div>
                   <p className="px-8">or</p>
                 </div>
-                <button className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFFFFF] text-[#068758] border-slate-200">
+                <button
+                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFFFFF] text-[#068758] border-slate-200"
+                  onClick={scrollToPart3}
+                >
                   Read more
                 </button>
               </div>
@@ -135,7 +165,10 @@ const Homepage = () => {
           </div>
         </section>
         {/* part 3 */}
-        <section className="md:w-[98.9vw] h-[90vh] flex justify-between mb-[3rem]">
+        <section
+          ref={part3Ref}
+          className="md:w-[98.9vw] h-[90vh] flex justify-between mb-[3rem]"
+        >
           <div className="flex-col">
             <p className="ml-[10rem] my-[3rem] font-bold text-black text-[30px]">
               Our Campaign
