@@ -40,7 +40,7 @@ import {
   Image28,
   Image29,
 } from "../assets/image";
-import axios from "axios"
+import axios from "axios";
 
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
@@ -50,7 +50,7 @@ const Homepage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const part3Ref = useRef(null);
-  const [ccBank, setCCBank] = useState({})
+  const [ccBank, setCCBank] = useState({});
 
   const checkChooseMenu = () => {
     if (chooseMenu || chooseMenu !== "Home") {
@@ -69,10 +69,10 @@ const Homepage = () => {
   };
 
   const handleStartNow = () => {
-    if(isAuth){
+    if (isAuth) {
       navigate("/chooseOffset");
-    }else{
-      window.my_modal_1.showModal()
+    } else {
+      window.my_modal_1.showModal();
     }
   };
 
@@ -85,18 +85,18 @@ const Homepage = () => {
     }
   };
 
-  const getCCBank = async () =>{
-    const res = await axios.get("http://localhost:5001/carbon/getCCBank")
-    setCCBank(res.data.data[0])
-  }
+  const getCCBank = async () => {
+    const res = await axios.get("http://localhost:5001/carbon/getCCBank");
+    setCCBank(res.data.data[0]);
+  };
 
   useEffect(() => {
     checkChooseMenu();
   });
 
-  useEffect(() =>{
-    getCCBank()
-  },[])
+  useEffect(() => {
+    getCCBank();
+  }, []);
 
   useEffect(() => {
     checkChooseMenu();
@@ -106,18 +106,16 @@ const Homepage = () => {
     }
   }, []);
 
-
   return (
     <div className="bg-container">
       <Navbar scrollToHome={scrollToHome} />
-      <div className="flex flex-col w-[98vw] h-[4900px] ">
-        <section className="w-[98vw] h-[90vh] flex justify-center">
-          <div className="w-full flex items-center justify-evenly">
+      <div className="flex flex-col w-[98vw] h-[4900px]">
+        {/* part 1 */}
+        <section className="w-[98vw] h-[90vh] flex justify-between">
+          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 flex items-center ml-[180px]">
             <div className="mb-[10vh]">
               <div>
-                <p className="text-[30px] text-black font-bold">
-                  Welcome to
-                </p>
+                <p className="text-[30px] text-black font-bold">Welcome to</p>
               </div>
 
               <div>
@@ -144,7 +142,7 @@ const Homepage = () => {
 
               <div className="flex items-center mt-8 ">
                 <button
-                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none"
+                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none hover:bg-[#79C258]"
                   onClick={handleStartNow}
                 >
                   Start now
@@ -153,7 +151,7 @@ const Homepage = () => {
                   <p className="px-8">or</p>
                 </div>
                 <button
-                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFFFFF] text-[#068758] border-slate-200"
+                  className="w-[8vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFFFFF] text-[#068758] border-slate-200 hover:bg-[#B5D653] hover:border-transparent"
                   onClick={scrollToPart3}
                 >
                   Read more
@@ -161,8 +159,8 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <div>
-            <img src={homebg} className="w-[70vw] h-[70vh]" alt="Home Page" />
+          <div className="bg-img1">
+            <img src={homebg} alt="Home Page" />
           </div>
         </section>
         {/* part 2 */}
@@ -172,9 +170,9 @@ const Homepage = () => {
         >
           <div className="w-[900px] flex flex-row justify-between">
             {/* cloud */}
-            <StatCarbon data={{coin : (1000000000 - ccBank?.cc_main_credit)}} />
+            <StatCarbon data={{ coin: 1000000000 - ccBank?.cc_main_credit }} />
             {/* pine tree */}
-            <StatTree data={{growth_a_tree: ccBank?.growth_a_tree_main}} />
+            <StatTree data={{ growth_a_tree: ccBank?.growth_a_tree_main }} />
           </div>
         </section>
         {/* part 3 */}
