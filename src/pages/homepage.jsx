@@ -110,8 +110,9 @@ const Homepage = () => {
   return (
     <div className="bg-container">
       <Navbar scrollToHome={scrollToHome} />
-      <div className="flex flex-col w-[98vw] h-[4900px] ">
+      <div className="flex flex-col w-[99vw] h-[4900px]">
         <section className="w-[98vw] h-[90vh] flex justify-center">
+
           <div className="w-full flex items-center justify-evenly">
             <div className="mb-[10vh]">
               <div>
@@ -161,9 +162,11 @@ const Homepage = () => {
               </div>
             </div>
           </div>
+
           <div>
             <img src={homebg} className="w-[70vw] h-[70vh]" alt="Home Page" />
           </div>
+
         </section>
         {/* part 2 */}
         <section

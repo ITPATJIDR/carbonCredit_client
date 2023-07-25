@@ -16,7 +16,7 @@
     padding-top: 4rem;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -100px;
     pointer-events: none;
 }
 
