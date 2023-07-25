@@ -27,7 +27,7 @@ const Purchase = () => {
   const handleConfirm = async () => {
     window.my_modal_3.close();
     const res = await axios.post("http://localhost:5001/carbon/purchase", {
-      offset: Number(state.calResult),
+      offset: state.calResult === undefined ? state.calCarbon  : Number(state.calResult),
       id: data.id,
     });
     navigate("/profile");
