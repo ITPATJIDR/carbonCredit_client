@@ -40,15 +40,19 @@ const Calculate = () => {
   };
 
   const handleCalculate = () => {
-    if (selectedVehicleMenuItem || selectedFoodMenuItem) {
-      if (amount) {
-        setShowOffsetZone(true);
-        if (selectedOffsetMethod === "travel") {
-          handleCalculateVehicle();
-        } else if (selectedOffsetMethod === "food") {
-          handleCalculateFood();
+    if(isAuth) {
+      if (selectedVehicleMenuItem || selectedFoodMenuItem) {
+        if (amount) {
+          setShowOffsetZone(true);
+          if (selectedOffsetMethod === "travel") {
+            handleCalculateVehicle();
+          } else if (selectedOffsetMethod === "food") {
+            handleCalculateFood();
+          }
         }
       }
+    }else{
+      window.my_modal_1.showModal()
     }
   };
 

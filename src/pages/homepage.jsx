@@ -44,6 +44,7 @@ import axios from "axios"
 
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
+  const { isAuth } = useSelector((state) => state.auth);
   const homeRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -68,7 +69,11 @@ const Homepage = () => {
   };
 
   const handleStartNow = () => {
-    navigate("/chooseOffset");
+    if(isAuth){
+      navigate("/chooseOffset");
+    }else{
+      window.my_modal_1.showModal()
+    }
   };
 
   const scrollToPart3 = () => {
@@ -105,19 +110,18 @@ const Homepage = () => {
   return (
     <div className="bg-container">
       <Navbar scrollToHome={scrollToHome} />
-      <div className="flex flex-col w-[98vw] h-[4900px]">
-        {/* part 1 */}
-        <section className="w-[98vw] h-[90vh] flex justify-between">
-          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 flex items-center justify-center">
+      <div className="flex flex-col w-[98vw] h-[4900px] ">
+        <section className="w-[98vw] h-[90vh] flex justify-center">
+          <div className="w-full flex items-center justify-evenly">
             <div className="mb-[10vh]">
               <div>
-                <p className="text-1lg sm:text-3xl text-black font-bold">
+                <p className="text-[30px] text-black font-bold">
                   Welcome to
                 </p>
               </div>
 
               <div>
-                <h1 className="text-3xl sm:text-8xl font-bold leading-normal text-black">
+                <h1 className="text-8xl font-bold leading-normal text-black">
                   Greenie
                 </h1>
               </div>
@@ -157,14 +161,13 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-
-          <div className="bg-img1">
-            <img src={homebg} alt="Home Page" />
+          <div>
+            <img src={homebg} className="w-[70vw] h-[70vh]" alt="Home Page" />
           </div>
         </section>
         {/* part 2 */}
         <section
-          className="w-[98vw] h-[40vh] flex justify-center"
+          className="w-[98vw] h-[40vh] flex justify-center mt-10"
           style={{ marginBottom: "2rem" }}
         >
           <div className="w-[900px] flex flex-row justify-between">

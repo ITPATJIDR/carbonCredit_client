@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {},
+    screens: {
+      sm:"554px"
+    }
   },
   plugins: [require("daisyui")],
 }
