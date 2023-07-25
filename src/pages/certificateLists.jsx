@@ -43,12 +43,6 @@ const CertificateLists = () => {
     }
   };
 
-  // useEffect(() => {
-  // 	if(!isAuth){
-  // 		navigate("/")
-  // 	}
-  // })
-
   return (
     <>
       <Navbar />
@@ -68,19 +62,20 @@ const CertificateLists = () => {
             </div>
           </div>
           <div className="flex items-center justify-center h-[60vh] mt-10">
-            <div className="w-[70vw] h-[60vh]  bg-white rounded-2xl flex p-20">
-              <div className="w-[65vw] h-[50vh] overflow-y-scroll">
+            <div className="h-[55vh] items-center justify-center bg-white rounded-2xl flex">
+              {/* scroll */}
+              <div className="w-[60vw] h-[55vh] overflow-y-scroll">
                 {data?.certificateLists
                   ? data.certificateLists.map((item, index) => {
                       const certName = item.cert_path.split("/")[1];
                       return (
                         <div
-                          className=" w-[60vw] h-[20vh] m-5 border-b-2 border-[#D4D2E3] flex justify-between items-center p-10"
+                          className="w-[55vw] h-[20vh] m-5 border-b-2 border-[#D4D2E3] flex justify-between items-center p-10"
                           key={index}
                         >
-                          <div className="flex w-[15vw] justify-between items-center">
-                            <div className="w-[5vw] h-[10vh] bg-[#DEEFED] rounded-2xl flex items-center justify-center ">
-                              <img src={Cert} alt="Cert" />
+                          <div className="flex w-[20vw] justify-between items-center">
+                            <div className="w-[5vw] h-[10vh] bg-[#DEEFED] rounded-[10px] flex items-center justify-center ">
+                              <img src={Cert} className="w-[40px]" alt="Cert" />
                             </div>
                             <div>
                               <div className="font-bold text-[20px]">
@@ -91,16 +86,16 @@ const CertificateLists = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="flex w-[15vw] justify-between">
+                          <div className="flex w-[16vw] justify-between">
                             <div
                               onClick={() =>
                                 handleDownload(item.cert_path, certName)
                               }
-                              className="w-[6vw] h-[6vh] border-2 rounded-3xl bg-white hover:bg-[#DEEFED] transition flex items-center justify-center border-[#767494]"
+                              className="w-[7vw] h-[6vh] border-2 rounded-3xl bg-white hover:bg-[#DEEFED] transition flex items-center justify-center border-[#767494]"
                             >
                               Download
                             </div>
-                            <div className="w-[6vw] h-[6vh] bg-[#068758] hover:bg-[#055538] transition text-white rounded-3xl flex items-center justify-center">
+                            <div className="w-[7vw] h-[6vh] bg-[#068758] hover:bg-[#055538] transition text-white rounded-3xl flex items-center justify-center">
                               Tax Invoice
                             </div>
                           </div>

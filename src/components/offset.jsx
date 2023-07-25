@@ -1,7 +1,7 @@
 import Navbar from "./navbar";
 import { Image28Filp, Image24 } from "../assets/image";
 
-const Offset = ({children}) => {
+const Offset = ({ children }) => {
   return (
     <div className="relative bg-[#F2F4F8]">
       <Navbar />
@@ -12,9 +12,9 @@ const Offset = ({children}) => {
         alt="image28"
       />
       <img
-        className="absolute bottom-0 right-0 w-[340px] "
+        className="absolute bottom-0 right-7 w-[235px] "
         src={Image24}
-        alt="image28"
+        alt="image24"
       />
     </div>
   );

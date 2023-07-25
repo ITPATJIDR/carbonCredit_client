@@ -30,17 +30,26 @@ const Calculate = () => {
       setFormattedAmount("");
     } else if (isValidInput) {
       const parsedAmount = parseFloat(input);
-      if (parsedAmount <= 10000) {
-        setAmount(parsedAmount);
-        // Format the amount with two decimal places
-        const formatted = parsedAmount.toFixed(2);
-        setFormattedAmount(formatted);
+      if (selectedOffsetMethod === "food") {
+        if (parsedAmount <= 10000) {
+          setAmount(parsedAmount);
+          // Format the amount with two decimal places
+          const formatted = parsedAmount.toFixed(2);
+          setFormattedAmount(formatted);
+        }
+      } else if (selectedOffsetMethod === "travel") {
+        if (parsedAmount <= 100000) {
+          setAmount(parsedAmount);
+          // Format the amount with two decimal places
+          const formatted = parsedAmount.toFixed(2);
+          setFormattedAmount(formatted);
+        }
       }
     }
   };
 
   const handleCalculate = () => {
-    if(isAuth) {
+    if (isAuth) {
       if (selectedVehicleMenuItem || selectedFoodMenuItem) {
         if (amount) {
           setShowOffsetZone(true);
@@ -51,8 +60,8 @@ const Calculate = () => {
           }
         }
       }
-    }else{
-      window.my_modal_1.showModal()
+    } else {
+      window.my_modal_1.showModal();
     }
   };
 
@@ -99,7 +108,7 @@ const Calculate = () => {
   const coinf = Math.ceil(calResult);
 
   return (
-    <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
+    <div className="card w-[55vw] h-[65vh] bg-white shadow-xl my-[3rem] z-10">
       <div className="card-body">
         <div className="flex flex-row divide-x">
           {/* calculate zone*/}
@@ -160,13 +169,28 @@ const Calculate = () => {
             {/* Amount Input */}
             <div className="mt-4 mb-2">
               <p className="text-black text-[15px] font-bold font-medium">
-                {selectedOffsetMethod === "food"
-                  ? "Enter amount of your food (Maximum 10k)"
-                  : selectedOffsetMethod === "travel"
-                  ? "Enter distance of your travel"
-                  : ""}
+                {selectedOffsetMethod === "food" ? (
+                  <>
+                    <div className="block">Enter your food amount</div>
+                    <div className="text-gray-500 text-[12px]">
+                      (Maximum 10k)
+                    </div>
+                  </>
+                ) : selectedOffsetMethod === "travel" ? (
+                  <>
+                    <div className="block">
+                      Enter distance of your travel (In kilometre)
+                    </div>
+                    <div className="text-gray-500 text-[12px]">
+                      (Maximum 100k)
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
               </p>
             </div>
+
             <div className="relative mr-10">
               <input
                 value={amount}
@@ -175,9 +199,9 @@ const Calculate = () => {
                 placeholder="Ex. 1, 2, 3,..."
               />
             </div>
-            <div className="mt-[4rem]">
+            <div className="mt-[3.1rem]">
               <button
-                className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none"
+                className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#068758] text-white border-none hover:bg-[#3DAD5C]"
                 onClick={handleCalculate}
               >
                 Calculate
@@ -282,15 +306,18 @@ const Calculate = () => {
                         state={{
                           calCarbon: calCarbon ? calCarbon : calCarbonf,
                           coin: coin ? coin : coinf,
-                          calResult: calResult?.data === undefined ? calResult : calResult.data?.attributes.carbon_kg
+                          calResult:
+                            calResult?.data === undefined
+                              ? calResult
+                              : calResult.data?.attributes.carbon_kg,
                         }}
                       >
-                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                        <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none hover:bg-[#F4B100]">
                           Offset now
                         </button>
                       </Link>
                     ) : (
-                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
+                      <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none hover:bg-[#F4B100]">
                         Offset now
                       </button>
                     )}

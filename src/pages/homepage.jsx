@@ -165,7 +165,7 @@ const Homepage = () => {
         </section>
         {/* part 2 */}
         <section
-          className="w-[98vw] h-[40vh] flex justify-center mt-10"
+          className="w-[98vw] h-[50vh] flex justify-center mt-10"
           style={{ marginBottom: "2rem" }}
         >
           <div className="w-[900px] flex flex-row justify-between">
@@ -178,7 +178,7 @@ const Homepage = () => {
         {/* part 3 */}
         <section
           ref={part3Ref}
-          className="md:w-[98.9vw] h-[90vh] flex justify-between mb-[3rem]"
+          className="w-[98.9vw] h-[100vh] flex justify-between mb-[3rem]"
         >
           <div className="flex-col">
             <p className="ml-[10rem] my-[3rem] font-bold text-black text-[30px]">
@@ -233,7 +233,7 @@ const Homepage = () => {
           </div>
         </section>
         {/* part 4 */}
-        <section className="w-[98vw] h-[95vh] flex flex-col justify-center items-center">
+        <section className="w-[98vw] h-[100vh] flex flex-col justify-center items-center">
           <div>
             <p className="text-black text-[30px] font-bold">
               How do carbon offsets work?
@@ -241,7 +241,7 @@ const Homepage = () => {
           </div>
           <div className="flex flex-row mb-[4rem]">
             {/* calculator */}
-            <div className="card w-[50vh] h-[55vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={calculate}
@@ -263,7 +263,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* money */}
-            <div className="card w-[50vh] h-[55vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
+            <div className="card w-[50vh] h-[60vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={money}
@@ -280,12 +280,12 @@ const Homepage = () => {
                   offsets,supporting certified projects that actively reduce
                   greenhouse gas emissions.Choose initiatives aligned with your
                   values and sustainability goals, making a meaningful
-                  investment in a cleaner, greener future.
+                  investment in a greener future.
                 </p>
               </div>
             </div>
             {/* tree */}
-            <div className="card w-[50vh] h-[55vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={manyTree}
@@ -302,14 +302,14 @@ const Homepage = () => {
                   accessing real-time data and updates on their environmental
                   impact.Witness firsthand the positive change your
                   contributions are making, reinforcing your commitment to
-                  sustainable practices and climate action.
+                  sustainable practices.
                 </p>
               </div>
             </div>
           </div>
         </section>
         {/* part 5 */}
-        <section className="w-[98vw] h-[80vh] flex flex-col justify-center items-center mb-[3rem]">
+        <section className="w-[98vw] h-[100vh] flex flex-col justify-center items-center mb-[100px]">
           <div>
             <p className="text-black text-[30px] font-bold">
               Calculate your Emissions
@@ -318,7 +318,7 @@ const Homepage = () => {
           <div className="relative">
             <Calculate />
             <img
-              className="absolute w-[20vw] top-[230px] right-[-200px]"
+              className="absolute w-[15vw] top-[180px] right-[-120px]"
               src={Image24}
               alt="image24"
             />
@@ -328,12 +328,12 @@ const Homepage = () => {
               alt="image25"
             />
             <img
-              className="absolute w-[90px] top-[80px] right-[-180px]"
+              className="absolute w-[115px] top-[-185px] right-[-10px]"
               src={Image26}
               alt="image26"
             />
             <img
-              className="absolute top-[-85px] right-[-270px] "
+              className="absolute w-[100px] top-[-85px] right-[-250px] "
               src={Image27}
               alt="image27"
             />
@@ -359,17 +359,17 @@ const Homepage = () => {
           </div>
           <div className="relative">
             <img
-              className="absolute w-[20vw] top-[125px] left-[-180px]"
+              className="absolute w-[20vw] top-[120px] left-[-190px]"
               src={leaf1}
               alt="leaf1"
             />
             <img
-              className="absolute w-[20vw] top-[150px] right-[-170px]"
+              className="absolute w-[20vw] top-[150px] right-[-185px]"
               src={leaf2}
               alt="leaf2"
             />
             <div className="flex flex-row">
-              <div className="card w-[55vw] h-[50vh] bg-white shadow-xl my-[3rem]">
+              <div className="card w-[55vw] h-[55vh] bg-white shadow-xl my-[3rem]">
                 <div className="card-body justify-center">
                   <div className="flex flex-row justify-center">
                     {/* 1 */}

@@ -168,7 +168,7 @@ const Navbar = ({ scrollToHome }) => {
               </button>
             </div>
             <div className="flex items-center flex-col justify-center mt-10">
-              <img src={Logo} alt="logo" />
+              <img src={Logo} alt="logo" className="" />
               {isError ? (
                 <div className="text-[#FF002F] flex items-center mt-2">
                   <img src={Care} alt="Care" />
@@ -240,7 +240,7 @@ const Navbar = ({ scrollToHome }) => {
                       Sign In
                     </button>
                   </div>
-                  <div className="w-full flex justify-between mt-4">
+                  <div className="w-full flex justify-between mt-6">
                     <div>Forgot Password ?</div>
                     <div
                       onClick={() => (
