@@ -3,7 +3,7 @@ import "../css/main.css";
 import "../css/homepage.css";
 import { changeMenu } from "../store/features/menu-slice";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Calculate from "../components/calculate";
 import StatCarbon from "../components/statCarbon";
@@ -40,23 +40,22 @@ import {
   Image28,
   Image29,
 } from "../assets/image";
+import axios from "axios"
 
 const Homepage = () => {
   const { chooseMenu } = useSelector((state) => state.menu);
   const homeRef = useRef(null);
   const location = useLocation();
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const part3Ref = useRef(null);
+  const [ccBank, setCCBank] = useState({})
 
   const checkChooseMenu = () => {
     if (chooseMenu || chooseMenu !== "Home") {
       dispatch(changeMenu("Home"));
     }
   };
-
-  useEffect(() => {
-    checkChooseMenu();
-  });
 
   const scrollToHome = () => {
     const homeElement = homeRef.current;
@@ -68,20 +67,9 @@ const Homepage = () => {
     }
   };
 
-  const navigate = useNavigate();
-
   const handleStartNow = () => {
     navigate("/chooseOffset");
   };
-
-  const part3Ref = useRef(null);
-  useEffect(() => {
-    checkChooseMenu();
-
-    if (location.hash === "#part3") {
-      scrollToPart3();
-    }
-  }, []);
 
   const scrollToPart3 = () => {
     const part3Element = part3Ref.current;
@@ -91,6 +79,30 @@ const Homepage = () => {
       });
     }
   };
+
+  const getCCBank = async () =>{
+    const res = await axios.get("http://localhost:5001/carbon/getCCBank")
+    setCCBank(res.data.data[0])
+  }
+
+  console.log(ccBank)
+
+  useEffect(() => {
+    checkChooseMenu();
+  });
+
+  useEffect(() =>{
+    getCCBank()
+  },[])
+
+  useEffect(() => {
+    checkChooseMenu();
+
+    if (location.hash === "#part3") {
+      scrollToPart3();
+    }
+  }, []);
+
 
   return (
     <div className="bg-container">
@@ -159,9 +171,9 @@ const Homepage = () => {
         >
           <div className="w-[900px] flex flex-row justify-between">
             {/* cloud */}
-            <StatCarbon />
+            <StatCarbon data={{coin : (1000000000 - ccBank?.cc_main_credit)}} />
             {/* pine tree */}
-            <StatTree />
+            <StatTree data={{growth_a_tree: ccBank?.growth_a_tree_main}} />
           </div>
         </section>
         {/* part 3 */}
