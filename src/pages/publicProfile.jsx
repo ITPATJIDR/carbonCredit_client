@@ -16,7 +16,6 @@ import {
 const PublicProfile = () => {
 
   const { tree } = useParams();
-  console.log(typeof tree)
 
   const getTree = () => {
     if (Number(tree) === 1) {

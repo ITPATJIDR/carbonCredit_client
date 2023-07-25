@@ -37,6 +37,7 @@ const Profile = () => {
   const [newSurName, setSurName] = useState(data.surname);
   const [newEmail, setEmail] = useState(data.email);
 
+
   const test = () => {
     if (data?.coin >= 1 && data?.coin < 49) {
       return {

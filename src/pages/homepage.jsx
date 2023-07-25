@@ -85,8 +85,6 @@ const Homepage = () => {
     setCCBank(res.data.data[0])
   }
 
-  console.log(ccBank)
-
   useEffect(() => {
     checkChooseMenu();
   });

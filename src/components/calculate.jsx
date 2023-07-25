@@ -94,10 +94,6 @@ const Calculate = () => {
   const calCarbonf = Math.ceil(calResult) * 1.5;
   const coinf = Math.ceil(calResult);
 
-  console.log(calResult);
-  console.log("cost of offset", calCarbonf);
-  console.log("coin", coinf);
-
   return (
     <div className="card w-[55vw] h-[60vh] bg-white shadow-xl my-[3rem] z-10">
       <div className="card-body">
@@ -282,6 +278,7 @@ const Calculate = () => {
                         state={{
                           calCarbon: calCarbon ? calCarbon : calCarbonf,
                           coin: coin ? coin : coinf,
+                          calResult: calResult?.data === undefined ? calResult : calResult.data?.attributes.carbon_kg
                         }}
                       >
                         <button className="w-[23vw] btn h-[4vh] capitalize rounded-3xl bg-[#FFC93C] text-black border-none">
