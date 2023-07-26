@@ -276,8 +276,12 @@ const Calculate = () => {
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
                         {calResult?.data === undefined
                           ? calResult >= 0
-                            ? coinf
-                            : calCarbon
+                            ? coinf >= 0
+                              ? coinf
+                              : null
+                            : calCarbon >= 0
+                            ? calCarbon
+                            : null
                           : coin}
                       </p>
                     </div>
@@ -292,8 +296,12 @@ const Calculate = () => {
                       <p className="text-black text-[15px] font-bold font-medium text-[#5D5C71]">
                         {calResult?.data === undefined
                           ? calResult >= 0
-                            ? calCarbonf
-                            : calCarbon
+                            ? calCarbonf >= 0
+                              ? calCarbonf
+                              : null
+                            : calCarbon >= 0
+                            ? calCarbon
+                            : null
                           : calCarbon}{" "}
                         {"\u00A0"} ฿
                       </p>
