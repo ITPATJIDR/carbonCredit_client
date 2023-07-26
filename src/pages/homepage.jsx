@@ -105,6 +105,7 @@ const Homepage = () => {
       scrollToPart3();
     }
   }, []);
+  console.log(ccBank);
 
   return (
     <div className="bg-container">
@@ -170,7 +171,7 @@ const Homepage = () => {
         >
           <div className="w-[900px] flex flex-row justify-between">
             {/* cloud */}
-            <StatCarbon data={{ coin: 1000000000 - ccBank?.cc_main_credit }} />
+            <StatCarbon data={{ compensate_CC: ccBank?.compensate_CC_main }} />
             {/* pine tree */}
             <StatTree data={{ growth_a_tree: ccBank?.growth_a_tree_main }} />
           </div>

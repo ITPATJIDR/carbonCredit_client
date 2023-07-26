@@ -11,6 +11,7 @@ const Purchase = () => {
   const navigate = useNavigate();
   const [selectedOffsetMethod, setSelectedOffsetMethod] = useState("retailCC");
   const { state } = useLocation();
+  console.log(state);
 
   useEffect(() => {
     if (state === null) {
@@ -39,7 +40,7 @@ const Purchase = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[#F2F4F8] h-[680px] w-full text-black">
+      <div className="bg-[#F2F4F8] h-[95vh] w-full text-black">
         <div>
           <div className="flex items-center justify-center font-bold">
             <div className="font-bold text-[40px] mt-[40px]">Purchase</div>
