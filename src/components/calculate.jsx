@@ -74,7 +74,7 @@ const Calculate = () => {
   };
 
   const handleCalculateVehicle = async () => {
-    const res = await axios.post("http://localhost:5001/carbon/calVehicle", {
+    const res = await axios.post("https://carboncredit-api.azurewebsites.net/carbon/calVehicle", {
       distance_value: amount,
       vehicle_model_id: vehicleData.data.id,
     });
@@ -82,7 +82,7 @@ const Calculate = () => {
   };
 
   const handleCalculateFood = async () => {
-    const res = await axios.post("http://localhost:5001/carbon/calFood", {
+    const res = await axios.post("https://carboncredit-api.azurewebsites.net/carbon/calFood", {
       food_amt: amount,
       food_carbon: foodData,
     });

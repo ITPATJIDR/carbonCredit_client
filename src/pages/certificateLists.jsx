@@ -16,7 +16,7 @@ const CertificateLists = () => {
   const handleDownload = async (certPath, filename) => {
     try {
       const response = await axios.post(
-        "http://localhost:5001/carbon/downloadCertificate",
+        "https://carboncredit-api.azurewebsites.net/carbon/downloadCertificate",
         { cert_path: certPath },
         { responseType: "blob" }
       );

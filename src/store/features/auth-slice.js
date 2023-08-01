@@ -31,7 +31,7 @@ export const { loginSuccess, logoutSuccess, loginFailure, setUserData } = authSl
 
 export const getRefreshToken = () => async (dispatch) => {
   try {
-    const response = await axios.get("http://localhost:5001/user/getRefreshToken",{withCredentials:true});
+    const response = await axios.get("https://carboncredit-api.azurewebsites.net/user/getRefreshToken",{withCredentials:true});
     if(response.data.status === 200) {
       dispatch(loginSuccess());
       dispatch(setUserData(response.data.data))

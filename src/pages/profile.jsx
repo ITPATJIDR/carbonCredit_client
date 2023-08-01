@@ -92,7 +92,7 @@ const Profile = () => {
   };
 
   const handleLogout = async () => {
-    const res = await axios.post("http://localhost:5001/user/logout", null, {
+    const res = await axios.post("https://carboncredit-api.azurewebsites.net/user/logout", null, {
       withCredentials: true,
     });
     if (res.data.status === 200) {
@@ -103,7 +103,7 @@ const Profile = () => {
 
   const handleUpdate = async () => {
     const res = await axios.post(
-      "http://localhost:5001/user/updateProfile",
+      "https://carboncredit-api.azurewebsites.net/user/updateProfile",
       {
         name: newName,
         surname: newSurName,

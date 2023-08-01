@@ -86,7 +86,7 @@ const Homepage = () => {
   };
 
   const getCCBank = async () => {
-    const res = await axios.get("http://localhost:5001/carbon/getCCBank");
+    const res = await axios.get("https://carboncredit-api.azurewebsites.net/carbon/getCCBank");
     setCCBank(res.data.data[0]);
   };
 

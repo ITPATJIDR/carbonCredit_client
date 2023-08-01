@@ -27,7 +27,7 @@ const Purchase = () => {
 
   const handleConfirm = async () => {
     window.my_modal_3.close();
-    const res = await axios.post("http://localhost:5001/carbon/purchase", {
+    const res = await axios.post("https://carboncredit-api.azurewebsites.net/carbon/purchase", {
       offset:
         state.calResult === undefined ? state.coin : Number(state.calResult),
       id: data.id,

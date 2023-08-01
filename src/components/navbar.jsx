@@ -39,7 +39,7 @@ const Navbar = ({ scrollToHome }) => {
     if (isValidEmail) {
       try {
         const response = await axios.post(
-          "http://localhost:5001/user/login",
+          "https://carboncredit-api.azurewebsites.net/user/login",
           { email: emailSignIn, password: passwordSignIn },
           { withCredentials: true }
         );
@@ -63,7 +63,7 @@ const Navbar = ({ scrollToHome }) => {
       if (nameSignUp && surNameSignUp && emailSignUp && passwordSignUp) {
         try {
           const response = await axios.post(
-            "http://localhost:5001/user/register",
+            "https://carboncredit-api.azurewebsites.net/user/register",
             {
               name: nameSignUp,
               surname: surNameSignUp,
