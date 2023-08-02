@@ -305,7 +305,11 @@ const Profile = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="modal-box bg-white w-[400px] p-6 rounded-lg text-black">
+                  <div
+                    className="modal-box bg-white w-[400px] p-6 rounded-lg text-black"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <h3 className="font-bold text-lg">Growth your tree</h3>
                     <p className="py-4">
                       Offset carbon credits to make the tree in your profile

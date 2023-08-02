@@ -98,13 +98,13 @@ const Navbar = ({ scrollToHome }) => {
       </Link>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 text-black font-bold">
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link to="/">Home</Link>
             {chooseMenu === "Home" ? (
               <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] bottom-[-15px]"></div>
             ) : null}
           </li>
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link to="/" onClick={() => scrollToHome()}>
               About Us
             </Link>
@@ -112,7 +112,7 @@ const Navbar = ({ scrollToHome }) => {
               <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}
           </li>
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link
               onClick={() => (isAuth ? null : window.my_modal_1.showModal())}
               to={isAuth ? "/chooseOffset" : null}

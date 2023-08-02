@@ -244,7 +244,7 @@ const Homepage = () => {
           </div>
           <div className="flex flex-row mb-[4rem]">
             {/* calculator */}
-            <div className="card w-[52vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={calculate}
@@ -288,7 +288,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* tree */}
-            <div className="card w-[52vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={manyTree}
