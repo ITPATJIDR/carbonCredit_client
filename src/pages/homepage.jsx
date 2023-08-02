@@ -261,7 +261,7 @@ const Homepage = () => {
                   emissions from different activities, be it travel or energy
                   use. This is a good way to gain valuable insights into your
                   personal or organizational impact, setting the foundation for
-                  effective carbon offsetting.
+                  an effective way.
                 </p>
               </div>
             </div>
@@ -305,7 +305,7 @@ const Homepage = () => {
                   accessing real-time data and updates on their environmental
                   impact.Witness firsthand the positive change your
                   contributions are making, reinforcing your commitment to
-                  sustainable practices.
+                  sustainability.
                 </p>
               </div>
             </div>

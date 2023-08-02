@@ -269,7 +269,7 @@ const Profile = () => {
             {/* Middle*/}
             <div className="card bg-white shadow-xl w-[470px] h-[680px] flex flex-col items-center">
               <div
-                className="tooltip tooltip-bottom justify-end absolute top-0 right-0 mt-5 mr-5"
+                className="tooltip tooltip-left justify-end absolute top-0 right-0 mt-5 mr-5"
                 data-tip="Offset carbon credits to make the tree in your profile
                 grow! Help the environment by offsetting carbon emissions
                 and see the positive impact you're making. There are 10
