@@ -304,8 +304,7 @@ const Homepage = () => {
                   Stay engaged with the progress of your chosen offset projects,
                   accessing real-time data and updates on their environmental
                   impact.Witness firsthand the positive change your
-                  contributions are making, reinforcing your commitment to
-                  sustainability.
+                  contributions are making, reinforcing to sustainability.
                 </p>
               </div>
             </div>

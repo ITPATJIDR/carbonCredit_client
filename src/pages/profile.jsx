@@ -216,7 +216,7 @@ const Profile = () => {
                       Edit Profile
                     </div>
                     <div className="mt-5">
-                      <img src={Group} alt="success" />
+                      <img src={Group} size={12} alt="success" />
                     </div>
                     <div className="w-full flex flex-col mt-5">
                       <div className="font-bold">Name</div>
