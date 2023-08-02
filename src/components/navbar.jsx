@@ -101,7 +101,7 @@ const Navbar = ({ scrollToHome }) => {
           <li className="relative">
             <Link to="/">Home</Link>
             {chooseMenu === "Home" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] bottom-[-15px]"></div>
             ) : null}
           </li>
           <li className="relative">
@@ -109,7 +109,7 @@ const Navbar = ({ scrollToHome }) => {
               About Us
             </Link>
             {chooseMenu === "AboutUs" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}
           </li>
           <li className="relative">
@@ -120,7 +120,7 @@ const Navbar = ({ scrollToHome }) => {
               Offset
             </Link>
             {chooseMenu === "Offset" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] left-1 bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] left-1 bottom-[-15px]"></div>
             ) : null}
           </li>
         </ul>

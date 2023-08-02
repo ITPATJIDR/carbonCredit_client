@@ -266,7 +266,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* money */}
-            <div className="card w-[52vh] h-[70vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={money}

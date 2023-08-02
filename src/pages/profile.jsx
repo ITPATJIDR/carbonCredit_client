@@ -301,14 +301,14 @@ const Profile = () => {
 
               {showModal && (
                 <div
-                  className="modal"
+                  className="modal fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-40 flex items-center justify-center"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="modal-box">
+                  <div className="modal-box bg-white w-[400px] p-6 rounded-lg text-black">
                     <h3 className="font-bold text-lg">Growth your tree</h3>
                     <p className="py-4">
-                      Offset carbon credits to make your tree in the profile
+                      Offset carbon credits to make the tree in your profile
                       grow! Help the environment by offsetting carbon emissions
                       and see the positive impact you're making. There are 10
                       growth levels to achieve!
