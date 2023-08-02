@@ -38,14 +38,6 @@ const Profile = () => {
   const [newEmail, setEmail] = useState(data.email);
   const [showModal, setShowModal] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowModal(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowModal(false);
-  };
-
   const test = () => {
     if (data?.coin >= 1 && data?.coin < 49) {
       return {
@@ -277,9 +269,11 @@ const Profile = () => {
             {/* Middle*/}
             <div className="card bg-white shadow-xl w-[470px] h-[680px] flex flex-col items-center">
               <div
-                className="justify-end absolute top-0 right-0 mt-5 mr-5"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                className="tooltip tooltip-bottom justify-end absolute top-0 right-0 mt-5 mr-5"
+                data-tip="Offset carbon credits to make the tree in your profile
+                grow! Help the environment by offsetting carbon emissions
+                and see the positive impact you're making. There are 10
+                growth levels to achieve!"
               >
                 <AiOutlineQuestionCircle size={25} />
               </div>
@@ -298,28 +292,6 @@ const Profile = () => {
                   />
                 )}
               </div>
-
-              {showModal && (
-                <div
-                  className="modal fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-40 flex items-center justify-center"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div
-                    className="modal-box bg-white w-[400px] p-6 rounded-lg text-black"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <h3 className="font-bold text-lg">Growth your tree</h3>
-                    <p className="py-4">
-                      Offset carbon credits to make the tree in your profile
-                      grow! Help the environment by offsetting carbon emissions
-                      and see the positive impact you're making. There are 10
-                      growth levels to achieve!
-                    </p>
-                  </div>
-                </div>
-              )}
             </div>
             {/* Right */}
             <div className="card bg-white shadow-xl w-[350px] h-[680px] flex items-center flex-col justify-center">
