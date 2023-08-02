@@ -86,7 +86,9 @@ const Homepage = () => {
   };
 
   const getCCBank = async () => {
-    const res = await axios.get("https://carboncredit-api.azurewebsites.net/carbon/getCCBank");
+    const res = await axios.get(
+      "https://carboncredit-api.azurewebsites.net/carbon/getCCBank"
+    );
     setCCBank(res.data.data[0]);
   };
 
@@ -242,7 +244,7 @@ const Homepage = () => {
           </div>
           <div className="flex flex-row mb-[4rem]">
             {/* calculator */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[52vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={calculate}
@@ -264,7 +266,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* money */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
+            <div className="card w-[52vh] h-[70vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={money}
@@ -286,7 +288,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* tree */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[52vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={manyTree}
