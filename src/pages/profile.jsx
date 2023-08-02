@@ -204,7 +204,7 @@ const Profile = () => {
                   </div>
                 </Link>
                 <dialog id="my_modal_4" className="modal text-[#767494]">
-                  <div className="w-[35vw] h-[70vh] md:h-[70vh] 2xl:h-[80vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
+                  <div className="w-[25vw] h-[80vh] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
                     <div
                       onClick={() => window.my_modal_4.close()}
                       className="w-full flex justify-end"
@@ -215,9 +215,9 @@ const Profile = () => {
                       Edit Profile
                     </div>
                     <div className="mt-5">
-                      <BiUserCircle size={110} color="#767494" />
+                      <BiUserCircle size={100} color="#767494" />
                     </div>
-                    <div className="w-full flex flex-col mt-5">
+                    <div className="w-full flex flex-col mt-3">
                       <div className="font-bold">Name</div>
                       <input
                         value={newName}
@@ -225,14 +225,14 @@ const Profile = () => {
                         className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
                         type="text"
                       />
-                      <div className="font-bold mt-5">Surname</div>
+                      <div className="font-bold mt-3">Surname</div>
                       <input
                         value={newSurName}
                         onChange={(e) => setSurName(e.target.value)}
                         className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
                         type="text"
                       />
-                      <div className="font-bold mt-5">Email</div>
+                      <div className="font-bold mt-3">Email</div>
                       <input
                         value={newEmail}
                         onChange={(e) => setEmail(e.target.value)}
@@ -240,7 +240,7 @@ const Profile = () => {
                         type="text"
                       />
                     </div>
-                    <div className="mt-10 w-full">
+                    <div className="mt-7 w-full">
                       <div
                         onClick={() => handleUpdate()}
                         className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-3xl flex items-center justify-center text-white"
