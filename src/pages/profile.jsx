@@ -26,7 +26,6 @@ import { logoutSuccess } from "../store/features/auth-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Group } from "../assets/icons";
 
 const Profile = () => {
   const { isAuth, data } = useSelector((state) => state.auth);
@@ -216,7 +215,7 @@ const Profile = () => {
                       Edit Profile
                     </div>
                     <div className="mt-5">
-                      <img src={Group} size={12} alt="success" />
+                      <BiUserCircle size={110} color="#767494" />
                     </div>
                     <div className="w-full flex flex-col mt-5">
                       <div className="font-bold">Name</div>
