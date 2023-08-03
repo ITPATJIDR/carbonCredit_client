@@ -74,18 +74,24 @@ const Calculate = () => {
   };
 
   const handleCalculateVehicle = async () => {
-    const res = await axios.post("https://carboncredit-api.azurewebsites.net/carbon/calVehicle", {
-      distance_value: amount,
-      vehicle_model_id: vehicleData.data.id,
-    });
+    const res = await axios.post(
+      "https://carboncredit-api.azurewebsites.net/carbon/calVehicle",
+      {
+        distance_value: amount,
+        vehicle_model_id: vehicleData.data.id,
+      }
+    );
     setCalResult(res.data.data);
   };
 
   const handleCalculateFood = async () => {
-    const res = await axios.post("https://carboncredit-api.azurewebsites.net/carbon/calFood", {
-      food_amt: amount,
-      food_carbon: foodData,
-    });
+    const res = await axios.post(
+      "https://carboncredit-api.azurewebsites.net/carbon/calFood",
+      {
+        food_amt: amount,
+        food_carbon: foodData,
+      }
+    );
     setCalResult(res.data.data);
   };
 
@@ -224,7 +230,7 @@ const Calculate = () => {
             <div>
               <div>
                 <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
-                  <p>Food Footprint</p>
+                  <p>Details</p>
                 </div>
                 <div className="flex flex-row justify-between">
                   {/* Selected name */}
