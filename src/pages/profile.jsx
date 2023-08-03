@@ -26,7 +26,6 @@ import { logoutSuccess } from "../store/features/auth-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Group } from "../assets/icons";
 
 const Profile = () => {
   const { isAuth, data } = useSelector((state) => state.auth);
@@ -36,6 +35,7 @@ const Profile = () => {
   const [newName, setNewName] = useState(data.name);
   const [newSurName, setSurName] = useState(data.surname);
   const [newEmail, setEmail] = useState(data.email);
+  const [showModal, setShowModal] = useState(false);
 
   const test = () => {
     if (data?.coin >= 1 && data?.coin < 49) {
@@ -92,9 +92,13 @@ const Profile = () => {
   };
 
   const handleLogout = async () => {
-    const res = await axios.post("https://carboncredit-api.azurewebsites.net/user/logout", null, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      "https://carboncredit-api.azurewebsites.net/user/logout",
+      null,
+      {
+        withCredentials: true,
+      }
+    );
     if (res.data.status === 200) {
       dispatch(logoutSuccess());
       navigate("/");
@@ -142,9 +146,6 @@ const Profile = () => {
                   <p className="text-[20px] text-black font-medium">
                     {fullname}
                   </p>
-                </div>
-                <div className="mt-[6px]">
-                  <p className="text-[15px] text-[#767494]">Point : 30</p>
                 </div>
               </div>
               {/* card 2 */}
@@ -200,7 +201,7 @@ const Profile = () => {
                   </div>
                 </Link>
                 <dialog id="my_modal_4" className="modal text-[#767494]">
-                  <div className="w-[35vw] h-[70vh] md:h-[70vh] 2xl:h-[80vh] 2xl:w-[18vw] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
+                  <div className="w-[25vw] h-[80vh] p-14 bg-white rounded-xl flex items-center flex-col justify-around">
                     <div
                       onClick={() => window.my_modal_4.close()}
                       className="w-full flex justify-end"
@@ -211,9 +212,9 @@ const Profile = () => {
                       Edit Profile
                     </div>
                     <div className="mt-5">
-                      <img src={Group} alt="success" />
+                      <BiUserCircle size={100} color="#767494" />
                     </div>
-                    <div className="w-full flex flex-col mt-5">
+                    <div className="w-full flex flex-col mt-3">
                       <div className="font-bold">Name</div>
                       <input
                         value={newName}
@@ -221,14 +222,14 @@ const Profile = () => {
                         className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
                         type="text"
                       />
-                      <div className="font-bold mt-5">Surname</div>
+                      <div className="font-bold mt-3">Surname</div>
                       <input
                         value={newSurName}
                         onChange={(e) => setSurName(e.target.value)}
                         className="pl-2 w-full mt-3 h-10 rounded-xl bg-white outline-none border-2 border-[#767494]"
                         type="text"
                       />
-                      <div className="font-bold mt-5">Email</div>
+                      <div className="font-bold mt-3">Email</div>
                       <input
                         value={newEmail}
                         onChange={(e) => setEmail(e.target.value)}
@@ -236,7 +237,7 @@ const Profile = () => {
                         type="text"
                       />
                     </div>
-                    <div className="mt-10 w-full">
+                    <div className="mt-7 w-full">
                       <div
                         onClick={() => handleUpdate()}
                         className="w-full h-10 bg-[#068758] hover:bg-[#056f48] transition rounded-3xl flex items-center justify-center text-white"
@@ -263,7 +264,13 @@ const Profile = () => {
             </div>
             {/* Middle*/}
             <div className="card bg-white shadow-xl w-[470px] h-[680px] flex flex-col items-center">
-              <div className="justify-end absolute top-0 right-0 mt-5 mr-5">
+              <div
+                className="tooltip tooltip-left justify-end absolute top-0 right-0 mt-5 mr-5"
+                data-tip="Offset carbon credits to make the tree in your profile
+                grow! Help the environment by offsetting carbon emissions
+                and see the positive impact you're making. There are 10
+                growth levels to achieve!"
+              >
                 <AiOutlineQuestionCircle size={25} />
               </div>
               <div className="mt-[60px]">

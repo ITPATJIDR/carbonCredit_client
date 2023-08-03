@@ -46,7 +46,7 @@ const CertificateLists = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[#F2F4F8] h-[93vh] text-black">
+      <div className="bg-[#F2F4F8] h-[96vh] text-black">
         <div className="p-20">
           <div className="pl-[15vw]">
             <div className="flex w-[37vw] items-center justify-between font-bold">

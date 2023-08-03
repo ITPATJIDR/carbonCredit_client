@@ -98,21 +98,21 @@ const Navbar = ({ scrollToHome }) => {
       </Link>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 text-black font-bold">
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link to="/">Home</Link>
             {chooseMenu === "Home" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] bottom-[-15px]"></div>
             ) : null}
           </li>
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link to="/" onClick={() => scrollToHome()}>
               About Us
             </Link>
             {chooseMenu === "AboutUs" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] right-3 bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] right-3 bottom-[-15px]"></div>
             ) : null}
           </li>
-          <li className="relative">
+          <li className="relative hover:bg-white">
             <Link
               onClick={() => (isAuth ? null : window.my_modal_1.showModal())}
               to={isAuth ? "/chooseOffset" : null}
@@ -120,7 +120,7 @@ const Navbar = ({ scrollToHome }) => {
               Offset
             </Link>
             {chooseMenu === "Offset" ? (
-              <div className="absolute border-b-4 border-[#068758] rounded-none w-[70px] left-1 bottom-[-15px]"></div>
+              <div className="absolute border-b-4 border-[#068758] hover:bg-white rounded-none w-[70px] left-1 bottom-[-15px]"></div>
             ) : null}
           </li>
         </ul>
@@ -161,7 +161,7 @@ const Navbar = ({ scrollToHome }) => {
         )}
 
         <dialog id="my_modal_1" className="modal text-[#767494]">
-          <div className="min-w-[20vw] h-[60vh] md:h-[65vh] p-14 bg-white rounded-xl">
+          <div className="min-w-[20vw] h-[70vh] md:h-[70vh] p-14 bg-white rounded-xl">
             <div className="flex justify-end">
               <button onClick={() => window.my_modal_1.close()}>
                 <img src={Close} alt="Close" />
@@ -196,7 +196,7 @@ const Navbar = ({ scrollToHome }) => {
                   <img
                     src={Email}
                     alt="Email"
-                    className="absolute top-[15px] left-3"
+                    className="absolute top-[13px] left-3"
                   />
                 </div>
                 {isValidEmail ? null : (
@@ -216,18 +216,18 @@ const Navbar = ({ scrollToHome }) => {
                     onChange={(e) => setPasswordSignIn(e.target.value)}
                     type={hiddenPassword ? "password" : "text"}
                     className="w-full h-[5vh] rounded-lg border-[#767494] bg-white border-2 pl-10 outline-none "
-                    placeholder="Enter your password"
+                    placeholder="Entelr your password"
                   />
                   <img
                     src={Password}
                     alt="Email"
-                    className="absolute top-[15px] left-3"
+                    className="absolute top-[13px] left-3"
                   />
                   <img
                     onClick={() => setHiddenPassword(!hiddenPassword)}
                     src={Eye}
                     alt="Email"
-                    className="absolute top-[15px] right-3"
+                    className="absolute top-[13px] right-3"
                   />
                 </div>
 
@@ -257,7 +257,7 @@ const Navbar = ({ scrollToHome }) => {
         </dialog>
 
         <dialog id="my_modal_2" className="modal text-[#767494]">
-          <div className="w-[450px] md:min-w-[30vw] 2xl:min-w-[450px] h-[85vh] p-14 bg-white rounded-xl">
+          <div className="w-[450px] md:min-w-[30vw] 2xl:min-w-[450px] h-[92vh] p-14 bg-white rounded-xl">
             <div className="flex justify-end">
               <button onClick={() => window.my_modal_2.close()}>
                 <img src={Close} alt="Close" />

@@ -86,7 +86,9 @@ const Homepage = () => {
   };
 
   const getCCBank = async () => {
-    const res = await axios.get("https://carboncredit-api.azurewebsites.net/carbon/getCCBank");
+    const res = await axios.get(
+      "https://carboncredit-api.azurewebsites.net/carbon/getCCBank"
+    );
     setCCBank(res.data.data[0]);
   };
 
@@ -242,7 +244,7 @@ const Homepage = () => {
           </div>
           <div className="flex flex-row mb-[4rem]">
             {/* calculator */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={calculate}
@@ -259,12 +261,12 @@ const Homepage = () => {
                   emissions from different activities, be it travel or energy
                   use. This is a good way to gain valuable insights into your
                   personal or organizational impact, setting the foundation for
-                  effective carbon offsetting.
+                  an effective way.
                 </p>
               </div>
             </div>
             {/* money */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] mx-[2rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={money}
@@ -286,7 +288,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* tree */}
-            <div className="card w-[50vh] h-[60vh] mt-[3rem] bg-[#F2F4F8]">
+            <div className="card w-[53vh] h-[70vh] mt-[3rem] bg-[#F2F4F8]">
               <figure>
                 <img
                   src={manyTree}
@@ -302,8 +304,7 @@ const Homepage = () => {
                   Stay engaged with the progress of your chosen offset projects,
                   accessing real-time data and updates on their environmental
                   impact.Witness firsthand the positive change your
-                  contributions are making, reinforcing your commitment to
-                  sustainable practices.
+                  contributions are making, reinforcing to sustainability.
                 </p>
               </div>
             </div>
