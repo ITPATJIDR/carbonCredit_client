@@ -147,9 +147,6 @@ const Profile = () => {
                     {fullname}
                   </p>
                 </div>
-                <div className="mt-[6px]">
-                  <p className="text-[15px] text-[#767494]">Point : 30</p>
-                </div>
               </div>
               {/* card 2 */}
               <div className="card bg-white font-bold shadow-xl w-[350px] h-[80px] my-[10px] flex-row justify-between items-center">
