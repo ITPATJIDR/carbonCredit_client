@@ -230,7 +230,7 @@ const Calculate = () => {
             <div>
               <div>
                 <div className="text-black text-[15px] font-bold font-medium ml-8 my-3">
-                  <p>Details</p>
+                  <p>Offset details</p>
                 </div>
                 <div className="flex flex-row justify-between">
                   {/* Selected name */}
